@@ -1,0 +1,32 @@
+name: Ordway Plans and Pricing
+description: Ordway offers enterprise billing and revenue automation software for SaaS companies. Pricing is not publicly listed; prospective customers must contact the sales team for a custom quote based on their transaction volume, user count, and feature requirements.
+url: https://ordwaylabs.com/
+contact:
+  - FN: Ordway Sales
+    url: https://ordwaylabs.com/
+plans:
+  - name: Enterprise
+    description: Custom pricing for enterprise SaaS companies requiring subscription billing, usage-based billing, revenue recognition, accounts receivable automation, and SaaS metrics. Pricing is based on transaction volume, number of users, and modules required. Includes SOC 2 certified infrastructure, multi-currency support, and integrations with CRM, ERP, and payment systems.
+    url: https://ordwaylabs.com/
+    pricingModel: custom
+    features:
+      - Subscription Billing (per user, multi-tiered, pay-as-you-go, prepaid, free trials)
+      - Usage-Based Billing (rollovers, overage fees, monthly minimums, prepaid credits)
+      - Revenue Recognition (ASC 606 and IFRS 15 compliant)
+      - Accounts Receivable (aging reports, dunning workflows, cash application)
+      - SaaS Metrics (MRR/ARR, net dollar retention, churn analysis)
+      - AI-Powered Revenue Management (agentic workflows)
+      - REST API access
+      - Webhooks
+      - Payments SDK
+      - CRM integrations (Salesforce, HubSpot)
+      - ERP integrations (NetSuite, QuickBooks, Sage Intacct, Xero)
+      - Payment gateway integrations (Stripe, Braintree, PayPal, CardConnect)
+      - Tax automation (Anrok, Avalara)
+      - Sandbox environment access
+      - Dedicated support
+notes: >
+  Ordway does not publicly disclose pricing tiers. All plans are customized
+  based on business requirements. Contact Ordway sales at ordwaylabs.com for
+  a demo and pricing quote. Ordway University training platform is available
+  to customers at ordwayuniversity.litmos.com.

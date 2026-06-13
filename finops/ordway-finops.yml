@@ -1,0 +1,52 @@
+name: Ordway FinOps
+description: Financial operations considerations for teams integrating with or procuring Ordway's billing and revenue automation platform. Covers cost management, usage tracking, budgeting, and financial governance for API-driven billing workflows.
+url: https://ordwaylabs.com/
+costModel:
+  type: custom-enterprise
+  description: Ordway pricing is not publicly listed. Enterprise contracts are negotiated based on transaction volume, number of billing customers managed, modules required, and integration complexity. No self-serve free tier or public pricing tiers are available.
+  pricingURL: https://ordwaylabs.com/
+  contactForPricing: true
+apiCostConsiderations:
+  - name: API Access Included
+    description: REST API access, webhooks, and Payments SDK are included in the Ordway platform subscription. There are no per-call API charges based on publicly available information.
+  - name: Integration Complexity
+    description: Complex integrations with CRM (Salesforce, HubSpot), ERP (NetSuite, Sage Intacct), and payment gateways may require professional services engagement, adding to total cost of ownership.
+  - name: Sandbox Environment
+    description: A sandbox environment (api.sandbox.ordwaylabs.com) is available for development and testing at no additional charge, enabling teams to validate integrations before production deployment.
+usageTracking:
+  - name: SaaS Metrics Reporting
+    description: Ordway natively tracks MRR/ARR, net dollar retention, churn, bookings, expansions, and renewals, providing financial operations teams with real-time subscription revenue visibility.
+  - name: Revenue Recognition Automation
+    description: Automated ASC 606 and IFRS 15 compliant revenue recognition reduces manual accounting effort and associated professional services costs.
+  - name: Accounts Receivable Automation
+    description: Dunning workflows, automated payment retries, and aging reports reduce days sales outstanding (DSO) and bad debt write-offs.
+budgeting:
+  notes: >
+    Because Ordway pricing is contract-based, FinOps teams should negotiate
+    volume commitments carefully. Key budget drivers include: number of billing
+    customers, monthly transaction volume, modules enabled (billing, revenue
+    recognition, AR automation, SaaS metrics), and number of integrations
+    (each CRM, ERP, or payment gateway connector may have additional setup
+    costs). Request detailed contract terms covering overage policies,
+    annual price escalation clauses, and data export rights.
+complianceAndGovernance:
+  - SOC 2 certified infrastructure
+  - ASC 606 revenue recognition compliance
+  - IFRS 15 revenue recognition compliance
+  - Multi-currency support for international operations
+  - Role-based access controls for financial data
+  - Audit trails for billing and revenue transactions
+integrationCostFactors:
+  - name: iPaaS Connectors
+    description: Ordway supports Hotglue and Tray.io for no-code/low-code integrations. These platforms have their own pricing that should be factored into total integration cost.
+  - name: Payment Gateway Fees
+    description: Payment processing through Stripe, Braintree, PayPal, CardConnect, Heartland, or Payarc incurs standard gateway transaction fees separate from Ordway platform costs.
+  - name: Tax Automation
+    description: Sales tax automation via Anrok or Avalara has separate licensing costs from the Ordway platform subscription.
+notes: >
+  Ordway is purpose-built for SaaS companies managing complex recurring
+  revenue models. FinOps teams should evaluate total cost of ownership
+  including platform subscription, integration costs, payment processing fees,
+  and any professional services for implementation. ROI is typically realized
+  through reduced manual billing effort, faster cash collection, and improved
+  revenue reporting accuracy.

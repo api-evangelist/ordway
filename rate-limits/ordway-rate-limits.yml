@@ -1,0 +1,26 @@
+name: Ordway API Rate Limits
+description: Ordway does not publicly document specific rate limits for its REST API. API access requires an API key obtained through Ordway support. The following reflects what is publicly known about API usage constraints.
+url: https://support.ordwaylabs.com/hc/en-us/articles/360050435911-Request-Validate-an-API-Key
+rateLimits:
+  - name: API Key Rate Limit
+    description: Rate limits for authenticated REST API requests using an API key. Specific numeric thresholds are not publicly disclosed; contact Ordway support for details applicable to your account.
+    type: api-key
+    scope: per-account
+    limit: not-publicly-disclosed
+    window: not-publicly-disclosed
+    notes: API keys are issued per account by Ordway support. Both production and sandbox environments require separate API keys.
+environments:
+  - name: Production
+    baseURL: https://api.ordwaylabs.com/api/v1
+    notes: Production API endpoint for live billing and revenue operations.
+  - name: Sandbox
+    baseURL: https://api.sandbox.ordwaylabs.com/api/v1
+    notes: Sandbox environment for testing integrations without affecting production data.
+authentication:
+  - type: API Key
+    description: API keys are requested through the Ordway support portal. Keys are provisioned per account and must be included in API requests as an authorization header.
+    requestURL: https://support.ordwaylabs.com/hc/en-us/articles/360050435911-Request-Validate-an-API-Key
+notes: >
+  Ordway's REST API documentation is hosted on Stoplight at
+  ordwaylabs.stoplight.io. For specific rate limit thresholds applicable to
+  your subscription tier, contact Ordway support or your account manager.
