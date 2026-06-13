@@ -1,0 +1,22 @@
+{
+  "company_id": "acme-corp",
+  "usage_id": "USAGE-001",
+  "subscription_line_id": "SUB-002-L2",
+  "customer_id": "CUST-001",
+  "subscription_id": "SUB-002",
+  "charge_id": "CHG-API-CALLS",
+  "quantity": 150000,
+  "date": "2026-06-01T00:00:00Z",
+  "unit_of_measure": "API Calls",
+  "description": "June 2026 API call usage",
+  "invoiced": false,
+  "currency": "USD",
+  "custom_fields": {
+    "source_system": "api-gateway",
+    "region": "us-east-1"
+  },
+  "created_by": "system@ordwaylabs.com",
+  "updated_by": "system@ordwaylabs.com",
+  "created_date": "2026-06-01T01:00:00Z",
+  "updated_date": "2026-06-01T01:00:00Z"
+}

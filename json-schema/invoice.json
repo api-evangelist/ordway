@@ -1,0 +1,167 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ordway/main/json-schema/invoice.json",
+  "title": "Invoice",
+  "description": "An Ordway billing invoice",
+  "type": "object",
+  "required": ["company_id", "invoice_id", "invoice_line_no"],
+  "properties": {
+    "company_id": {
+      "type": "string",
+      "description": "Identifier for the Ordway company account"
+    },
+    "invoice_id": {
+      "type": "string",
+      "description": "Unique identifier for the invoice"
+    },
+    "invoice_line_no": {
+      "type": "string",
+      "description": "Line number within the invoice"
+    },
+    "customer_id": {
+      "type": "string",
+      "description": "ID of the billed customer"
+    },
+    "customer_name": {
+      "type": ["string", "null"],
+      "description": "Name of the billed customer"
+    },
+    "invoice_date": {
+      "type": ["string", "null"],
+      "format": "date",
+      "description": "Date the invoice was issued"
+    },
+    "due_date": {
+      "type": ["string", "null"],
+      "format": "date",
+      "description": "Date payment is due"
+    },
+    "billing_run_id": {
+      "type": ["string", "null"],
+      "description": "ID of the billing run that generated this invoice"
+    },
+    "subtotal": {
+      "type": ["number", "null"],
+      "description": "Invoice subtotal before tax"
+    },
+    "invoice_tax": {
+      "type": ["number", "null"],
+      "description": "Total tax amount"
+    },
+    "invoice_amount": {
+      "type": ["number", "null"],
+      "description": "Total invoice amount including tax"
+    },
+    "paid_amount": {
+      "type": ["number", "null"],
+      "description": "Amount paid against this invoice"
+    },
+    "balance": {
+      "type": ["number", "null"],
+      "description": "Remaining balance due"
+    },
+    "status": {
+      "type": ["string", "null"],
+      "enum": ["draft", "open", "paid", "void", "posted", null],
+      "description": "Invoice status"
+    },
+    "notes": {
+      "type": ["string", "null"],
+      "description": "Notes or comments on the invoice"
+    },
+    "currency": {
+      "type": ["string", "null"],
+      "description": "Invoice currency (ISO 4217)"
+    },
+    "payment_terms": {
+      "type": ["string", "null"],
+      "description": "Payment terms for this invoice"
+    },
+    "subscription_id": {
+      "type": ["string", "null"],
+      "description": "ID of the source subscription"
+    },
+    "product_id": {
+      "type": ["string", "null"],
+      "description": "ID of the billed product"
+    },
+    "product_name": {
+      "type": ["string", "null"],
+      "description": "Name of the billed product"
+    },
+    "charge_id": {
+      "type": ["string", "null"],
+      "description": "ID of the charge"
+    },
+    "charge_name": {
+      "type": ["string", "null"],
+      "description": "Name of the charge"
+    },
+    "charge_type": {
+      "type": ["string", "null"],
+      "description": "Type of charge (recurring, one_time, usage)"
+    },
+    "description": {
+      "type": ["string", "null"],
+      "description": "Line item description"
+    },
+    "start_date": {
+      "type": ["string", "null"],
+      "format": "date",
+      "description": "Service period start date"
+    },
+    "end_date": {
+      "type": ["string", "null"],
+      "format": "date",
+      "description": "Service period end date"
+    },
+    "quantity": {
+      "type": ["number", "null"],
+      "description": "Quantity billed"
+    },
+    "discount": {
+      "type": ["number", "null"],
+      "description": "Discount percentage applied"
+    },
+    "effective_price": {
+      "type": ["number", "null"],
+      "description": "Effective price after discounts"
+    },
+    "invoice_pdf_url": {
+      "type": ["string", "null"],
+      "format": "uri",
+      "description": "URL to download the invoice PDF"
+    },
+    "emailed": {
+      "type": ["boolean", "null"],
+      "description": "Whether the invoice has been emailed to the customer"
+    },
+    "exchange_rate": {
+      "type": ["number", "null"],
+      "description": "Currency exchange rate applied"
+    },
+    "custom_fields": {
+      "type": ["object", "null"],
+      "additionalProperties": true,
+      "description": "User-defined custom fields"
+    },
+    "created_by": {
+      "type": ["string", "null"],
+      "description": "User who created the record"
+    },
+    "updated_by": {
+      "type": ["string", "null"],
+      "description": "User who last updated the record"
+    },
+    "created_date": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Timestamp when the record was created"
+    },
+    "updated_date": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Timestamp when the record was last updated"
+    }
+  }
+}

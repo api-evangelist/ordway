@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ordway/main/json-schema/usage.json",
+  "title": "Usage",
+  "description": "A usage record for metered/usage-based billing in Ordway",
+  "type": "object",
+  "required": ["company_id", "usage_id", "subscription_line_id"],
+  "properties": {
+    "company_id": {
+      "type": "string",
+      "description": "Identifier for the Ordway company account"
+    },
+    "usage_id": {
+      "type": "string",
+      "description": "Unique identifier for the usage record"
+    },
+    "subscription_line_id": {
+      "type": "string",
+      "description": "ID of the subscription line item this usage applies to"
+    },
+    "customer_id": {
+      "type": ["string", "null"],
+      "description": "ID of the customer"
+    },
+    "subscription_id": {
+      "type": ["string", "null"],
+      "description": "ID of the subscription"
+    },
+    "charge_id": {
+      "type": ["string", "null"],
+      "description": "ID of the usage-based charge"
+    },
+    "quantity": {
+      "type": ["number", "null"],
+      "description": "Amount consumed"
+    },
+    "date": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Date and time when the usage occurred"
+    },
+    "unit_of_measure": {
+      "type": ["string", "null"],
+      "description": "Unit of measurement for the quantity"
+    },
+    "description": {
+      "type": ["string", "null"],
+      "description": "Description of the usage event"
+    },
+    "invoiced": {
+      "type": ["boolean", "null"],
+      "description": "Whether this usage has been billed on an invoice"
+    },
+    "currency": {
+      "type": ["string", "null"],
+      "description": "Currency for this usage record"
+    },
+    "custom_fields": {
+      "type": ["object", "null"],
+      "additionalProperties": true,
+      "description": "User-defined custom fields"
+    },
+    "created_by": {
+      "type": ["string", "null"],
+      "description": "User or system that created the record"
+    },
+    "updated_by": {
+      "type": ["string", "null"],
+      "description": "User or system that last updated the record"
+    },
+    "created_date": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Timestamp when the record was created"
+    },
+    "updated_date": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Timestamp when the record was last updated"
+    }
+  }
+}

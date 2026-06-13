@@ -1,0 +1,36 @@
+{
+  "company_id": "acme-corp",
+  "customer_id": "CUST-001",
+  "name": "Acme Corporation",
+  "description": "Enterprise SaaS customer",
+  "website": "https://acme.example.com",
+  "status": "active",
+  "payment_terms": "Net 30",
+  "billing_cycle_day": "1",
+  "billing_contact_id": "CONT-001",
+  "shipping_contact_id": "CONT-002",
+  "tax_exempt": false,
+  "balance": 1250.00,
+  "auto_pay": true,
+  "currency": "USD",
+  "cmrr": 2500.00,
+  "discounted_cmrr": 2375.00,
+  "carr": 30000.00,
+  "discounted_carr": 28500.00,
+  "delivery_preferences": {
+    "print": false,
+    "email": true
+  },
+  "billing_contact_email": "billing@acme.example.com",
+  "shipping_contact_email": "shipping@acme.example.com",
+  "portal_status": "enabled",
+  "integration_status": "synced",
+  "custom_fields": {
+    "salesforce_account_id": "0011000001abcXY",
+    "industry": "technology"
+  },
+  "created_by": "admin@ordwaylabs.com",
+  "updated_by": "admin@ordwaylabs.com",
+  "created_date": "2025-01-15T10:00:00Z",
+  "updated_date": "2026-03-01T14:30:00Z"
+}

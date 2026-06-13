@@ -33,7 +33,7 @@ apis:
       - type: Documentation
         url: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
       - type: OpenAPI
-        url: https://ordwaylabs.stoplight.io
+        url: https://raw.githubusercontent.com/api-evangelist/ordway/refs/heads/main/openapi/ordway-rest-api-openapi.yml
     contact:
       - FN: Ordway Support
         url: https://support.ordwaylabs.com

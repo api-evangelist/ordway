@@ -1,0 +1,3252 @@
+openapi: 3.0.3
+info:
+  title: Ordway REST API
+  description: >-
+    RESTful API for bidirectional integration with the Ordway billing and revenue
+    automation platform. Enables managing customers, subscriptions, invoices,
+    payments, usage data, and revenue recognition schedules. Supports usage-based
+    billing, ASC 606 compliant revenue recognition, accounts receivable automation,
+    and SaaS metrics reporting.
+  version: v1
+  contact:
+    name: Ordway Support
+    url: https://support.ordwaylabs.com
+  termsOfService: https://ordwaylabs.com/
+externalDocs:
+  description: Ordway API Documentation
+  url: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
+servers:
+  - url: https://api.ordwaylabs.com/api/v1
+    description: Production
+  - url: https://staging.ordwaylabs.com/api/v1
+    description: Staging
+security:
+  - ApiKeyAuth: []
+    UserTokenAuth: []
+    UserEmailAuth: []
+    CompanyAuth: []
+tags:
+  - name: Customers
+    description: Manage billing customers and their contacts, notes, and payment methods
+  - name: Subscriptions
+    description: Manage subscription lifecycle and charges
+  - name: Invoices
+    description: Manage invoices and billing
+  - name: Payments
+    description: Manage payments and payment methods
+  - name: Payment Runs
+    description: Automated payment run management
+  - name: Products
+    description: Manage products and plans
+  - name: Plans
+    description: Manage billing plans and charges
+  - name: Orders
+    description: Manage one-time orders
+  - name: Credits
+    description: Manage customer credits
+  - name: Refunds
+    description: Manage payment refunds
+  - name: Debit Memos
+    description: Manage debit memos
+  - name: Billing Runs
+    description: Automated billing run management
+  - name: Billing Schedules
+    description: Manage billing schedules
+  - name: Revenue Schedules
+    description: Manage ASC 606 revenue recognition schedules
+  - name: Revenue Rules
+    description: Manage revenue recognition rules
+  - name: Statements
+    description: Customer account statements
+  - name: Coupons
+    description: Manage discount coupons
+  - name: Usages
+    description: Manage usage-based billing records
+  - name: Chart of Accounts
+    description: Manage general ledger chart of accounts
+  - name: Journal Entries
+    description: Manage accounting journal entries
+  - name: Webhooks
+    description: Manage webhook configurations
+
+paths:
+  /customers:
+    get:
+      summary: List customers
+      operationId: listCustomers
+      tags: [Customers]
+      parameters:
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/size'
+        - $ref: '#/components/parameters/sort'
+      responses:
+        '200':
+          description: List of customers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Customer'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      summary: Create a customer
+      operationId: createCustomer
+      tags: [Customers]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerInput'
+      responses:
+        '201':
+          description: Customer created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+
+  /customers/{id}:
+    get:
+      summary: Retrieve a customer
+      operationId: getCustomer
+      tags: [Customers]
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Customer details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      summary: Update a customer
+      operationId: updateCustomer
+      tags: [Customers]
+      parameters:
+        - $ref: '#/components/parameters/id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerInput'
+      responses:
+        '200':
+          description: Customer updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      summary: Delete a customer
+      operationId: deleteCustomer
+      tags: [Customers]
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '204':
+          description: Customer deleted
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /customers/{id}/contacts:
+    get:
+      summary: List contacts for a customer
+      operationId: listCustomerContacts
+      tags: [Customers]
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: List of contacts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Contact'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /customers/{id}/payment_methods:
+    get:
+      summary: List payment methods for a customer
+      operationId: listCustomerPaymentMethods
+      tags: [Payments]
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: List of payment methods
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PaymentMethod'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /customers/{id}/customer_notes:
+    get:
+      summary: List notes for a customer
+      operationId: listCustomerNotes
+      tags: [Customers]
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: List of customer notes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CustomerNote'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /subscriptions:
+    get:
+      summary: List subscriptions
+      operationId: listSubscriptions
+      tags: [Subscriptions]
+      parameters:
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/size'
+        - $ref: '#/components/parameters/sort'
+        - name: updated_date>
+          in: query
+          description: Filter subscriptions updated after this date-time (ISO 8601)
+          schema:
+            type: string
+            format: date-time
+      responses:
+        '200':
+          description: List of subscriptions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Subscription'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      summary: Create a subscription
+      operationId: createSubscription
+      tags: [Subscriptions]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubscriptionInput'
+      responses:
+        '201':
+          description: Subscription created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+
+  /subscriptions/{id}:
+    get:
+      summary: Retrieve a subscription
+      operationId: getSubscription
+      tags: [Subscriptions]
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Subscription details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      summary: Update a subscription
+      operationId: updateSubscription
+      tags: [Subscriptions]
+      parameters:
+        - $ref: '#/components/parameters/id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubscriptionInput'
+      responses:
+        '200':
+          description: Subscription updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /invoices:
+    get:
+      summary: List invoices
+      operationId: listInvoices
+      tags: [Invoices]
+      parameters:
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/size'
+        - $ref: '#/components/parameters/sort'
+        - name: updated_date>
+          in: query
+          description: Filter invoices updated after this date-time (ISO 8601)
+          schema:
+            type: string
+            format: date-time
+      responses:
+        '200':
+          description: List of invoices
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Invoice'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      summary: Create an invoice
+      operationId: createInvoice
+      tags: [Invoices]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InvoiceInput'
+      responses:
+        '201':
+          description: Invoice created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Invoice'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+
+  /invoices/{id}:
+    get:
+      summary: Retrieve an invoice
+      operationId: getInvoice
+      tags: [Invoices]
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Invoice details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Invoice'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      summary: Update an invoice
+      operationId: updateInvoice
+      tags: [Invoices]
+      parameters:
+        - $ref: '#/components/parameters/id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InvoiceInput'
+      responses:
+        '200':
+          description: Invoice updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Invoice'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /payments:
+    get:
+      summary: List payments
+      operationId: listPayments
+      tags: [Payments]
+      parameters:
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/size'
+        - $ref: '#/components/parameters/sort'
+        - name: updated_date>
+          in: query
+          description: Filter payments updated after this date-time (ISO 8601)
+          schema:
+            type: string
+            format: date-time
+      responses:
+        '200':
+          description: List of payments
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Payment'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      summary: Create a payment
+      operationId: createPayment
+      tags: [Payments]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentInput'
+      responses:
+        '201':
+          description: Payment created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+
+  /payments/{id}:
+    get:
+      summary: Retrieve a payment
+      operationId: getPayment
+      tags: [Payments]
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Payment details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /payment_runs:
+    get:
+      summary: List payment runs
+      operationId: listPaymentRuns
+      tags: [Payment Runs]
+      parameters:
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/size'
+      responses:
+        '200':
+          description: List of payment runs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PaymentRun'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      summary: Create a payment run
+      operationId: createPaymentRun
+      tags: [Payment Runs]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentRunInput'
+      responses:
+        '201':
+          description: Payment run created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentRun'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+
+  /payment_runs/{id}:
+    get:
+      summary: Retrieve a payment run
+      operationId: getPaymentRun
+      tags: [Payment Runs]
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Payment run details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentRun'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /products:
+    get:
+      summary: List products
+      operationId: listProducts
+      tags: [Products]
+      parameters:
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/size'
+        - $ref: '#/components/parameters/sort'
+      responses:
+        '200':
+          description: List of products
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      summary: Create a product
+      operationId: createProduct
+      tags: [Products]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductInput'
+      responses:
+        '201':
+          description: Product created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+
+  /products/{id}:
+    get:
+      summary: Retrieve a product
+      operationId: getProduct
+      tags: [Products]
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Product details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      summary: Update a product
+      operationId: updateProduct
+      tags: [Products]
+      parameters:
+        - $ref: '#/components/parameters/id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductInput'
+      responses:
+        '200':
+          description: Product updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /plans:
+    get:
+      summary: List plans
+      operationId: listPlans
+      tags: [Plans]
+      parameters:
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/size'
+      responses:
+        '200':
+          description: List of plans
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Plan'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      summary: Create a plan
+      operationId: createPlan
+      tags: [Plans]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlanInput'
+      responses:
+        '201':
+          description: Plan created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plan'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+
+  /plans/{id}:
+    get:
+      summary: Retrieve a plan
+      operationId: getPlan
+      tags: [Plans]
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Plan details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plan'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /orders:
+    get:
+      summary: List orders
+      operationId: listOrders
+      tags: [Orders]
+      parameters:
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/size'
+        - $ref: '#/components/parameters/sort'
+        - name: updated_date>
+          in: query
+          description: Filter orders updated after this date-time (ISO 8601)
+          schema:
+            type: string
+            format: date-time
+      responses:
+        '200':
+          description: List of orders
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Order'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      summary: Create an order
+      operationId: createOrder
+      tags: [Orders]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderInput'
+      responses:
+        '201':
+          description: Order created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+
+  /orders/{id}:
+    get:
+      summary: Retrieve an order
+      operationId: getOrder
+      tags: [Orders]
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Order details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /credits:
+    get:
+      summary: List credits
+      operationId: listCredits
+      tags: [Credits]
+      parameters:
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/size'
+        - $ref: '#/components/parameters/sort'
+      responses:
+        '200':
+          description: List of credits
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Credit'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      summary: Create a credit
+      operationId: createCredit
+      tags: [Credits]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreditInput'
+      responses:
+        '201':
+          description: Credit created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Credit'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+
+  /credits/{id}:
+    get:
+      summary: Retrieve a credit
+      operationId: getCredit
+      tags: [Credits]
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Credit details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Credit'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /refunds:
+    get:
+      summary: List refunds
+      operationId: listRefunds
+      tags: [Refunds]
+      parameters:
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/size'
+        - $ref: '#/components/parameters/sort'
+      responses:
+        '200':
+          description: List of refunds
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Refund'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      summary: Create a refund
+      operationId: createRefund
+      tags: [Refunds]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RefundInput'
+      responses:
+        '201':
+          description: Refund created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Refund'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+
+  /refunds/{id}:
+    get:
+      summary: Retrieve a refund
+      operationId: getRefund
+      tags: [Refunds]
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Refund details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Refund'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /debit_memos:
+    get:
+      summary: List debit memos
+      operationId: listDebitMemos
+      tags: [Debit Memos]
+      parameters:
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/size'
+        - $ref: '#/components/parameters/sort'
+      responses:
+        '200':
+          description: List of debit memos
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DebitMemo'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /debit_memos/{id}:
+    get:
+      summary: Retrieve a debit memo
+      operationId: getDebitMemo
+      tags: [Debit Memos]
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Debit memo details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DebitMemo'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /billing_runs:
+    get:
+      summary: List billing runs
+      operationId: listBillingRuns
+      tags: [Billing Runs]
+      parameters:
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/size'
+      responses:
+        '200':
+          description: List of billing runs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BillingRun'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      summary: Create a billing run
+      operationId: createBillingRun
+      tags: [Billing Runs]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BillingRunInput'
+      responses:
+        '201':
+          description: Billing run created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingRun'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+
+  /billing_runs/{id}:
+    get:
+      summary: Retrieve a billing run
+      operationId: getBillingRun
+      tags: [Billing Runs]
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Billing run details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingRun'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /billing_schedules:
+    get:
+      summary: List billing schedules
+      operationId: listBillingSchedules
+      tags: [Billing Schedules]
+      parameters:
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/size'
+      responses:
+        '200':
+          description: List of billing schedules
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BillingSchedule'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /billing_schedules/{id}:
+    get:
+      summary: Retrieve a billing schedule
+      operationId: getBillingSchedule
+      tags: [Billing Schedules]
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Billing schedule details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingSchedule'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /revenue_schedules:
+    get:
+      summary: List revenue schedules
+      operationId: listRevenueSchedules
+      tags: [Revenue Schedules]
+      parameters:
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/size'
+        - $ref: '#/components/parameters/sort'
+        - name: updated_date>
+          in: query
+          description: Filter revenue schedules updated after this date-time (ISO 8601)
+          schema:
+            type: string
+            format: date-time
+      responses:
+        '200':
+          description: List of revenue schedules
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RevenueSchedule'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /revenue_schedules/{id}:
+    get:
+      summary: Retrieve a revenue schedule
+      operationId: getRevenueSchedule
+      tags: [Revenue Schedules]
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Revenue schedule details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RevenueSchedule'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /revenue_rules:
+    get:
+      summary: List revenue rules
+      operationId: listRevenueRules
+      tags: [Revenue Rules]
+      parameters:
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/size'
+      responses:
+        '200':
+          description: List of revenue rules
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RevenueRule'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /revenue_rules/{id}:
+    get:
+      summary: Retrieve a revenue rule
+      operationId: getRevenueRule
+      tags: [Revenue Rules]
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Revenue rule details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RevenueRule'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /statements:
+    get:
+      summary: List statements
+      operationId: listStatements
+      tags: [Statements]
+      parameters:
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/size'
+        - $ref: '#/components/parameters/sort'
+      responses:
+        '200':
+          description: List of statements
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Statement'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /statements/{id}:
+    get:
+      summary: Retrieve a statement
+      operationId: getStatement
+      tags: [Statements]
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Statement details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Statement'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /coupons:
+    get:
+      summary: List coupons
+      operationId: listCoupons
+      tags: [Coupons]
+      parameters:
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/size'
+      responses:
+        '200':
+          description: List of coupons
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Coupon'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /coupons/{id}:
+    get:
+      summary: Retrieve a coupon
+      operationId: getCoupon
+      tags: [Coupons]
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Coupon details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Coupon'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /usages:
+    get:
+      summary: List usage records
+      operationId: listUsages
+      tags: [Usages]
+      parameters:
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/size'
+        - $ref: '#/components/parameters/sort'
+        - name: updated_date>
+          in: query
+          description: Filter usage records updated after this date-time (ISO 8601)
+          schema:
+            type: string
+            format: date-time
+      responses:
+        '200':
+          description: List of usage records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Usage'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      summary: Create a usage record
+      operationId: createUsage
+      tags: [Usages]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UsageInput'
+      responses:
+        '201':
+          description: Usage record created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Usage'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+
+  /usages/{id}:
+    get:
+      summary: Retrieve a usage record
+      operationId: getUsage
+      tags: [Usages]
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Usage record details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Usage'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /chart_of_accounts:
+    get:
+      summary: List chart of accounts
+      operationId: listChartOfAccounts
+      tags: [Chart of Accounts]
+      parameters:
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/size'
+      responses:
+        '200':
+          description: List of chart of account entries
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ChartOfAccount'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /chart_of_accounts/{id}:
+    get:
+      summary: Retrieve a chart of account entry
+      operationId: getChartOfAccount
+      tags: [Chart of Accounts]
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Chart of account entry details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChartOfAccount'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /journal_entries:
+    get:
+      summary: List journal entries
+      operationId: listJournalEntries
+      tags: [Journal Entries]
+      parameters:
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/size'
+        - $ref: '#/components/parameters/sort'
+      responses:
+        '200':
+          description: List of journal entries
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/JournalEntry'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /journal_entries/{id}:
+    get:
+      summary: Retrieve a journal entry
+      operationId: getJournalEntry
+      tags: [Journal Entries]
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Journal entry details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JournalEntry'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /webhooks:
+    get:
+      summary: List webhooks
+      operationId: listWebhooks
+      tags: [Webhooks]
+      parameters:
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/size'
+      responses:
+        '200':
+          description: List of webhooks
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Webhook'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      summary: Create a webhook
+      operationId: createWebhook
+      tags: [Webhooks]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookInput'
+      responses:
+        '201':
+          description: Webhook created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webhook'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+
+  /webhooks/{id}:
+    get:
+      summary: Retrieve a webhook
+      operationId: getWebhook
+      tags: [Webhooks]
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Webhook details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webhook'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      summary: Update a webhook
+      operationId: updateWebhook
+      tags: [Webhooks]
+      parameters:
+        - $ref: '#/components/parameters/id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookInput'
+      responses:
+        '200':
+          description: Webhook updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webhook'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      summary: Delete a webhook
+      operationId: deleteWebhook
+      tags: [Webhooks]
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '204':
+          description: Webhook deleted
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+      description: Ordway API key
+    UserTokenAuth:
+      type: apiKey
+      in: header
+      name: X-User-Token
+      description: Ordway user authentication token
+    UserEmailAuth:
+      type: apiKey
+      in: header
+      name: X-User-Email
+      description: Ordway user email address
+    CompanyAuth:
+      type: apiKey
+      in: header
+      name: X-User-Company
+      description: Ordway company identifier
+
+  parameters:
+    id:
+      name: id
+      in: path
+      required: true
+      description: Resource identifier
+      schema:
+        type: string
+    page:
+      name: page
+      in: query
+      description: Page number for pagination (1-based)
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+    size:
+      name: size
+      in: query
+      description: Number of records per page
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 500
+        default: 50
+    sort:
+      name: sort
+      in: query
+      description: Comma-separated list of fields to sort by (prefix with - for descending)
+      schema:
+        type: string
+
+  responses:
+    Unauthorized:
+      description: Authentication credentials missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    UnprocessableEntity:
+      description: Validation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+  schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        errors:
+          type: object
+          additionalProperties: true
+
+    Customer:
+      type: object
+      required:
+        - company_id
+        - customer_id
+      properties:
+        company_id:
+          type: string
+        customer_id:
+          type: string
+        name:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        parent_customer:
+          type: string
+          nullable: true
+        website:
+          type: string
+          nullable: true
+        payment_terms:
+          type: string
+          nullable: true
+        billing_cycle_day:
+          type: string
+          nullable: true
+        billing_contact_id:
+          type: string
+          nullable: true
+        shipping_contact_id:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        billing_batch:
+          type: string
+          nullable: true
+        tax_exempt:
+          type: boolean
+          nullable: true
+        balance:
+          type: number
+          nullable: true
+        auto_pay:
+          type: boolean
+          nullable: true
+        currency:
+          type: string
+          nullable: true
+        price_book_id:
+          type: string
+          nullable: true
+        cmrr:
+          type: number
+          nullable: true
+        discounted_cmrr:
+          type: number
+          nullable: true
+        carr:
+          type: number
+          nullable: true
+        discounted_carr:
+          type: number
+          nullable: true
+        delivery_preferences:
+          type: object
+          nullable: true
+          properties:
+            print:
+              type: boolean
+            email:
+              type: boolean
+        payment_gateway_id:
+          type: string
+          nullable: true
+        gateway_name:
+          type: string
+          nullable: true
+        last_invoiced_at:
+          type: string
+          format: date-time
+          nullable: true
+        billing_contact_email:
+          type: string
+          nullable: true
+        shipping_contact_email:
+          type: string
+          nullable: true
+        account_number:
+          type: string
+          nullable: true
+        portal_status:
+          type: string
+          nullable: true
+        integration_status:
+          type: string
+          nullable: true
+        custom_fields:
+          type: object
+          nullable: true
+          additionalProperties: true
+        created_by:
+          type: string
+          nullable: true
+        updated_by:
+          type: string
+          nullable: true
+        created_date:
+          type: string
+          format: date-time
+          nullable: true
+        updated_date:
+          type: string
+          format: date-time
+          nullable: true
+
+    CustomerInput:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        parent_customer:
+          type: string
+        website:
+          type: string
+        payment_terms:
+          type: string
+        billing_cycle_day:
+          type: string
+        billing_contact_id:
+          type: string
+        shipping_contact_id:
+          type: string
+        status:
+          type: string
+        tax_exempt:
+          type: boolean
+        auto_pay:
+          type: boolean
+        currency:
+          type: string
+        custom_fields:
+          type: object
+          additionalProperties: true
+
+    Contact:
+      type: object
+      required:
+        - company_id
+        - contact_id
+        - customer_id
+      properties:
+        contact_id:
+          type: string
+        company_id:
+          type: string
+        customer_id:
+          type: string
+        display_name:
+          type: string
+          nullable: true
+        first_name:
+          type: string
+          nullable: true
+        last_name:
+          type: string
+          nullable: true
+        email:
+          type: string
+          nullable: true
+        phone:
+          type: string
+          nullable: true
+        mobile:
+          type: string
+          nullable: true
+        job_title:
+          type: string
+          nullable: true
+        department:
+          type: string
+          nullable: true
+        notes:
+          type: string
+          nullable: true
+        address1:
+          type: string
+          nullable: true
+        address2:
+          type: string
+          nullable: true
+        city:
+          type: string
+          nullable: true
+        state:
+          type: string
+          nullable: true
+        zip:
+          type: string
+          nullable: true
+        country:
+          type: string
+          nullable: true
+        custom_fields:
+          type: object
+          nullable: true
+          additionalProperties: true
+        created_by:
+          type: string
+        updated_by:
+          type: string
+        created_date:
+          type: string
+          format: date-time
+          nullable: true
+        updated_date:
+          type: string
+          format: date-time
+          nullable: true
+
+    CustomerNote:
+      type: object
+      required:
+        - company_id
+        - customer_note_id
+        - title
+      properties:
+        company_id:
+          type: string
+        customer_note_id:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+          nullable: true
+        file_upload_file_name:
+          type: string
+          nullable: true
+        file_upload_content_type:
+          type: string
+          nullable: true
+        file_upload_file_size:
+          type: integer
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+          nullable: true
+        updated_at:
+          type: string
+          format: date-time
+          nullable: true
+
+    PaymentMethod:
+      type: object
+      required:
+        - company_id
+        - payment_method_id
+        - customer_id
+        - payment_type
+        - account_number
+      properties:
+        payment_method_id:
+          type: string
+        company_id:
+          type: string
+        customer_id:
+          type: string
+        payment_type:
+          type: string
+        account_number:
+          type: string
+        routing_number:
+          type: string
+          nullable: true
+        account_holder_name:
+          type: string
+          nullable: true
+        account_holder_type:
+          type: string
+          nullable: true
+        country:
+          type: string
+          nullable: true
+        expiry:
+          type: string
+          format: date-time
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        default:
+          type: boolean
+          nullable: true
+
+    Subscription:
+      type: object
+      required:
+        - company_id
+        - subscription_id
+        - subscription_line_id
+      properties:
+        company_id:
+          type: string
+        subscription_id:
+          type: string
+        subscription_line_id:
+          type: string
+        customer_id:
+          type: string
+        status:
+          type: string
+          nullable: true
+        billing_start_date:
+          type: string
+          format: date
+          nullable: true
+        service_start_date:
+          type: string
+          format: date
+          nullable: true
+        contract_effective_date:
+          type: string
+          format: date
+          nullable: true
+        cancellation_date:
+          type: string
+          format: date
+          nullable: true
+        auto_renew:
+          type: boolean
+          nullable: true
+        currency:
+          type: string
+          nullable: true
+        payment_terms:
+          type: string
+          nullable: true
+        cmrr:
+          type: number
+          nullable: true
+        discounted_cmrr:
+          type: number
+          nullable: true
+        product_id:
+          type: string
+          nullable: true
+        product_name:
+          type: string
+          nullable: true
+        plan_name:
+          type: string
+          nullable: true
+        charge_id:
+          type: string
+          nullable: true
+        charge_name:
+          type: string
+          nullable: true
+        pricing_model:
+          type: string
+          nullable: true
+        list_price:
+          type: number
+          nullable: true
+        quantity:
+          type: number
+          nullable: true
+        discount:
+          type: number
+          nullable: true
+        effective_price:
+          type: number
+          nullable: true
+        charge_type:
+          type: string
+          nullable: true
+        billing_period:
+          type: string
+          nullable: true
+        current_period_start_date:
+          type: string
+          format: date
+          nullable: true
+        current_period_end_date:
+          type: string
+          format: date
+          nullable: true
+        contract_term:
+          type: string
+          nullable: true
+        renewal_term:
+          type: string
+          nullable: true
+        version:
+          type: integer
+          nullable: true
+        custom_fields:
+          type: object
+          nullable: true
+          additionalProperties: true
+        created_by:
+          type: string
+          nullable: true
+        updated_by:
+          type: string
+          nullable: true
+        created_date:
+          type: string
+          format: date-time
+          nullable: true
+        updated_date:
+          type: string
+          format: date-time
+          nullable: true
+
+    SubscriptionInput:
+      type: object
+      properties:
+        customer_id:
+          type: string
+        status:
+          type: string
+        billing_start_date:
+          type: string
+          format: date
+        service_start_date:
+          type: string
+          format: date
+        auto_renew:
+          type: boolean
+        currency:
+          type: string
+        payment_terms:
+          type: string
+        custom_fields:
+          type: object
+          additionalProperties: true
+
+    Invoice:
+      type: object
+      required:
+        - company_id
+        - invoice_id
+        - invoice_line_no
+      properties:
+        company_id:
+          type: string
+        invoice_id:
+          type: string
+        invoice_line_no:
+          type: string
+        customer_id:
+          type: string
+        customer_name:
+          type: string
+          nullable: true
+        invoice_date:
+          type: string
+          format: date
+          nullable: true
+        due_date:
+          type: string
+          format: date
+          nullable: true
+        subtotal:
+          type: number
+          nullable: true
+        invoice_tax:
+          type: number
+          nullable: true
+        invoice_amount:
+          type: number
+          nullable: true
+        paid_amount:
+          type: number
+          nullable: true
+        balance:
+          type: number
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        notes:
+          type: string
+          nullable: true
+        currency:
+          type: string
+          nullable: true
+        payment_terms:
+          type: string
+          nullable: true
+        subscription_id:
+          type: string
+          nullable: true
+        product_id:
+          type: string
+          nullable: true
+        product_name:
+          type: string
+          nullable: true
+        plan_id:
+          type: string
+          nullable: true
+        plan_name:
+          type: string
+          nullable: true
+        charge_id:
+          type: string
+          nullable: true
+        charge_name:
+          type: string
+          nullable: true
+        charge_type:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        start_date:
+          type: string
+          format: date
+          nullable: true
+        end_date:
+          type: string
+          format: date
+          nullable: true
+        quantity:
+          type: number
+          nullable: true
+        discount:
+          type: number
+          nullable: true
+        effective_price:
+          type: number
+          nullable: true
+        invoice_pdf_url:
+          type: string
+          format: uri
+          nullable: true
+        custom_fields:
+          type: object
+          nullable: true
+          additionalProperties: true
+        created_by:
+          type: string
+          nullable: true
+        updated_by:
+          type: string
+          nullable: true
+        created_date:
+          type: string
+          format: date-time
+          nullable: true
+        updated_date:
+          type: string
+          format: date-time
+          nullable: true
+
+    InvoiceInput:
+      type: object
+      properties:
+        customer_id:
+          type: string
+        invoice_date:
+          type: string
+          format: date
+        due_date:
+          type: string
+          format: date
+        currency:
+          type: string
+        payment_terms:
+          type: string
+        notes:
+          type: string
+        custom_fields:
+          type: object
+          additionalProperties: true
+
+    Payment:
+      type: object
+      required:
+        - company_id
+        - payment_id
+      properties:
+        company_id:
+          type: string
+        payment_id:
+          type: string
+        customer_id:
+          type: string
+        payment_date:
+          type: string
+          format: date
+          nullable: true
+        notes:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        payment_amount:
+          type: number
+          nullable: true
+        fee_amount:
+          type: number
+          nullable: true
+        applied_amount:
+          type: number
+          nullable: true
+        unapplied_amount:
+          type: number
+          nullable: true
+        refunded_amount:
+          type: number
+          nullable: true
+        payment_type:
+          type: string
+          nullable: true
+        payment_method:
+          type: string
+          nullable: true
+        currency:
+          type: string
+          nullable: true
+        reference_number:
+          type: string
+          nullable: true
+        auto_apply:
+          type: boolean
+          nullable: true
+        gl_account:
+          type: string
+          nullable: true
+        custom_fields:
+          type: object
+          nullable: true
+          additionalProperties: true
+        created_by:
+          type: string
+          nullable: true
+        updated_by:
+          type: string
+          nullable: true
+        created_date:
+          type: string
+          format: date-time
+          nullable: true
+        updated_date:
+          type: string
+          format: date-time
+          nullable: true
+
+    PaymentInput:
+      type: object
+      properties:
+        customer_id:
+          type: string
+        payment_date:
+          type: string
+          format: date
+        payment_amount:
+          type: number
+        payment_type:
+          type: string
+        payment_method:
+          type: string
+        currency:
+          type: string
+        reference_number:
+          type: string
+        auto_apply:
+          type: boolean
+        gl_account:
+          type: string
+        custom_fields:
+          type: object
+          additionalProperties: true
+
+    PaymentRun:
+      type: object
+      required:
+        - payment_run_id
+        - company_id
+      properties:
+        company_id:
+          type: string
+        payment_run_id:
+          type: string
+        status:
+          type: string
+          nullable: true
+        target_date:
+          type: string
+          format: date-time
+          nullable: true
+        success_count:
+          type: integer
+          nullable: true
+        failure_count:
+          type: integer
+          nullable: true
+        currency:
+          type: string
+          nullable: true
+        payments_total_value:
+          type: number
+          nullable: true
+        payments_success_value:
+          type: number
+          nullable: true
+        payments_failed_value:
+          type: number
+          nullable: true
+        refunds_total_value:
+          type: number
+          nullable: true
+        payment_per_customer:
+          type: boolean
+          nullable: true
+        retry_failed_payments:
+          type: boolean
+          nullable: true
+        created_by:
+          type: string
+          nullable: true
+        updated_by:
+          type: string
+          nullable: true
+
+    PaymentRunInput:
+      type: object
+      properties:
+        target_date:
+          type: string
+          format: date
+        currency:
+          type: string
+        payment_per_customer:
+          type: boolean
+        retry_failed_payments:
+          type: boolean
+        send_email_on_payments_success:
+          type: boolean
+        send_email_on_payment_fail:
+          type: boolean
+
+    Product:
+      type: object
+      required:
+        - company_id
+        - product_id
+      properties:
+        company_id:
+          type: string
+        product_id:
+          type: string
+        name:
+          type: string
+        sku:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        taxable:
+          type: boolean
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        price:
+          type: number
+          nullable: true
+        currency:
+          type: string
+          nullable: true
+        deferred_revenue_enabled:
+          type: boolean
+          nullable: true
+        revenue_rule_id:
+          type: string
+          nullable: true
+        income_account:
+          type: string
+          nullable: true
+        integration_status:
+          type: string
+          nullable: true
+        custom_fields:
+          type: object
+          nullable: true
+          additionalProperties: true
+        created_by:
+          type: string
+          nullable: true
+        updated_by:
+          type: string
+          nullable: true
+        created_date:
+          type: string
+          format: date-time
+          nullable: true
+        updated_date:
+          type: string
+          format: date-time
+          nullable: true
+
+    ProductInput:
+      type: object
+      properties:
+        name:
+          type: string
+        sku:
+          type: string
+        status:
+          type: string
+        taxable:
+          type: boolean
+        description:
+          type: string
+        price:
+          type: number
+        currency:
+          type: string
+        deferred_revenue_enabled:
+          type: boolean
+        revenue_rule_id:
+          type: string
+        income_account:
+          type: string
+        custom_fields:
+          type: object
+          additionalProperties: true
+
+    Plan:
+      type: object
+      required:
+        - company_id
+        - plan_id
+      properties:
+        company_id:
+          type: string
+        plan_id:
+          type: string
+        name:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        public_url:
+          type: string
+          format: uri
+          nullable: true
+        show_ssp:
+          type: boolean
+          nullable: true
+        custom_fields:
+          type: object
+          nullable: true
+          additionalProperties: true
+        created_by:
+          type: string
+          nullable: true
+        updated_by:
+          type: string
+          nullable: true
+        created_date:
+          type: string
+          format: date-time
+          nullable: true
+        updated_date:
+          type: string
+          format: date-time
+          nullable: true
+
+    PlanInput:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        status:
+          type: string
+        custom_fields:
+          type: object
+          additionalProperties: true
+
+    Charge:
+      type: object
+      required:
+        - company_id
+        - charge_id
+      properties:
+        company_id:
+          type: string
+        charge_id:
+          type: string
+        product_id:
+          type: string
+          nullable: true
+        plan_id:
+          type: string
+          nullable: true
+        name:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        type:
+          type: string
+          nullable: true
+        timing:
+          type: string
+          nullable: true
+        pricing_model:
+          type: string
+          nullable: true
+        list_price:
+          type: number
+          nullable: true
+        billing_period:
+          type: string
+          nullable: true
+        billing_day:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        unit_of_measure:
+          type: string
+          nullable: true
+
+    Order:
+      type: object
+      required:
+        - company_id
+        - order_id
+        - order_line_no
+      properties:
+        company_id:
+          type: string
+        order_id:
+          type: string
+        order_line_no:
+          type: string
+        customer_id:
+          type: string
+        invoice_id:
+          type: string
+          nullable: true
+        order_date:
+          type: string
+          format: date
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        order_amount:
+          type: number
+          nullable: true
+        currency:
+          type: string
+          nullable: true
+        notes:
+          type: string
+          nullable: true
+        product_id:
+          type: string
+          nullable: true
+        product_name:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        quantity:
+          type: number
+          nullable: true
+        discount:
+          type: number
+          nullable: true
+        effective_price:
+          type: number
+          nullable: true
+        custom_fields:
+          type: object
+          nullable: true
+          additionalProperties: true
+        created_by:
+          type: string
+          nullable: true
+        updated_by:
+          type: string
+          nullable: true
+        created_date:
+          type: string
+          format: date-time
+          nullable: true
+        updated_date:
+          type: string
+          format: date-time
+          nullable: true
+
+    OrderInput:
+      type: object
+      properties:
+        customer_id:
+          type: string
+        order_date:
+          type: string
+          format: date
+        currency:
+          type: string
+        notes:
+          type: string
+        product_id:
+          type: string
+        quantity:
+          type: number
+        custom_fields:
+          type: object
+          additionalProperties: true
+
+    Credit:
+      type: object
+      required:
+        - company_id
+        - credit_id
+      properties:
+        company_id:
+          type: string
+        credit_id:
+          type: string
+        customer_id:
+          type: string
+        credit_date:
+          type: string
+          format: date
+          nullable: true
+        notes:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        credit_amount:
+          type: number
+          nullable: true
+        applied_amount:
+          type: number
+          nullable: true
+        unapplied_amount:
+          type: number
+          nullable: true
+        currency:
+          type: string
+          nullable: true
+        reference_number:
+          type: string
+          nullable: true
+        auto_apply:
+          type: boolean
+          nullable: true
+        gl_account:
+          type: string
+          nullable: true
+        credit_pdf_url:
+          type: string
+          format: uri
+          nullable: true
+        credit_number:
+          type: string
+          nullable: true
+        custom_fields:
+          type: object
+          nullable: true
+          additionalProperties: true
+        created_by:
+          type: string
+          nullable: true
+        updated_by:
+          type: string
+          nullable: true
+        created_date:
+          type: string
+          format: date-time
+          nullable: true
+        updated_date:
+          type: string
+          format: date-time
+          nullable: true
+
+    CreditInput:
+      type: object
+      properties:
+        customer_id:
+          type: string
+        credit_date:
+          type: string
+          format: date
+        credit_amount:
+          type: number
+        currency:
+          type: string
+        notes:
+          type: string
+        auto_apply:
+          type: boolean
+        gl_account:
+          type: string
+        custom_fields:
+          type: object
+          additionalProperties: true
+
+    Refund:
+      type: object
+      required:
+        - company_id
+        - refund_id
+      properties:
+        company_id:
+          type: string
+        refund_id:
+          type: string
+        customer_id:
+          type: string
+        refund_date:
+          type: string
+          format: date
+          nullable: true
+        refund_amount:
+          type: number
+          nullable: true
+        refund_type:
+          type: string
+          nullable: true
+        notes:
+          type: string
+          nullable: true
+        refund_status:
+          type: string
+          nullable: true
+        payment_id:
+          type: string
+          nullable: true
+        currency:
+          type: string
+          nullable: true
+        reference_number:
+          type: string
+          nullable: true
+        integration_status:
+          type: string
+          nullable: true
+        custom_fields:
+          type: object
+          nullable: true
+          additionalProperties: true
+        created_by:
+          type: string
+          nullable: true
+        updated_by:
+          type: string
+          nullable: true
+        created_date:
+          type: string
+          format: date-time
+          nullable: true
+        updated_date:
+          type: string
+          format: date-time
+          nullable: true
+
+    RefundInput:
+      type: object
+      properties:
+        customer_id:
+          type: string
+        refund_date:
+          type: string
+          format: date
+        refund_amount:
+          type: number
+        refund_type:
+          type: string
+        payment_id:
+          type: string
+        currency:
+          type: string
+        notes:
+          type: string
+        custom_fields:
+          type: object
+          additionalProperties: true
+
+    DebitMemo:
+      type: object
+      required:
+        - company_id
+        - debit_memo_id
+      properties:
+        company_id:
+          type: string
+        debit_memo_id:
+          type: string
+        customer_id:
+          type: string
+        status:
+          type: string
+          nullable: true
+        debit_date:
+          type: string
+          format: date
+          nullable: true
+        debit_amount:
+          type: number
+          nullable: true
+        balance:
+          type: number
+          nullable: true
+        paid_amount:
+          type: number
+          nullable: true
+        notes:
+          type: string
+          nullable: true
+        currency:
+          type: string
+          nullable: true
+        debit_tax:
+          type: number
+          nullable: true
+        subtotal:
+          type: number
+          nullable: true
+        debit_pdf_url:
+          type: string
+          format: uri
+          nullable: true
+        custom_fields:
+          type: object
+          nullable: true
+          additionalProperties: true
+        created_by:
+          type: string
+          nullable: true
+        updated_by:
+          type: string
+          nullable: true
+        created_date:
+          type: string
+          format: date-time
+          nullable: true
+        updated_date:
+          type: string
+          format: date-time
+          nullable: true
+
+    BillingRun:
+      type: object
+      required:
+        - company_id
+        - billing_run_id
+      properties:
+        company_id:
+          type: string
+        billing_run_id:
+          type: string
+        status:
+          type: string
+          nullable: true
+        target_date:
+          type: string
+          format: date
+          nullable: true
+        invoice_date:
+          type: string
+          format: date
+          nullable: true
+        invoices_total:
+          type: number
+          nullable: true
+        invoices_count:
+          type: integer
+          nullable: true
+        currency:
+          type: string
+          nullable: true
+        charge_type:
+          type: string
+          nullable: true
+        payment_term:
+          type: string
+          nullable: true
+        created_by:
+          type: string
+          nullable: true
+        updated_by:
+          type: string
+          nullable: true
+        created_date:
+          type: string
+          format: date-time
+          nullable: true
+        updated_date:
+          type: string
+          format: date-time
+          nullable: true
+
+    BillingRunInput:
+      type: object
+      properties:
+        target_date:
+          type: string
+          format: date
+        invoice_date:
+          type: string
+          format: date
+        currency:
+          type: string
+        charge_type:
+          type: string
+        payment_term:
+          type: string
+
+    BillingSchedule:
+      type: object
+      required:
+        - company_id
+        - billing_schedule_id
+      properties:
+        company_id:
+          type: string
+        billing_schedule_id:
+          type: string
+        customer_id:
+          type: string
+        customer_name:
+          type: string
+          nullable: true
+        subscription_id:
+          type: string
+          nullable: true
+        product_id:
+          type: string
+          nullable: true
+        product_name:
+          type: string
+          nullable: true
+        charge_id:
+          type: string
+          nullable: true
+        charge_name:
+          type: string
+          nullable: true
+        charge_type:
+          type: string
+          nullable: true
+        start_date:
+          type: string
+          format: date
+          nullable: true
+        end_date:
+          type: string
+          nullable: true
+        monthly_recurring_revenue:
+          type: number
+          nullable: true
+        annual_contract_revenue:
+          type: number
+          nullable: true
+        total_contract_revenue:
+          type: number
+          nullable: true
+        amount_invoiced:
+          type: number
+          nullable: true
+        currency:
+          type: string
+          nullable: true
+        schedule_lines:
+          type: array
+          nullable: true
+          items:
+            type: object
+            additionalProperties: true
+        custom_fields:
+          type: object
+          nullable: true
+          additionalProperties: true
+        created_by:
+          type: string
+          nullable: true
+        updated_by:
+          type: string
+          nullable: true
+        created_date:
+          type: string
+          format: date-time
+          nullable: true
+        updated_date:
+          type: string
+          format: date-time
+          nullable: true
+
+    RevenueSchedule:
+      type: object
+      required:
+        - company_id
+        - revenue_schedule_id
+      properties:
+        company_id:
+          type: string
+        revenue_schedule_id:
+          type: string
+        customer_id:
+          type: string
+        source_transaction:
+          type: string
+          nullable: true
+        product_id:
+          type: string
+          nullable: true
+        product_name:
+          type: string
+          nullable: true
+        plan_id:
+          type: string
+          nullable: true
+        charge_id:
+          type: string
+          nullable: true
+        charge_name:
+          type: string
+          nullable: true
+        charge_type:
+          type: string
+          nullable: true
+        total_revenue:
+          type: number
+          nullable: true
+        recognized_revenue:
+          type: number
+          nullable: true
+        unrecognized_revenue:
+          type: number
+          nullable: true
+        start_date:
+          type: string
+          format: date
+          nullable: true
+        end_date:
+          type: string
+          format: date
+          nullable: true
+        schedule_lines:
+          type: array
+          nullable: true
+          items:
+            type: object
+            additionalProperties: true
+        created_by:
+          type: string
+          nullable: true
+        updated_by:
+          type: string
+          nullable: true
+        created_date:
+          type: string
+          format: date-time
+          nullable: true
+        updated_date:
+          type: string
+          format: date-time
+          nullable: true
+
+    RevenueRule:
+      type: object
+      required:
+        - company_id
+        - revenue_rule_id
+      properties:
+        company_id:
+          type: string
+        revenue_rule_id:
+          type: string
+        name:
+          type: string
+          nullable: true
+        recognition_method:
+          type: string
+          nullable: true
+        recognition_schedule_period:
+          type: string
+          nullable: true
+        posting_day:
+          type: string
+          nullable: true
+        posting_method:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        recognition_term:
+          type: string
+          nullable: true
+        revenue_rule_entries:
+          type: object
+          nullable: true
+          properties:
+            period_offset:
+              type: string
+              nullable: true
+            percent_to_recognize:
+              type: string
+              nullable: true
+        created_by:
+          type: string
+          nullable: true
+        updated_by:
+          type: string
+          nullable: true
+        created_date:
+          type: string
+          format: date-time
+          nullable: true
+        updated_date:
+          type: string
+          format: date-time
+          nullable: true
+
+    Statement:
+      type: object
+      required:
+        - company_id
+        - statement_id
+        - customer_id
+      properties:
+        company_id:
+          type: string
+        statement_id:
+          type: string
+        customer_id:
+          type: string
+        statement_date:
+          type: string
+          format: date-time
+        start_date:
+          type: string
+          format: date-time
+        end_date:
+          type: string
+          format: date-time
+        template_name:
+          type: string
+          nullable: true
+        url:
+          type: string
+          format: uri
+          nullable: true
+        created_by:
+          type: string
+          nullable: true
+        updated_by:
+          type: string
+          nullable: true
+        created_date:
+          type: string
+          format: date-time
+          nullable: true
+        updated_date:
+          type: string
+          format: date-time
+          nullable: true
+
+    Coupon:
+      type: object
+      required:
+        - company_id
+        - coupon_id
+      properties:
+        company_id:
+          type: string
+        coupon_id:
+          type: string
+        code:
+          type: string
+        display_text:
+          type: string
+        status:
+          type: string
+        discount_type:
+          type: string
+        discount_value:
+          type: integer
+        duration_period:
+          type: integer
+        trial_type:
+          type: string
+          nullable: true
+        trial_value:
+          type: string
+          nullable: true
+        discount_criteria:
+          type: string
+          nullable: true
+        expiration_date:
+          type: string
+          format: date-time
+          nullable: true
+        usage_limit:
+          type: string
+          nullable: true
+        usage_count:
+          type: integer
+          nullable: true
+        created_by:
+          type: string
+        updated_by:
+          type: string
+        created_date:
+          type: string
+          format: date-time
+          nullable: true
+        updated_date:
+          type: string
+          format: date-time
+          nullable: true
+
+    Usage:
+      type: object
+      required:
+        - company_id
+        - usage_id
+        - subscription_line_id
+      properties:
+        company_id:
+          type: string
+        usage_id:
+          type: string
+        subscription_line_id:
+          type: string
+        customer_id:
+          type: string
+          nullable: true
+        subscription_id:
+          type: string
+          nullable: true
+        charge_id:
+          type: string
+          nullable: true
+        quantity:
+          type: number
+          nullable: true
+        date:
+          type: string
+          format: date-time
+          nullable: true
+        unit_of_measure:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        invoiced:
+          type: boolean
+          nullable: true
+        currency:
+          type: string
+          nullable: true
+        custom_fields:
+          type: object
+          nullable: true
+          additionalProperties: true
+        created_by:
+          type: string
+          nullable: true
+        updated_by:
+          type: string
+          nullable: true
+        created_date:
+          type: string
+          format: date-time
+          nullable: true
+        updated_date:
+          type: string
+          format: date-time
+          nullable: true
+
+    UsageInput:
+      type: object
+      properties:
+        customer_id:
+          type: string
+        subscription_id:
+          type: string
+        subscription_line_id:
+          type: string
+        charge_id:
+          type: string
+        quantity:
+          type: number
+        date:
+          type: string
+          format: date-time
+        unit_of_measure:
+          type: string
+        description:
+          type: string
+        custom_fields:
+          type: object
+          additionalProperties: true
+
+    ChartOfAccount:
+      type: object
+      required:
+        - company_id
+        - code
+      properties:
+        company_id:
+          type: string
+        code:
+          type: string
+        name:
+          type: string
+          nullable: true
+        account_type:
+          type: string
+          nullable: true
+        sub_type:
+          type: string
+          nullable: true
+        parent_account:
+          type: string
+          nullable: true
+        status:
+          type: string
+        description:
+          type: string
+          nullable: true
+        integration_status:
+          type: string
+          nullable: true
+        custom_fields:
+          type: object
+          nullable: true
+          additionalProperties: true
+        created_by:
+          type: string
+        updated_by:
+          type: string
+        created_date:
+          type: string
+          format: date-time
+          nullable: true
+        updated_date:
+          type: string
+          format: date-time
+          nullable: true
+
+    JournalEntry:
+      type: object
+      description: Accounting journal entry
+      additionalProperties: true
+
+    Webhook:
+      type: object
+      required:
+        - company_id
+        - name
+      properties:
+        company_id:
+          type: string
+        name:
+          type: string
+        url:
+          type: string
+          format: uri
+        status:
+          type: string
+          nullable: true
+        events:
+          type: object
+          nullable: true
+          additionalProperties: true
+        headers:
+          type: array
+          nullable: true
+          items:
+            type: object
+            properties:
+              key:
+                type: string
+                nullable: true
+              value:
+                type: string
+                nullable: true
+
+    WebhookInput:
+      type: object
+      properties:
+        name:
+          type: string
+        url:
+          type: string
+          format: uri
+        status:
+          type: string
+        events:
+          type: object
+          additionalProperties: true
+        headers:
+          type: array
+          items:
+            type: object
+            properties:
+              key:
+                type: string
+              value:
+                type: string

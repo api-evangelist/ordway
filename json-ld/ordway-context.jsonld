@@ -1,0 +1,693 @@
+{
+  "@context": {
+    "@vocab": "https://ordwaylabs.com/api/v1/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "hydra": "http://www.w3.org/ns/hydra/core#",
+
+    "company_id": {
+      "@id": "https://ordwaylabs.com/api/v1/company_id",
+      "@type": "xsd:string"
+    },
+
+    "Customer": {
+      "@id": "https://ordwaylabs.com/api/v1/Customer",
+      "@type": "@id"
+    },
+    "customer_id": {
+      "@id": "https://ordwaylabs.com/api/v1/customer_id",
+      "@type": "xsd:string"
+    },
+    "balance": {
+      "@id": "schema:balance",
+      "@type": "xsd:decimal"
+    },
+    "cmrr": {
+      "@id": "https://ordwaylabs.com/api/v1/cmrr",
+      "@type": "xsd:decimal"
+    },
+    "carr": {
+      "@id": "https://ordwaylabs.com/api/v1/carr",
+      "@type": "xsd:decimal"
+    },
+    "auto_pay": {
+      "@id": "https://ordwaylabs.com/api/v1/auto_pay",
+      "@type": "xsd:boolean"
+    },
+    "tax_exempt": {
+      "@id": "https://ordwaylabs.com/api/v1/tax_exempt",
+      "@type": "xsd:boolean"
+    },
+    "payment_terms": {
+      "@id": "https://ordwaylabs.com/api/v1/payment_terms",
+      "@type": "xsd:string"
+    },
+    "billing_cycle_day": {
+      "@id": "https://ordwaylabs.com/api/v1/billing_cycle_day",
+      "@type": "xsd:string"
+    },
+    "billing_contact_id": {
+      "@id": "https://ordwaylabs.com/api/v1/billing_contact_id",
+      "@type": "xsd:string"
+    },
+    "shipping_contact_id": {
+      "@id": "https://ordwaylabs.com/api/v1/shipping_contact_id",
+      "@type": "xsd:string"
+    },
+    "portal_status": {
+      "@id": "https://ordwaylabs.com/api/v1/portal_status",
+      "@type": "xsd:string"
+    },
+
+    "Subscription": {
+      "@id": "https://ordwaylabs.com/api/v1/Subscription",
+      "@type": "@id"
+    },
+    "subscription_id": {
+      "@id": "https://ordwaylabs.com/api/v1/subscription_id",
+      "@type": "xsd:string"
+    },
+    "subscription_line_id": {
+      "@id": "https://ordwaylabs.com/api/v1/subscription_line_id",
+      "@type": "xsd:string"
+    },
+    "billing_start_date": {
+      "@id": "https://ordwaylabs.com/api/v1/billing_start_date",
+      "@type": "xsd:date"
+    },
+    "service_start_date": {
+      "@id": "https://ordwaylabs.com/api/v1/service_start_date",
+      "@type": "xsd:date"
+    },
+    "cancellation_date": {
+      "@id": "https://ordwaylabs.com/api/v1/cancellation_date",
+      "@type": "xsd:date"
+    },
+    "auto_renew": {
+      "@id": "https://ordwaylabs.com/api/v1/auto_renew",
+      "@type": "xsd:boolean"
+    },
+    "contract_effective_date": {
+      "@id": "https://ordwaylabs.com/api/v1/contract_effective_date",
+      "@type": "xsd:date"
+    },
+    "billing_period": {
+      "@id": "https://ordwaylabs.com/api/v1/billing_period",
+      "@type": "xsd:string"
+    },
+    "pricing_model": {
+      "@id": "https://ordwaylabs.com/api/v1/pricing_model",
+      "@type": "xsd:string"
+    },
+    "charge_type": {
+      "@id": "https://ordwaylabs.com/api/v1/charge_type",
+      "@type": "xsd:string"
+    },
+    "contract_term": {
+      "@id": "https://ordwaylabs.com/api/v1/contract_term",
+      "@type": "xsd:string"
+    },
+    "renewal_term": {
+      "@id": "https://ordwaylabs.com/api/v1/renewal_term",
+      "@type": "xsd:string"
+    },
+
+    "Invoice": {
+      "@id": "https://ordwaylabs.com/api/v1/Invoice",
+      "@type": "@id"
+    },
+    "invoice_id": {
+      "@id": "https://ordwaylabs.com/api/v1/invoice_id",
+      "@type": "xsd:string"
+    },
+    "invoice_line_no": {
+      "@id": "https://ordwaylabs.com/api/v1/invoice_line_no",
+      "@type": "xsd:string"
+    },
+    "invoice_date": {
+      "@id": "schema:dateIssued",
+      "@type": "xsd:date"
+    },
+    "due_date": {
+      "@id": "schema:paymentDueDate",
+      "@type": "xsd:date"
+    },
+    "invoice_amount": {
+      "@id": "schema:totalPaymentDue",
+      "@type": "xsd:decimal"
+    },
+    "paid_amount": {
+      "@id": "https://ordwaylabs.com/api/v1/paid_amount",
+      "@type": "xsd:decimal"
+    },
+    "subtotal": {
+      "@id": "https://ordwaylabs.com/api/v1/subtotal",
+      "@type": "xsd:decimal"
+    },
+    "invoice_tax": {
+      "@id": "https://ordwaylabs.com/api/v1/invoice_tax",
+      "@type": "xsd:decimal"
+    },
+    "invoice_pdf_url": {
+      "@id": "https://ordwaylabs.com/api/v1/invoice_pdf_url",
+      "@type": "@id"
+    },
+
+    "Payment": {
+      "@id": "https://ordwaylabs.com/api/v1/Payment",
+      "@type": "@id"
+    },
+    "payment_id": {
+      "@id": "https://ordwaylabs.com/api/v1/payment_id",
+      "@type": "xsd:string"
+    },
+    "payment_date": {
+      "@id": "schema:paymentDate",
+      "@type": "xsd:date"
+    },
+    "payment_amount": {
+      "@id": "https://ordwaylabs.com/api/v1/payment_amount",
+      "@type": "xsd:decimal"
+    },
+    "applied_amount": {
+      "@id": "https://ordwaylabs.com/api/v1/applied_amount",
+      "@type": "xsd:decimal"
+    },
+    "unapplied_amount": {
+      "@id": "https://ordwaylabs.com/api/v1/unapplied_amount",
+      "@type": "xsd:decimal"
+    },
+    "refunded_amount": {
+      "@id": "https://ordwaylabs.com/api/v1/refunded_amount",
+      "@type": "xsd:decimal"
+    },
+    "payment_type": {
+      "@id": "schema:paymentMethod",
+      "@type": "xsd:string"
+    },
+    "reference_number": {
+      "@id": "schema:confirmationNumber",
+      "@type": "xsd:string"
+    },
+
+    "PaymentRun": {
+      "@id": "https://ordwaylabs.com/api/v1/PaymentRun",
+      "@type": "@id"
+    },
+    "payment_run_id": {
+      "@id": "https://ordwaylabs.com/api/v1/payment_run_id",
+      "@type": "xsd:string"
+    },
+    "target_date": {
+      "@id": "https://ordwaylabs.com/api/v1/target_date",
+      "@type": "xsd:date"
+    },
+    "success_count": {
+      "@id": "https://ordwaylabs.com/api/v1/success_count",
+      "@type": "xsd:integer"
+    },
+    "failure_count": {
+      "@id": "https://ordwaylabs.com/api/v1/failure_count",
+      "@type": "xsd:integer"
+    },
+
+    "Product": {
+      "@id": "https://ordwaylabs.com/api/v1/Product",
+      "@type": "@id"
+    },
+    "product_id": {
+      "@id": "https://ordwaylabs.com/api/v1/product_id",
+      "@type": "xsd:string"
+    },
+    "sku": {
+      "@id": "schema:sku",
+      "@type": "xsd:string"
+    },
+    "taxable": {
+      "@id": "https://ordwaylabs.com/api/v1/taxable",
+      "@type": "xsd:boolean"
+    },
+    "deferred_revenue_enabled": {
+      "@id": "https://ordwaylabs.com/api/v1/deferred_revenue_enabled",
+      "@type": "xsd:boolean"
+    },
+    "income_account": {
+      "@id": "https://ordwaylabs.com/api/v1/income_account",
+      "@type": "xsd:string"
+    },
+    "revenue_rule_id": {
+      "@id": "https://ordwaylabs.com/api/v1/revenue_rule_id",
+      "@type": "xsd:string"
+    },
+
+    "Plan": {
+      "@id": "https://ordwaylabs.com/api/v1/Plan",
+      "@type": "@id"
+    },
+    "plan_id": {
+      "@id": "https://ordwaylabs.com/api/v1/plan_id",
+      "@type": "xsd:string"
+    },
+    "public_url": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+
+    "Charge": {
+      "@id": "https://ordwaylabs.com/api/v1/Charge",
+      "@type": "@id"
+    },
+    "charge_id": {
+      "@id": "https://ordwaylabs.com/api/v1/charge_id",
+      "@type": "xsd:string"
+    },
+    "list_price": {
+      "@id": "schema:price",
+      "@type": "xsd:decimal"
+    },
+    "unit_of_measure": {
+      "@id": "https://ordwaylabs.com/api/v1/unit_of_measure",
+      "@type": "xsd:string"
+    },
+    "charge_timing": {
+      "@id": "https://ordwaylabs.com/api/v1/charge_timing",
+      "@type": "xsd:string"
+    },
+    "included_units": {
+      "@id": "https://ordwaylabs.com/api/v1/included_units",
+      "@type": "xsd:decimal"
+    },
+
+    "Order": {
+      "@id": "https://ordwaylabs.com/api/v1/Order",
+      "@type": "@id"
+    },
+    "order_id": {
+      "@id": "https://ordwaylabs.com/api/v1/order_id",
+      "@type": "xsd:string"
+    },
+    "order_line_no": {
+      "@id": "https://ordwaylabs.com/api/v1/order_line_no",
+      "@type": "xsd:string"
+    },
+    "order_date": {
+      "@id": "schema:orderDate",
+      "@type": "xsd:date"
+    },
+    "order_amount": {
+      "@id": "https://ordwaylabs.com/api/v1/order_amount",
+      "@type": "xsd:decimal"
+    },
+
+    "Credit": {
+      "@id": "https://ordwaylabs.com/api/v1/Credit",
+      "@type": "@id"
+    },
+    "credit_id": {
+      "@id": "https://ordwaylabs.com/api/v1/credit_id",
+      "@type": "xsd:string"
+    },
+    "credit_date": {
+      "@id": "https://ordwaylabs.com/api/v1/credit_date",
+      "@type": "xsd:date"
+    },
+    "credit_amount": {
+      "@id": "https://ordwaylabs.com/api/v1/credit_amount",
+      "@type": "xsd:decimal"
+    },
+    "credit_pdf_url": {
+      "@id": "https://ordwaylabs.com/api/v1/credit_pdf_url",
+      "@type": "@id"
+    },
+    "credit_number": {
+      "@id": "https://ordwaylabs.com/api/v1/credit_number",
+      "@type": "xsd:string"
+    },
+
+    "Refund": {
+      "@id": "https://ordwaylabs.com/api/v1/Refund",
+      "@type": "@id"
+    },
+    "refund_id": {
+      "@id": "https://ordwaylabs.com/api/v1/refund_id",
+      "@type": "xsd:string"
+    },
+    "refund_date": {
+      "@id": "https://ordwaylabs.com/api/v1/refund_date",
+      "@type": "xsd:date"
+    },
+    "refund_amount": {
+      "@id": "https://ordwaylabs.com/api/v1/refund_amount",
+      "@type": "xsd:decimal"
+    },
+    "refund_type": {
+      "@id": "https://ordwaylabs.com/api/v1/refund_type",
+      "@type": "xsd:string"
+    },
+    "refund_status": {
+      "@id": "https://ordwaylabs.com/api/v1/refund_status",
+      "@type": "xsd:string"
+    },
+
+    "DebitMemo": {
+      "@id": "https://ordwaylabs.com/api/v1/DebitMemo",
+      "@type": "@id"
+    },
+    "debit_memo_id": {
+      "@id": "https://ordwaylabs.com/api/v1/debit_memo_id",
+      "@type": "xsd:string"
+    },
+    "debit_date": {
+      "@id": "https://ordwaylabs.com/api/v1/debit_date",
+      "@type": "xsd:date"
+    },
+    "debit_amount": {
+      "@id": "https://ordwaylabs.com/api/v1/debit_amount",
+      "@type": "xsd:decimal"
+    },
+    "debit_pdf_url": {
+      "@id": "https://ordwaylabs.com/api/v1/debit_pdf_url",
+      "@type": "@id"
+    },
+
+    "BillingRun": {
+      "@id": "https://ordwaylabs.com/api/v1/BillingRun",
+      "@type": "@id"
+    },
+    "billing_run_id": {
+      "@id": "https://ordwaylabs.com/api/v1/billing_run_id",
+      "@type": "xsd:string"
+    },
+    "invoice_date": {
+      "@id": "https://ordwaylabs.com/api/v1/invoice_date",
+      "@type": "xsd:date"
+    },
+    "invoices_total": {
+      "@id": "https://ordwaylabs.com/api/v1/invoices_total",
+      "@type": "xsd:decimal"
+    },
+    "invoices_count": {
+      "@id": "https://ordwaylabs.com/api/v1/invoices_count",
+      "@type": "xsd:integer"
+    },
+
+    "BillingSchedule": {
+      "@id": "https://ordwaylabs.com/api/v1/BillingSchedule",
+      "@type": "@id"
+    },
+    "billing_schedule_id": {
+      "@id": "https://ordwaylabs.com/api/v1/billing_schedule_id",
+      "@type": "xsd:string"
+    },
+    "monthly_recurring_revenue": {
+      "@id": "https://ordwaylabs.com/api/v1/monthly_recurring_revenue",
+      "@type": "xsd:decimal"
+    },
+    "annual_contract_revenue": {
+      "@id": "https://ordwaylabs.com/api/v1/annual_contract_revenue",
+      "@type": "xsd:decimal"
+    },
+    "total_contract_revenue": {
+      "@id": "https://ordwaylabs.com/api/v1/total_contract_revenue",
+      "@type": "xsd:decimal"
+    },
+    "amount_invoiced": {
+      "@id": "https://ordwaylabs.com/api/v1/amount_invoiced",
+      "@type": "xsd:decimal"
+    },
+    "schedule_lines": {
+      "@id": "https://ordwaylabs.com/api/v1/schedule_lines",
+      "@container": "@list"
+    },
+
+    "RevenueSchedule": {
+      "@id": "https://ordwaylabs.com/api/v1/RevenueSchedule",
+      "@type": "@id"
+    },
+    "revenue_schedule_id": {
+      "@id": "https://ordwaylabs.com/api/v1/revenue_schedule_id",
+      "@type": "xsd:string"
+    },
+    "source_transaction": {
+      "@id": "https://ordwaylabs.com/api/v1/source_transaction",
+      "@type": "xsd:string"
+    },
+    "total_revenue": {
+      "@id": "https://ordwaylabs.com/api/v1/total_revenue",
+      "@type": "xsd:decimal"
+    },
+    "recognized_revenue": {
+      "@id": "https://ordwaylabs.com/api/v1/recognized_revenue",
+      "@type": "xsd:decimal"
+    },
+    "unrecognized_revenue": {
+      "@id": "https://ordwaylabs.com/api/v1/unrecognized_revenue",
+      "@type": "xsd:decimal"
+    },
+
+    "RevenueRule": {
+      "@id": "https://ordwaylabs.com/api/v1/RevenueRule",
+      "@type": "@id"
+    },
+    "recognition_method": {
+      "@id": "https://ordwaylabs.com/api/v1/recognition_method",
+      "@type": "xsd:string"
+    },
+    "recognition_schedule_period": {
+      "@id": "https://ordwaylabs.com/api/v1/recognition_schedule_period",
+      "@type": "xsd:string"
+    },
+    "posting_day": {
+      "@id": "https://ordwaylabs.com/api/v1/posting_day",
+      "@type": "xsd:string"
+    },
+    "posting_method": {
+      "@id": "https://ordwaylabs.com/api/v1/posting_method",
+      "@type": "xsd:string"
+    },
+    "recognition_term": {
+      "@id": "https://ordwaylabs.com/api/v1/recognition_term",
+      "@type": "xsd:string"
+    },
+
+    "Statement": {
+      "@id": "https://ordwaylabs.com/api/v1/Statement",
+      "@type": "@id"
+    },
+    "statement_id": {
+      "@id": "https://ordwaylabs.com/api/v1/statement_id",
+      "@type": "xsd:string"
+    },
+    "statement_date": {
+      "@id": "https://ordwaylabs.com/api/v1/statement_date",
+      "@type": "xsd:dateTime"
+    },
+
+    "Coupon": {
+      "@id": "https://ordwaylabs.com/api/v1/Coupon",
+      "@type": "@id"
+    },
+    "coupon_id": {
+      "@id": "https://ordwaylabs.com/api/v1/coupon_id",
+      "@type": "xsd:string"
+    },
+    "discount_type": {
+      "@id": "https://ordwaylabs.com/api/v1/discount_type",
+      "@type": "xsd:string"
+    },
+    "discount_value": {
+      "@id": "https://ordwaylabs.com/api/v1/discount_value",
+      "@type": "xsd:integer"
+    },
+    "duration_period": {
+      "@id": "https://ordwaylabs.com/api/v1/duration_period",
+      "@type": "xsd:integer"
+    },
+    "expiration_date": {
+      "@id": "schema:expires",
+      "@type": "xsd:dateTime"
+    },
+    "usage_limit": {
+      "@id": "https://ordwaylabs.com/api/v1/usage_limit",
+      "@type": "xsd:string"
+    },
+    "usage_count": {
+      "@id": "https://ordwaylabs.com/api/v1/usage_count",
+      "@type": "xsd:integer"
+    },
+
+    "Usage": {
+      "@id": "https://ordwaylabs.com/api/v1/Usage",
+      "@type": "@id"
+    },
+    "usage_id": {
+      "@id": "https://ordwaylabs.com/api/v1/usage_id",
+      "@type": "xsd:string"
+    },
+    "quantity": {
+      "@id": "schema:value",
+      "@type": "xsd:decimal"
+    },
+    "invoiced": {
+      "@id": "https://ordwaylabs.com/api/v1/invoiced",
+      "@type": "xsd:boolean"
+    },
+
+    "Contact": {
+      "@id": "schema:ContactPoint",
+      "@type": "@id"
+    },
+    "contact_id": {
+      "@id": "https://ordwaylabs.com/api/v1/contact_id",
+      "@type": "xsd:string"
+    },
+    "display_name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "first_name": {
+      "@id": "schema:givenName",
+      "@type": "xsd:string"
+    },
+    "last_name": {
+      "@id": "schema:familyName",
+      "@type": "xsd:string"
+    },
+    "email": {
+      "@id": "schema:email",
+      "@type": "xsd:string"
+    },
+    "phone": {
+      "@id": "schema:telephone",
+      "@type": "xsd:string"
+    },
+    "mobile": {
+      "@id": "schema:mobile",
+      "@type": "xsd:string"
+    },
+    "address1": {
+      "@id": "schema:streetAddress",
+      "@type": "xsd:string"
+    },
+    "city": {
+      "@id": "schema:addressLocality",
+      "@type": "xsd:string"
+    },
+    "state": {
+      "@id": "schema:addressRegion",
+      "@type": "xsd:string"
+    },
+    "zip": {
+      "@id": "schema:postalCode",
+      "@type": "xsd:string"
+    },
+    "country": {
+      "@id": "schema:addressCountry",
+      "@type": "xsd:string"
+    },
+
+    "PaymentMethod": {
+      "@id": "https://ordwaylabs.com/api/v1/PaymentMethod",
+      "@type": "@id"
+    },
+    "payment_method_id": {
+      "@id": "https://ordwaylabs.com/api/v1/payment_method_id",
+      "@type": "xsd:string"
+    },
+
+    "ChartOfAccount": {
+      "@id": "https://ordwaylabs.com/api/v1/ChartOfAccount",
+      "@type": "@id"
+    },
+    "account_type": {
+      "@id": "https://ordwaylabs.com/api/v1/account_type",
+      "@type": "xsd:string"
+    },
+    "sub_type": {
+      "@id": "https://ordwaylabs.com/api/v1/sub_type",
+      "@type": "xsd:string"
+    },
+    "parent_account": {
+      "@id": "https://ordwaylabs.com/api/v1/parent_account",
+      "@type": "xsd:string"
+    },
+
+    "JournalEntry": {
+      "@id": "https://ordwaylabs.com/api/v1/JournalEntry",
+      "@type": "@id"
+    },
+    "journal_entry_id": {
+      "@id": "https://ordwaylabs.com/api/v1/journal_entry_id",
+      "@type": "xsd:string"
+    },
+
+    "Webhook": {
+      "@id": "https://ordwaylabs.com/api/v1/Webhook",
+      "@type": "@id"
+    },
+
+    "status": {
+      "@id": "schema:status",
+      "@type": "xsd:string"
+    },
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+    "currency": {
+      "@id": "schema:currency",
+      "@type": "xsd:string"
+    },
+    "notes": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+    "discount": {
+      "@id": "schema:discount",
+      "@type": "xsd:decimal"
+    },
+    "effective_price": {
+      "@id": "https://ordwaylabs.com/api/v1/effective_price",
+      "@type": "xsd:decimal"
+    },
+    "custom_fields": {
+      "@id": "https://ordwaylabs.com/api/v1/custom_fields"
+    },
+    "created_by": {
+      "@id": "https://ordwaylabs.com/api/v1/created_by",
+      "@type": "xsd:string"
+    },
+    "updated_by": {
+      "@id": "https://ordwaylabs.com/api/v1/updated_by",
+      "@type": "xsd:string"
+    },
+    "created_date": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "updated_date": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+    "start_date": {
+      "@id": "schema:startDate",
+      "@type": "xsd:date"
+    },
+    "end_date": {
+      "@id": "schema:endDate",
+      "@type": "xsd:date"
+    },
+    "integration_status": {
+      "@id": "https://ordwaylabs.com/api/v1/integration_status",
+      "@type": "xsd:string"
+    },
+    "gl_account": {
+      "@id": "https://ordwaylabs.com/api/v1/gl_account",
+      "@type": "xsd:string"
+    }
+  }
+}

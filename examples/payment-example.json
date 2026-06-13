@@ -1,0 +1,30 @@
+{
+  "company_id": "acme-corp",
+  "payment_id": "PAY-2026-001",
+  "customer_id": "CUST-001",
+  "payment_date": "2026-06-15",
+  "notes": "Auto-payment for June invoice",
+  "status": "processed",
+  "payment_amount": 2570.72,
+  "fee_amount": 0.00,
+  "applied_amount": 2570.72,
+  "unapplied_amount": 0.00,
+  "refunded_amount": 0.00,
+  "payment_type": "credit_card",
+  "payment_method": "Visa ending in 4242",
+  "currency": "USD",
+  "reference_number": "ch_1234567890abcdef",
+  "auto_apply": true,
+  "invoices": [
+    {
+      "invoice_id": "INV-2026-001",
+      "applied_amount": 2570.72
+    }
+  ],
+  "integration_status": "synced",
+  "custom_fields": {},
+  "created_by": "system@ordwaylabs.com",
+  "updated_by": "system@ordwaylabs.com",
+  "created_date": "2026-06-15T14:22:00Z",
+  "updated_date": "2026-06-15T14:22:30Z"
+}
