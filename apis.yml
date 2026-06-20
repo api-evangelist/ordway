@@ -1,7 +1,7 @@
 aid: ordway
 name: Ordway
 description: Ordway is a billing and revenue automation platform providing REST APIs for managing subscriptions, invoicing, payments, revenue recognition, and financial reporting for SaaS companies. The platform supports usage-based billing, ASC 606 compliant revenue recognition, accounts receivable automation, and SaaS metrics reporting.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/ordway/refs/heads/main/apis.yml
 created: 2026-06-13
 modified: 2026-06-13
@@ -20,7 +20,7 @@ tags:
 apis:
   - name: Ordway REST API
     description: RESTful API for bidirectional integration with the Ordway billing and revenue automation platform. Enables managing customers, subscriptions, invoices, payments, usage data, and revenue recognition schedules.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
     baseURL: https://api.ordwaylabs.com/api/v1
     tags:
