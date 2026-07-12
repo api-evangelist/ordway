@@ -39,6 +39,10 @@ apis:
         url: https://support.ordwaylabs.com
         email: ""
 common:
+  - type: DomainSecurity
+    url: security/ordway-domain-security.yml
+  - type: Authentication
+    url: authentication/ordway-authentication.yml
   - type: Website
     url: https://ordwaylabs.com/
   - type: Documentation
