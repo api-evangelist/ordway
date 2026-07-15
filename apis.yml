@@ -39,6 +39,8 @@ apis:
         url: https://support.ordwaylabs.com
         email: ""
 common:
+  - type: AgenticAccess
+    url: agentic-access/ordway-agentic-access.yml
   - type: DomainSecurity
     url: security/ordway-domain-security.yml
   - type: Authentication
