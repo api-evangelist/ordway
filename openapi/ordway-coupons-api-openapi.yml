@@ -1,0 +1,185 @@
+openapi: 3.0.3
+info:
+  title: Ordway REST Billing Runs Coupons API
+  description: RESTful API for bidirectional integration with the Ordway billing and revenue automation platform. Enables managing customers, subscriptions, invoices, payments, usage data, and revenue recognition schedules. Supports usage-based billing, ASC 606 compliant revenue recognition, accounts receivable automation, and SaaS metrics reporting.
+  version: v1
+  contact:
+    name: Ordway Support
+    url: https://support.ordwaylabs.com
+  termsOfService: https://ordwaylabs.com/
+servers:
+- url: https://api.ordwaylabs.com/api/v1
+  description: Production
+- url: https://staging.ordwaylabs.com/api/v1
+  description: Staging
+security:
+- ApiKeyAuth: []
+  UserTokenAuth: []
+  UserEmailAuth: []
+  CompanyAuth: []
+tags:
+- name: Coupons
+  description: Manage discount coupons
+paths:
+  /coupons:
+    get:
+      summary: List coupons
+      operationId: listCoupons
+      tags:
+      - Coupons
+      parameters:
+      - $ref: '#/components/parameters/page'
+      - $ref: '#/components/parameters/size'
+      responses:
+        '200':
+          description: List of coupons
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Coupon'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /coupons/{id}:
+    get:
+      summary: Retrieve a coupon
+      operationId: getCoupon
+      tags:
+      - Coupons
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Coupon details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Coupon'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  parameters:
+    id:
+      name: id
+      in: path
+      required: true
+      description: Resource identifier
+      schema:
+        type: string
+    size:
+      name: size
+      in: query
+      description: Number of records per page
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 500
+        default: 50
+    page:
+      name: page
+      in: query
+      description: Page number for pagination (1-based)
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+  schemas:
+    Coupon:
+      type: object
+      required:
+      - company_id
+      - coupon_id
+      properties:
+        company_id:
+          type: string
+        coupon_id:
+          type: string
+        code:
+          type: string
+        display_text:
+          type: string
+        status:
+          type: string
+        discount_type:
+          type: string
+        discount_value:
+          type: integer
+        duration_period:
+          type: integer
+        trial_type:
+          type: string
+          nullable: true
+        trial_value:
+          type: string
+          nullable: true
+        discount_criteria:
+          type: string
+          nullable: true
+        expiration_date:
+          type: string
+          format: date-time
+          nullable: true
+        usage_limit:
+          type: string
+          nullable: true
+        usage_count:
+          type: integer
+          nullable: true
+        created_by:
+          type: string
+        updated_by:
+          type: string
+        created_date:
+          type: string
+          format: date-time
+          nullable: true
+        updated_date:
+          type: string
+          format: date-time
+          nullable: true
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        errors:
+          type: object
+          additionalProperties: true
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication credentials missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+      description: Ordway API key
+    UserTokenAuth:
+      type: apiKey
+      in: header
+      name: X-User-Token
+      description: Ordway user authentication token
+    UserEmailAuth:
+      type: apiKey
+      in: header
+      name: X-User-Email
+      description: Ordway user email address
+    CompanyAuth:
+      type: apiKey
+      in: header
+      name: X-User-Company
+      description: Ordway company identifier
+externalDocs:
+  description: Ordway API Documentation
+  url: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview

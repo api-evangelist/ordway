@@ -1,0 +1,332 @@
+openapi: 3.0.3
+info:
+  title: Ordway REST Billing Runs Invoices API
+  description: RESTful API for bidirectional integration with the Ordway billing and revenue automation platform. Enables managing customers, subscriptions, invoices, payments, usage data, and revenue recognition schedules. Supports usage-based billing, ASC 606 compliant revenue recognition, accounts receivable automation, and SaaS metrics reporting.
+  version: v1
+  contact:
+    name: Ordway Support
+    url: https://support.ordwaylabs.com
+  termsOfService: https://ordwaylabs.com/
+servers:
+- url: https://api.ordwaylabs.com/api/v1
+  description: Production
+- url: https://staging.ordwaylabs.com/api/v1
+  description: Staging
+security:
+- ApiKeyAuth: []
+  UserTokenAuth: []
+  UserEmailAuth: []
+  CompanyAuth: []
+tags:
+- name: Invoices
+  description: Manage invoices and billing
+paths:
+  /invoices:
+    get:
+      summary: List invoices
+      operationId: listInvoices
+      tags:
+      - Invoices
+      parameters:
+      - $ref: '#/components/parameters/page'
+      - $ref: '#/components/parameters/size'
+      - $ref: '#/components/parameters/sort'
+      - name: updated_date>
+        in: query
+        description: Filter invoices updated after this date-time (ISO 8601)
+        schema:
+          type: string
+          format: date-time
+      responses:
+        '200':
+          description: List of invoices
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Invoice'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      summary: Create an invoice
+      operationId: createInvoice
+      tags:
+      - Invoices
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InvoiceInput'
+      responses:
+        '201':
+          description: Invoice created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Invoice'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+  /invoices/{id}:
+    get:
+      summary: Retrieve an invoice
+      operationId: getInvoice
+      tags:
+      - Invoices
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Invoice details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Invoice'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      summary: Update an invoice
+      operationId: updateInvoice
+      tags:
+      - Invoices
+      parameters:
+      - $ref: '#/components/parameters/id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InvoiceInput'
+      responses:
+        '200':
+          description: Invoice updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Invoice'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  parameters:
+    id:
+      name: id
+      in: path
+      required: true
+      description: Resource identifier
+      schema:
+        type: string
+    size:
+      name: size
+      in: query
+      description: Number of records per page
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 500
+        default: 50
+    page:
+      name: page
+      in: query
+      description: Page number for pagination (1-based)
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+    sort:
+      name: sort
+      in: query
+      description: Comma-separated list of fields to sort by (prefix with - for descending)
+      schema:
+        type: string
+  schemas:
+    Invoice:
+      type: object
+      required:
+      - company_id
+      - invoice_id
+      - invoice_line_no
+      properties:
+        company_id:
+          type: string
+        invoice_id:
+          type: string
+        invoice_line_no:
+          type: string
+        customer_id:
+          type: string
+        customer_name:
+          type: string
+          nullable: true
+        invoice_date:
+          type: string
+          format: date
+          nullable: true
+        due_date:
+          type: string
+          format: date
+          nullable: true
+        subtotal:
+          type: number
+          nullable: true
+        invoice_tax:
+          type: number
+          nullable: true
+        invoice_amount:
+          type: number
+          nullable: true
+        paid_amount:
+          type: number
+          nullable: true
+        balance:
+          type: number
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        notes:
+          type: string
+          nullable: true
+        currency:
+          type: string
+          nullable: true
+        payment_terms:
+          type: string
+          nullable: true
+        subscription_id:
+          type: string
+          nullable: true
+        product_id:
+          type: string
+          nullable: true
+        product_name:
+          type: string
+          nullable: true
+        plan_id:
+          type: string
+          nullable: true
+        plan_name:
+          type: string
+          nullable: true
+        charge_id:
+          type: string
+          nullable: true
+        charge_name:
+          type: string
+          nullable: true
+        charge_type:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        start_date:
+          type: string
+          format: date
+          nullable: true
+        end_date:
+          type: string
+          format: date
+          nullable: true
+        quantity:
+          type: number
+          nullable: true
+        discount:
+          type: number
+          nullable: true
+        effective_price:
+          type: number
+          nullable: true
+        invoice_pdf_url:
+          type: string
+          format: uri
+          nullable: true
+        custom_fields:
+          type: object
+          nullable: true
+          additionalProperties: true
+        created_by:
+          type: string
+          nullable: true
+        updated_by:
+          type: string
+          nullable: true
+        created_date:
+          type: string
+          format: date-time
+          nullable: true
+        updated_date:
+          type: string
+          format: date-time
+          nullable: true
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        errors:
+          type: object
+          additionalProperties: true
+    InvoiceInput:
+      type: object
+      properties:
+        customer_id:
+          type: string
+        invoice_date:
+          type: string
+          format: date
+        due_date:
+          type: string
+          format: date
+        currency:
+          type: string
+        payment_terms:
+          type: string
+        notes:
+          type: string
+        custom_fields:
+          type: object
+          additionalProperties: true
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication credentials missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    UnprocessableEntity:
+      description: Validation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+      description: Ordway API key
+    UserTokenAuth:
+      type: apiKey
+      in: header
+      name: X-User-Token
+      description: Ordway user authentication token
+    UserEmailAuth:
+      type: apiKey
+      in: header
+      name: X-User-Email
+      description: Ordway user email address
+    CompanyAuth:
+      type: apiKey
+      in: header
+      name: X-User-Company
+      description: Ordway company identifier
+externalDocs:
+  description: Ordway API Documentation
+  url: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview

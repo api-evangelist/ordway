@@ -1,0 +1,178 @@
+openapi: 3.0.3
+info:
+  title: Ordway REST Billing Runs Chart of Accounts API
+  description: RESTful API for bidirectional integration with the Ordway billing and revenue automation platform. Enables managing customers, subscriptions, invoices, payments, usage data, and revenue recognition schedules. Supports usage-based billing, ASC 606 compliant revenue recognition, accounts receivable automation, and SaaS metrics reporting.
+  version: v1
+  contact:
+    name: Ordway Support
+    url: https://support.ordwaylabs.com
+  termsOfService: https://ordwaylabs.com/
+servers:
+- url: https://api.ordwaylabs.com/api/v1
+  description: Production
+- url: https://staging.ordwaylabs.com/api/v1
+  description: Staging
+security:
+- ApiKeyAuth: []
+  UserTokenAuth: []
+  UserEmailAuth: []
+  CompanyAuth: []
+tags:
+- name: Chart of Accounts
+  description: Manage general ledger chart of accounts
+paths:
+  /chart_of_accounts:
+    get:
+      summary: List chart of accounts
+      operationId: listChartOfAccounts
+      tags:
+      - Chart of Accounts
+      parameters:
+      - $ref: '#/components/parameters/page'
+      - $ref: '#/components/parameters/size'
+      responses:
+        '200':
+          description: List of chart of account entries
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ChartOfAccount'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /chart_of_accounts/{id}:
+    get:
+      summary: Retrieve a chart of account entry
+      operationId: getChartOfAccount
+      tags:
+      - Chart of Accounts
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Chart of account entry details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChartOfAccount'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  parameters:
+    id:
+      name: id
+      in: path
+      required: true
+      description: Resource identifier
+      schema:
+        type: string
+    size:
+      name: size
+      in: query
+      description: Number of records per page
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 500
+        default: 50
+    page:
+      name: page
+      in: query
+      description: Page number for pagination (1-based)
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+  schemas:
+    ChartOfAccount:
+      type: object
+      required:
+      - company_id
+      - code
+      properties:
+        company_id:
+          type: string
+        code:
+          type: string
+        name:
+          type: string
+          nullable: true
+        account_type:
+          type: string
+          nullable: true
+        sub_type:
+          type: string
+          nullable: true
+        parent_account:
+          type: string
+          nullable: true
+        status:
+          type: string
+        description:
+          type: string
+          nullable: true
+        integration_status:
+          type: string
+          nullable: true
+        custom_fields:
+          type: object
+          nullable: true
+          additionalProperties: true
+        created_by:
+          type: string
+        updated_by:
+          type: string
+        created_date:
+          type: string
+          format: date-time
+          nullable: true
+        updated_date:
+          type: string
+          format: date-time
+          nullable: true
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        errors:
+          type: object
+          additionalProperties: true
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication credentials missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+      description: Ordway API key
+    UserTokenAuth:
+      type: apiKey
+      in: header
+      name: X-User-Token
+      description: Ordway user authentication token
+    UserEmailAuth:
+      type: apiKey
+      in: header
+      name: X-User-Email
+      description: Ordway user email address
+    CompanyAuth:
+      type: apiKey
+      in: header
+      name: X-User-Company
+      description: Ordway company identifier
+externalDocs:
+  description: Ordway API Documentation
+  url: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview

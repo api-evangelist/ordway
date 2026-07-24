@@ -1,0 +1,273 @@
+openapi: 3.0.3
+info:
+  title: Ordway REST Billing Runs Products API
+  description: RESTful API for bidirectional integration with the Ordway billing and revenue automation platform. Enables managing customers, subscriptions, invoices, payments, usage data, and revenue recognition schedules. Supports usage-based billing, ASC 606 compliant revenue recognition, accounts receivable automation, and SaaS metrics reporting.
+  version: v1
+  contact:
+    name: Ordway Support
+    url: https://support.ordwaylabs.com
+  termsOfService: https://ordwaylabs.com/
+servers:
+- url: https://api.ordwaylabs.com/api/v1
+  description: Production
+- url: https://staging.ordwaylabs.com/api/v1
+  description: Staging
+security:
+- ApiKeyAuth: []
+  UserTokenAuth: []
+  UserEmailAuth: []
+  CompanyAuth: []
+tags:
+- name: Products
+  description: Manage products and plans
+paths:
+  /products:
+    get:
+      summary: List products
+      operationId: listProducts
+      tags:
+      - Products
+      parameters:
+      - $ref: '#/components/parameters/page'
+      - $ref: '#/components/parameters/size'
+      - $ref: '#/components/parameters/sort'
+      responses:
+        '200':
+          description: List of products
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      summary: Create a product
+      operationId: createProduct
+      tags:
+      - Products
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductInput'
+      responses:
+        '201':
+          description: Product created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+  /products/{id}:
+    get:
+      summary: Retrieve a product
+      operationId: getProduct
+      tags:
+      - Products
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Product details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      summary: Update a product
+      operationId: updateProduct
+      tags:
+      - Products
+      parameters:
+      - $ref: '#/components/parameters/id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductInput'
+      responses:
+        '200':
+          description: Product updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  parameters:
+    id:
+      name: id
+      in: path
+      required: true
+      description: Resource identifier
+      schema:
+        type: string
+    size:
+      name: size
+      in: query
+      description: Number of records per page
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 500
+        default: 50
+    page:
+      name: page
+      in: query
+      description: Page number for pagination (1-based)
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+    sort:
+      name: sort
+      in: query
+      description: Comma-separated list of fields to sort by (prefix with - for descending)
+      schema:
+        type: string
+  schemas:
+    ProductInput:
+      type: object
+      properties:
+        name:
+          type: string
+        sku:
+          type: string
+        status:
+          type: string
+        taxable:
+          type: boolean
+        description:
+          type: string
+        price:
+          type: number
+        currency:
+          type: string
+        deferred_revenue_enabled:
+          type: boolean
+        revenue_rule_id:
+          type: string
+        income_account:
+          type: string
+        custom_fields:
+          type: object
+          additionalProperties: true
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        errors:
+          type: object
+          additionalProperties: true
+    Product:
+      type: object
+      required:
+      - company_id
+      - product_id
+      properties:
+        company_id:
+          type: string
+        product_id:
+          type: string
+        name:
+          type: string
+        sku:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        taxable:
+          type: boolean
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        price:
+          type: number
+          nullable: true
+        currency:
+          type: string
+          nullable: true
+        deferred_revenue_enabled:
+          type: boolean
+          nullable: true
+        revenue_rule_id:
+          type: string
+          nullable: true
+        income_account:
+          type: string
+          nullable: true
+        integration_status:
+          type: string
+          nullable: true
+        custom_fields:
+          type: object
+          nullable: true
+          additionalProperties: true
+        created_by:
+          type: string
+          nullable: true
+        updated_by:
+          type: string
+          nullable: true
+        created_date:
+          type: string
+          format: date-time
+          nullable: true
+        updated_date:
+          type: string
+          format: date-time
+          nullable: true
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication credentials missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    UnprocessableEntity:
+      description: Validation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+      description: Ordway API key
+    UserTokenAuth:
+      type: apiKey
+      in: header
+      name: X-User-Token
+      description: Ordway user authentication token
+    UserEmailAuth:
+      type: apiKey
+      in: header
+      name: X-User-Email
+      description: Ordway user email address
+    CompanyAuth:
+      type: apiKey
+      in: header
+      name: X-User-Company
+      description: Ordway company identifier
+externalDocs:
+  description: Ordway API Documentation
+  url: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview

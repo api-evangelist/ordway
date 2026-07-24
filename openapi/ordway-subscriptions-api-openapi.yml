@@ -1,0 +1,335 @@
+openapi: 3.0.3
+info:
+  title: Ordway REST Billing Runs Subscriptions API
+  description: RESTful API for bidirectional integration with the Ordway billing and revenue automation platform. Enables managing customers, subscriptions, invoices, payments, usage data, and revenue recognition schedules. Supports usage-based billing, ASC 606 compliant revenue recognition, accounts receivable automation, and SaaS metrics reporting.
+  version: v1
+  contact:
+    name: Ordway Support
+    url: https://support.ordwaylabs.com
+  termsOfService: https://ordwaylabs.com/
+servers:
+- url: https://api.ordwaylabs.com/api/v1
+  description: Production
+- url: https://staging.ordwaylabs.com/api/v1
+  description: Staging
+security:
+- ApiKeyAuth: []
+  UserTokenAuth: []
+  UserEmailAuth: []
+  CompanyAuth: []
+tags:
+- name: Subscriptions
+  description: Manage subscription lifecycle and charges
+paths:
+  /subscriptions:
+    get:
+      summary: List subscriptions
+      operationId: listSubscriptions
+      tags:
+      - Subscriptions
+      parameters:
+      - $ref: '#/components/parameters/page'
+      - $ref: '#/components/parameters/size'
+      - $ref: '#/components/parameters/sort'
+      - name: updated_date>
+        in: query
+        description: Filter subscriptions updated after this date-time (ISO 8601)
+        schema:
+          type: string
+          format: date-time
+      responses:
+        '200':
+          description: List of subscriptions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Subscription'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      summary: Create a subscription
+      operationId: createSubscription
+      tags:
+      - Subscriptions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubscriptionInput'
+      responses:
+        '201':
+          description: Subscription created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+  /subscriptions/{id}:
+    get:
+      summary: Retrieve a subscription
+      operationId: getSubscription
+      tags:
+      - Subscriptions
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Subscription details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      summary: Update a subscription
+      operationId: updateSubscription
+      tags:
+      - Subscriptions
+      parameters:
+      - $ref: '#/components/parameters/id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubscriptionInput'
+      responses:
+        '200':
+          description: Subscription updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    Subscription:
+      type: object
+      required:
+      - company_id
+      - subscription_id
+      - subscription_line_id
+      properties:
+        company_id:
+          type: string
+        subscription_id:
+          type: string
+        subscription_line_id:
+          type: string
+        customer_id:
+          type: string
+        status:
+          type: string
+          nullable: true
+        billing_start_date:
+          type: string
+          format: date
+          nullable: true
+        service_start_date:
+          type: string
+          format: date
+          nullable: true
+        contract_effective_date:
+          type: string
+          format: date
+          nullable: true
+        cancellation_date:
+          type: string
+          format: date
+          nullable: true
+        auto_renew:
+          type: boolean
+          nullable: true
+        currency:
+          type: string
+          nullable: true
+        payment_terms:
+          type: string
+          nullable: true
+        cmrr:
+          type: number
+          nullable: true
+        discounted_cmrr:
+          type: number
+          nullable: true
+        product_id:
+          type: string
+          nullable: true
+        product_name:
+          type: string
+          nullable: true
+        plan_name:
+          type: string
+          nullable: true
+        charge_id:
+          type: string
+          nullable: true
+        charge_name:
+          type: string
+          nullable: true
+        pricing_model:
+          type: string
+          nullable: true
+        list_price:
+          type: number
+          nullable: true
+        quantity:
+          type: number
+          nullable: true
+        discount:
+          type: number
+          nullable: true
+        effective_price:
+          type: number
+          nullable: true
+        charge_type:
+          type: string
+          nullable: true
+        billing_period:
+          type: string
+          nullable: true
+        current_period_start_date:
+          type: string
+          format: date
+          nullable: true
+        current_period_end_date:
+          type: string
+          format: date
+          nullable: true
+        contract_term:
+          type: string
+          nullable: true
+        renewal_term:
+          type: string
+          nullable: true
+        version:
+          type: integer
+          nullable: true
+        custom_fields:
+          type: object
+          nullable: true
+          additionalProperties: true
+        created_by:
+          type: string
+          nullable: true
+        updated_by:
+          type: string
+          nullable: true
+        created_date:
+          type: string
+          format: date-time
+          nullable: true
+        updated_date:
+          type: string
+          format: date-time
+          nullable: true
+    SubscriptionInput:
+      type: object
+      properties:
+        customer_id:
+          type: string
+        status:
+          type: string
+        billing_start_date:
+          type: string
+          format: date
+        service_start_date:
+          type: string
+          format: date
+        auto_renew:
+          type: boolean
+        currency:
+          type: string
+        payment_terms:
+          type: string
+        custom_fields:
+          type: object
+          additionalProperties: true
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        errors:
+          type: object
+          additionalProperties: true
+  parameters:
+    id:
+      name: id
+      in: path
+      required: true
+      description: Resource identifier
+      schema:
+        type: string
+    size:
+      name: size
+      in: query
+      description: Number of records per page
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 500
+        default: 50
+    page:
+      name: page
+      in: query
+      description: Page number for pagination (1-based)
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+    sort:
+      name: sort
+      in: query
+      description: Comma-separated list of fields to sort by (prefix with - for descending)
+      schema:
+        type: string
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication credentials missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    UnprocessableEntity:
+      description: Validation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+      description: Ordway API key
+    UserTokenAuth:
+      type: apiKey
+      in: header
+      name: X-User-Token
+      description: Ordway user authentication token
+    UserEmailAuth:
+      type: apiKey
+      in: header
+      name: X-User-Email
+      description: Ordway user email address
+    CompanyAuth:
+      type: apiKey
+      in: header
+      name: X-User-Company
+      description: Ordway company identifier
+externalDocs:
+  description: Ordway API Documentation
+  url: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview

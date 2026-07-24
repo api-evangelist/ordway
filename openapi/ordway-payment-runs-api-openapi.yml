@@ -1,0 +1,224 @@
+openapi: 3.0.3
+info:
+  title: Ordway REST Billing Runs Payment Runs API
+  description: RESTful API for bidirectional integration with the Ordway billing and revenue automation platform. Enables managing customers, subscriptions, invoices, payments, usage data, and revenue recognition schedules. Supports usage-based billing, ASC 606 compliant revenue recognition, accounts receivable automation, and SaaS metrics reporting.
+  version: v1
+  contact:
+    name: Ordway Support
+    url: https://support.ordwaylabs.com
+  termsOfService: https://ordwaylabs.com/
+servers:
+- url: https://api.ordwaylabs.com/api/v1
+  description: Production
+- url: https://staging.ordwaylabs.com/api/v1
+  description: Staging
+security:
+- ApiKeyAuth: []
+  UserTokenAuth: []
+  UserEmailAuth: []
+  CompanyAuth: []
+tags:
+- name: Payment Runs
+  description: Automated payment run management
+paths:
+  /payment_runs:
+    get:
+      summary: List payment runs
+      operationId: listPaymentRuns
+      tags:
+      - Payment Runs
+      parameters:
+      - $ref: '#/components/parameters/page'
+      - $ref: '#/components/parameters/size'
+      responses:
+        '200':
+          description: List of payment runs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PaymentRun'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      summary: Create a payment run
+      operationId: createPaymentRun
+      tags:
+      - Payment Runs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentRunInput'
+      responses:
+        '201':
+          description: Payment run created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentRun'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+  /payment_runs/{id}:
+    get:
+      summary: Retrieve a payment run
+      operationId: getPaymentRun
+      tags:
+      - Payment Runs
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Payment run details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentRun'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  parameters:
+    id:
+      name: id
+      in: path
+      required: true
+      description: Resource identifier
+      schema:
+        type: string
+    size:
+      name: size
+      in: query
+      description: Number of records per page
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 500
+        default: 50
+    page:
+      name: page
+      in: query
+      description: Page number for pagination (1-based)
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+  schemas:
+    PaymentRunInput:
+      type: object
+      properties:
+        target_date:
+          type: string
+          format: date
+        currency:
+          type: string
+        payment_per_customer:
+          type: boolean
+        retry_failed_payments:
+          type: boolean
+        send_email_on_payments_success:
+          type: boolean
+        send_email_on_payment_fail:
+          type: boolean
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        errors:
+          type: object
+          additionalProperties: true
+    PaymentRun:
+      type: object
+      required:
+      - payment_run_id
+      - company_id
+      properties:
+        company_id:
+          type: string
+        payment_run_id:
+          type: string
+        status:
+          type: string
+          nullable: true
+        target_date:
+          type: string
+          format: date-time
+          nullable: true
+        success_count:
+          type: integer
+          nullable: true
+        failure_count:
+          type: integer
+          nullable: true
+        currency:
+          type: string
+          nullable: true
+        payments_total_value:
+          type: number
+          nullable: true
+        payments_success_value:
+          type: number
+          nullable: true
+        payments_failed_value:
+          type: number
+          nullable: true
+        refunds_total_value:
+          type: number
+          nullable: true
+        payment_per_customer:
+          type: boolean
+          nullable: true
+        retry_failed_payments:
+          type: boolean
+          nullable: true
+        created_by:
+          type: string
+          nullable: true
+        updated_by:
+          type: string
+          nullable: true
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication credentials missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    UnprocessableEntity:
+      description: Validation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+      description: Ordway API key
+    UserTokenAuth:
+      type: apiKey
+      in: header
+      name: X-User-Token
+      description: Ordway user authentication token
+    UserEmailAuth:
+      type: apiKey
+      in: header
+      name: X-User-Email
+      description: Ordway user email address
+    CompanyAuth:
+      type: apiKey
+      in: header
+      name: X-User-Company
+      description: Ordway company identifier
+externalDocs:
+  description: Ordway API Documentation
+  url: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview

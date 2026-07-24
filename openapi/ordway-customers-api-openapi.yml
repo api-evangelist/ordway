@@ -1,0 +1,494 @@
+openapi: 3.0.3
+info:
+  title: Ordway REST Billing Runs Customers API
+  description: RESTful API for bidirectional integration with the Ordway billing and revenue automation platform. Enables managing customers, subscriptions, invoices, payments, usage data, and revenue recognition schedules. Supports usage-based billing, ASC 606 compliant revenue recognition, accounts receivable automation, and SaaS metrics reporting.
+  version: v1
+  contact:
+    name: Ordway Support
+    url: https://support.ordwaylabs.com
+  termsOfService: https://ordwaylabs.com/
+servers:
+- url: https://api.ordwaylabs.com/api/v1
+  description: Production
+- url: https://staging.ordwaylabs.com/api/v1
+  description: Staging
+security:
+- ApiKeyAuth: []
+  UserTokenAuth: []
+  UserEmailAuth: []
+  CompanyAuth: []
+tags:
+- name: Customers
+  description: Manage billing customers and their contacts, notes, and payment methods
+paths:
+  /customers:
+    get:
+      summary: List customers
+      operationId: listCustomers
+      tags:
+      - Customers
+      parameters:
+      - $ref: '#/components/parameters/page'
+      - $ref: '#/components/parameters/size'
+      - $ref: '#/components/parameters/sort'
+      responses:
+        '200':
+          description: List of customers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Customer'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      summary: Create a customer
+      operationId: createCustomer
+      tags:
+      - Customers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerInput'
+      responses:
+        '201':
+          description: Customer created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+  /customers/{id}:
+    get:
+      summary: Retrieve a customer
+      operationId: getCustomer
+      tags:
+      - Customers
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Customer details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      summary: Update a customer
+      operationId: updateCustomer
+      tags:
+      - Customers
+      parameters:
+      - $ref: '#/components/parameters/id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerInput'
+      responses:
+        '200':
+          description: Customer updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      summary: Delete a customer
+      operationId: deleteCustomer
+      tags:
+      - Customers
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '204':
+          description: Customer deleted
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /customers/{id}/contacts:
+    get:
+      summary: List contacts for a customer
+      operationId: listCustomerContacts
+      tags:
+      - Customers
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: List of contacts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Contact'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /customers/{id}/customer_notes:
+    get:
+      summary: List notes for a customer
+      operationId: listCustomerNotes
+      tags:
+      - Customers
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: List of customer notes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CustomerNote'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  parameters:
+    id:
+      name: id
+      in: path
+      required: true
+      description: Resource identifier
+      schema:
+        type: string
+    size:
+      name: size
+      in: query
+      description: Number of records per page
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 500
+        default: 50
+    page:
+      name: page
+      in: query
+      description: Page number for pagination (1-based)
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+    sort:
+      name: sort
+      in: query
+      description: Comma-separated list of fields to sort by (prefix with - for descending)
+      schema:
+        type: string
+  schemas:
+    CustomerNote:
+      type: object
+      required:
+      - company_id
+      - customer_note_id
+      - title
+      properties:
+        company_id:
+          type: string
+        customer_note_id:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+          nullable: true
+        file_upload_file_name:
+          type: string
+          nullable: true
+        file_upload_content_type:
+          type: string
+          nullable: true
+        file_upload_file_size:
+          type: integer
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+          nullable: true
+        updated_at:
+          type: string
+          format: date-time
+          nullable: true
+    Customer:
+      type: object
+      required:
+      - company_id
+      - customer_id
+      properties:
+        company_id:
+          type: string
+        customer_id:
+          type: string
+        name:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        parent_customer:
+          type: string
+          nullable: true
+        website:
+          type: string
+          nullable: true
+        payment_terms:
+          type: string
+          nullable: true
+        billing_cycle_day:
+          type: string
+          nullable: true
+        billing_contact_id:
+          type: string
+          nullable: true
+        shipping_contact_id:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        billing_batch:
+          type: string
+          nullable: true
+        tax_exempt:
+          type: boolean
+          nullable: true
+        balance:
+          type: number
+          nullable: true
+        auto_pay:
+          type: boolean
+          nullable: true
+        currency:
+          type: string
+          nullable: true
+        price_book_id:
+          type: string
+          nullable: true
+        cmrr:
+          type: number
+          nullable: true
+        discounted_cmrr:
+          type: number
+          nullable: true
+        carr:
+          type: number
+          nullable: true
+        discounted_carr:
+          type: number
+          nullable: true
+        delivery_preferences:
+          type: object
+          nullable: true
+          properties:
+            print:
+              type: boolean
+            email:
+              type: boolean
+        payment_gateway_id:
+          type: string
+          nullable: true
+        gateway_name:
+          type: string
+          nullable: true
+        last_invoiced_at:
+          type: string
+          format: date-time
+          nullable: true
+        billing_contact_email:
+          type: string
+          nullable: true
+        shipping_contact_email:
+          type: string
+          nullable: true
+        account_number:
+          type: string
+          nullable: true
+        portal_status:
+          type: string
+          nullable: true
+        integration_status:
+          type: string
+          nullable: true
+        custom_fields:
+          type: object
+          nullable: true
+          additionalProperties: true
+        created_by:
+          type: string
+          nullable: true
+        updated_by:
+          type: string
+          nullable: true
+        created_date:
+          type: string
+          format: date-time
+          nullable: true
+        updated_date:
+          type: string
+          format: date-time
+          nullable: true
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        errors:
+          type: object
+          additionalProperties: true
+    CustomerInput:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        parent_customer:
+          type: string
+        website:
+          type: string
+        payment_terms:
+          type: string
+        billing_cycle_day:
+          type: string
+        billing_contact_id:
+          type: string
+        shipping_contact_id:
+          type: string
+        status:
+          type: string
+        tax_exempt:
+          type: boolean
+        auto_pay:
+          type: boolean
+        currency:
+          type: string
+        custom_fields:
+          type: object
+          additionalProperties: true
+    Contact:
+      type: object
+      required:
+      - company_id
+      - contact_id
+      - customer_id
+      properties:
+        contact_id:
+          type: string
+        company_id:
+          type: string
+        customer_id:
+          type: string
+        display_name:
+          type: string
+          nullable: true
+        first_name:
+          type: string
+          nullable: true
+        last_name:
+          type: string
+          nullable: true
+        email:
+          type: string
+          nullable: true
+        phone:
+          type: string
+          nullable: true
+        mobile:
+          type: string
+          nullable: true
+        job_title:
+          type: string
+          nullable: true
+        department:
+          type: string
+          nullable: true
+        notes:
+          type: string
+          nullable: true
+        address1:
+          type: string
+          nullable: true
+        address2:
+          type: string
+          nullable: true
+        city:
+          type: string
+          nullable: true
+        state:
+          type: string
+          nullable: true
+        zip:
+          type: string
+          nullable: true
+        country:
+          type: string
+          nullable: true
+        custom_fields:
+          type: object
+          nullable: true
+          additionalProperties: true
+        created_by:
+          type: string
+        updated_by:
+          type: string
+        created_date:
+          type: string
+          format: date-time
+          nullable: true
+        updated_date:
+          type: string
+          format: date-time
+          nullable: true
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication credentials missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    UnprocessableEntity:
+      description: Validation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+      description: Ordway API key
+    UserTokenAuth:
+      type: apiKey
+      in: header
+      name: X-User-Token
+      description: Ordway user authentication token
+    UserEmailAuth:
+      type: apiKey
+      in: header
+      name: X-User-Email
+      description: Ordway user email address
+    CompanyAuth:
+      type: apiKey
+      in: header
+      name: X-User-Company
+      description: Ordway company identifier
+externalDocs:
+  description: Ordway API Documentation
+  url: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview

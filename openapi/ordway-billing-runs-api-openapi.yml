@@ -1,0 +1,223 @@
+openapi: 3.0.3
+info:
+  title: Ordway REST Billing Runs API
+  description: RESTful API for bidirectional integration with the Ordway billing and revenue automation platform. Enables managing customers, subscriptions, invoices, payments, usage data, and revenue recognition schedules. Supports usage-based billing, ASC 606 compliant revenue recognition, accounts receivable automation, and SaaS metrics reporting.
+  version: v1
+  contact:
+    name: Ordway Support
+    url: https://support.ordwaylabs.com
+  termsOfService: https://ordwaylabs.com/
+servers:
+- url: https://api.ordwaylabs.com/api/v1
+  description: Production
+- url: https://staging.ordwaylabs.com/api/v1
+  description: Staging
+security:
+- ApiKeyAuth: []
+  UserTokenAuth: []
+  UserEmailAuth: []
+  CompanyAuth: []
+tags:
+- name: Billing Runs
+  description: Automated billing run management
+paths:
+  /billing_runs:
+    get:
+      summary: List billing runs
+      operationId: listBillingRuns
+      tags:
+      - Billing Runs
+      parameters:
+      - $ref: '#/components/parameters/page'
+      - $ref: '#/components/parameters/size'
+      responses:
+        '200':
+          description: List of billing runs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BillingRun'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      summary: Create a billing run
+      operationId: createBillingRun
+      tags:
+      - Billing Runs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BillingRunInput'
+      responses:
+        '201':
+          description: Billing run created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingRun'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+  /billing_runs/{id}:
+    get:
+      summary: Retrieve a billing run
+      operationId: getBillingRun
+      tags:
+      - Billing Runs
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Billing run details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingRun'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  parameters:
+    id:
+      name: id
+      in: path
+      required: true
+      description: Resource identifier
+      schema:
+        type: string
+    size:
+      name: size
+      in: query
+      description: Number of records per page
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 500
+        default: 50
+    page:
+      name: page
+      in: query
+      description: Page number for pagination (1-based)
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+  schemas:
+    BillingRun:
+      type: object
+      required:
+      - company_id
+      - billing_run_id
+      properties:
+        company_id:
+          type: string
+        billing_run_id:
+          type: string
+        status:
+          type: string
+          nullable: true
+        target_date:
+          type: string
+          format: date
+          nullable: true
+        invoice_date:
+          type: string
+          format: date
+          nullable: true
+        invoices_total:
+          type: number
+          nullable: true
+        invoices_count:
+          type: integer
+          nullable: true
+        currency:
+          type: string
+          nullable: true
+        charge_type:
+          type: string
+          nullable: true
+        payment_term:
+          type: string
+          nullable: true
+        created_by:
+          type: string
+          nullable: true
+        updated_by:
+          type: string
+          nullable: true
+        created_date:
+          type: string
+          format: date-time
+          nullable: true
+        updated_date:
+          type: string
+          format: date-time
+          nullable: true
+    BillingRunInput:
+      type: object
+      properties:
+        target_date:
+          type: string
+          format: date
+        invoice_date:
+          type: string
+          format: date
+        currency:
+          type: string
+        charge_type:
+          type: string
+        payment_term:
+          type: string
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        errors:
+          type: object
+          additionalProperties: true
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication credentials missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    UnprocessableEntity:
+      description: Validation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+      description: Ordway API key
+    UserTokenAuth:
+      type: apiKey
+      in: header
+      name: X-User-Token
+      description: Ordway user authentication token
+    UserEmailAuth:
+      type: apiKey
+      in: header
+      name: X-User-Email
+      description: Ordway user email address
+    CompanyAuth:
+      type: apiKey
+      in: header
+      name: X-User-Company
+      description: Ordway company identifier
+externalDocs:
+  description: Ordway API Documentation
+  url: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview

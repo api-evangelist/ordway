@@ -1,0 +1,215 @@
+openapi: 3.0.3
+info:
+  title: Ordway REST Billing Runs Revenue Schedules API
+  description: RESTful API for bidirectional integration with the Ordway billing and revenue automation platform. Enables managing customers, subscriptions, invoices, payments, usage data, and revenue recognition schedules. Supports usage-based billing, ASC 606 compliant revenue recognition, accounts receivable automation, and SaaS metrics reporting.
+  version: v1
+  contact:
+    name: Ordway Support
+    url: https://support.ordwaylabs.com
+  termsOfService: https://ordwaylabs.com/
+servers:
+- url: https://api.ordwaylabs.com/api/v1
+  description: Production
+- url: https://staging.ordwaylabs.com/api/v1
+  description: Staging
+security:
+- ApiKeyAuth: []
+  UserTokenAuth: []
+  UserEmailAuth: []
+  CompanyAuth: []
+tags:
+- name: Revenue Schedules
+  description: Manage ASC 606 revenue recognition schedules
+paths:
+  /revenue_schedules:
+    get:
+      summary: List revenue schedules
+      operationId: listRevenueSchedules
+      tags:
+      - Revenue Schedules
+      parameters:
+      - $ref: '#/components/parameters/page'
+      - $ref: '#/components/parameters/size'
+      - $ref: '#/components/parameters/sort'
+      - name: updated_date>
+        in: query
+        description: Filter revenue schedules updated after this date-time (ISO 8601)
+        schema:
+          type: string
+          format: date-time
+      responses:
+        '200':
+          description: List of revenue schedules
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RevenueSchedule'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /revenue_schedules/{id}:
+    get:
+      summary: Retrieve a revenue schedule
+      operationId: getRevenueSchedule
+      tags:
+      - Revenue Schedules
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Revenue schedule details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RevenueSchedule'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  parameters:
+    id:
+      name: id
+      in: path
+      required: true
+      description: Resource identifier
+      schema:
+        type: string
+    size:
+      name: size
+      in: query
+      description: Number of records per page
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 500
+        default: 50
+    page:
+      name: page
+      in: query
+      description: Page number for pagination (1-based)
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+    sort:
+      name: sort
+      in: query
+      description: Comma-separated list of fields to sort by (prefix with - for descending)
+      schema:
+        type: string
+  schemas:
+    RevenueSchedule:
+      type: object
+      required:
+      - company_id
+      - revenue_schedule_id
+      properties:
+        company_id:
+          type: string
+        revenue_schedule_id:
+          type: string
+        customer_id:
+          type: string
+        source_transaction:
+          type: string
+          nullable: true
+        product_id:
+          type: string
+          nullable: true
+        product_name:
+          type: string
+          nullable: true
+        plan_id:
+          type: string
+          nullable: true
+        charge_id:
+          type: string
+          nullable: true
+        charge_name:
+          type: string
+          nullable: true
+        charge_type:
+          type: string
+          nullable: true
+        total_revenue:
+          type: number
+          nullable: true
+        recognized_revenue:
+          type: number
+          nullable: true
+        unrecognized_revenue:
+          type: number
+          nullable: true
+        start_date:
+          type: string
+          format: date
+          nullable: true
+        end_date:
+          type: string
+          format: date
+          nullable: true
+        schedule_lines:
+          type: array
+          nullable: true
+          items:
+            type: object
+            additionalProperties: true
+        created_by:
+          type: string
+          nullable: true
+        updated_by:
+          type: string
+          nullable: true
+        created_date:
+          type: string
+          format: date-time
+          nullable: true
+        updated_date:
+          type: string
+          format: date-time
+          nullable: true
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        errors:
+          type: object
+          additionalProperties: true
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication credentials missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+      description: Ordway API key
+    UserTokenAuth:
+      type: apiKey
+      in: header
+      name: X-User-Token
+      description: Ordway user authentication token
+    UserEmailAuth:
+      type: apiKey
+      in: header
+      name: X-User-Email
+      description: Ordway user email address
+    CompanyAuth:
+      type: apiKey
+      in: header
+      name: X-User-Company
+      description: Ordway company identifier
+externalDocs:
+  description: Ordway API Documentation
+  url: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
