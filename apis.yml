@@ -1,7 +1,20 @@
 aid: ordway
 name: Ordway
 description: Ordway is a billing and revenue automation platform providing REST APIs for managing subscriptions, invoicing, payments, revenue recognition, and financial reporting for SaaS companies. The platform supports usage-based billing, ASC 606 compliant revenue recognition, accounts receivable automation, and SaaS metrics reporting.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: enterprise
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Enterprise · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/ordway.png
 url: https://raw.githubusercontent.com/api-evangelist/ordway/refs/heads/main/apis.yml
 created: 2026-06-13
 modified: 2026-06-13
@@ -18,26 +31,258 @@ tags:
   - Financial Reporting
   - Accounts Receivable
 apis:
-  - name: Ordway REST API
-    description: RESTful API for bidirectional integration with the Ordway billing and revenue automation platform. Enables managing customers, subscriptions, invoices, payments, usage data, and revenue recognition schedules.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
-    baseURL: https://api.ordwaylabs.com/api/v1
-    tags:
-      - Billing
-      - Subscriptions
-      - Invoicing
-      - Payments
-      - Revenue Recognition
-    properties:
-      - type: Documentation
-        url: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/ordway/refs/heads/main/openapi/ordway-rest-api-openapi.yml
-    contact:
-      - FN: Ordway Support
-        url: https://support.ordwaylabs.com
-        email: ""
+- aid: ordway:ordway-billing-runs-api
+  name: Ordway Billing Runs API
+  description: Automated billing run management
+  humanURL: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
+  baseURL: https://api.ordwaylabs.com/api/v1
+  tags:
+  - Billing Runs
+  properties:
+  - type: OpenAPI
+    url: openapi/ordway-billing-runs-api-openapi.yml
+  - type: Documentation
+    url: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
+- aid: ordway:ordway-billing-schedules-api
+  name: Ordway Billing Schedules API
+  description: Manage billing schedules
+  humanURL: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
+  baseURL: https://api.ordwaylabs.com/api/v1
+  tags:
+  - Billing Schedules
+  properties:
+  - type: OpenAPI
+    url: openapi/ordway-billing-schedules-api-openapi.yml
+  - type: Documentation
+    url: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
+- aid: ordway:ordway-chart-of-accounts-api
+  name: Ordway Chart of Accounts API
+  description: Manage general ledger chart of accounts
+  humanURL: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
+  baseURL: https://api.ordwaylabs.com/api/v1
+  tags:
+  - Chart of Accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/ordway-chart-of-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
+- aid: ordway:ordway-coupons-api
+  name: Ordway Coupons API
+  description: Manage discount coupons
+  humanURL: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
+  baseURL: https://api.ordwaylabs.com/api/v1
+  tags:
+  - Coupons
+  properties:
+  - type: OpenAPI
+    url: openapi/ordway-coupons-api-openapi.yml
+  - type: Documentation
+    url: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
+- aid: ordway:ordway-credits-api
+  name: Ordway Credits API
+  description: Manage customer credits
+  humanURL: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
+  baseURL: https://api.ordwaylabs.com/api/v1
+  tags:
+  - Credits
+  properties:
+  - type: OpenAPI
+    url: openapi/ordway-credits-api-openapi.yml
+  - type: Documentation
+    url: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
+- aid: ordway:ordway-customers-api
+  name: Ordway Customers API
+  description: Manage billing customers and their contacts, notes, and payment methods
+  humanURL: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
+  baseURL: https://api.ordwaylabs.com/api/v1
+  tags:
+  - Customers
+  properties:
+  - type: OpenAPI
+    url: openapi/ordway-customers-api-openapi.yml
+  - type: Documentation
+    url: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
+- aid: ordway:ordway-debit-memos-api
+  name: Ordway Debit Memos API
+  description: Manage debit memos
+  humanURL: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
+  baseURL: https://api.ordwaylabs.com/api/v1
+  tags:
+  - Debit Memos
+  properties:
+  - type: OpenAPI
+    url: openapi/ordway-debit-memos-api-openapi.yml
+  - type: Documentation
+    url: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
+- aid: ordway:ordway-invoices-api
+  name: Ordway Invoices API
+  description: Manage invoices and billing
+  humanURL: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
+  baseURL: https://api.ordwaylabs.com/api/v1
+  tags:
+  - Invoices
+  properties:
+  - type: OpenAPI
+    url: openapi/ordway-invoices-api-openapi.yml
+  - type: Documentation
+    url: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
+- aid: ordway:ordway-journal-entries-api
+  name: Ordway Journal Entries API
+  description: Manage accounting journal entries
+  humanURL: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
+  baseURL: https://api.ordwaylabs.com/api/v1
+  tags:
+  - Journal Entries
+  properties:
+  - type: OpenAPI
+    url: openapi/ordway-journal-entries-api-openapi.yml
+  - type: Documentation
+    url: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
+- aid: ordway:ordway-orders-api
+  name: Ordway Orders API
+  description: Manage one-time orders
+  humanURL: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
+  baseURL: https://api.ordwaylabs.com/api/v1
+  tags:
+  - Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/ordway-orders-api-openapi.yml
+  - type: Documentation
+    url: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
+- aid: ordway:ordway-payment-runs-api
+  name: Ordway Payment Runs API
+  description: Automated payment run management
+  humanURL: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
+  baseURL: https://api.ordwaylabs.com/api/v1
+  tags:
+  - Payment Runs
+  properties:
+  - type: OpenAPI
+    url: openapi/ordway-payment-runs-api-openapi.yml
+  - type: Documentation
+    url: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
+- aid: ordway:ordway-payments-api
+  name: Ordway Payments API
+  description: Manage payments and payment methods
+  humanURL: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
+  baseURL: https://api.ordwaylabs.com/api/v1
+  tags:
+  - Payments
+  properties:
+  - type: OpenAPI
+    url: openapi/ordway-payments-api-openapi.yml
+  - type: Documentation
+    url: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
+- aid: ordway:ordway-plans-api
+  name: Ordway Plans API
+  description: Manage billing plans and charges
+  humanURL: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
+  baseURL: https://api.ordwaylabs.com/api/v1
+  tags:
+  - Plans
+  properties:
+  - type: OpenAPI
+    url: openapi/ordway-plans-api-openapi.yml
+  - type: Documentation
+    url: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
+- aid: ordway:ordway-products-api
+  name: Ordway Products API
+  description: Manage products and plans
+  humanURL: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
+  baseURL: https://api.ordwaylabs.com/api/v1
+  tags:
+  - Products
+  properties:
+  - type: OpenAPI
+    url: openapi/ordway-products-api-openapi.yml
+  - type: Documentation
+    url: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
+- aid: ordway:ordway-refunds-api
+  name: Ordway Refunds API
+  description: Manage payment refunds
+  humanURL: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
+  baseURL: https://api.ordwaylabs.com/api/v1
+  tags:
+  - Refunds
+  properties:
+  - type: OpenAPI
+    url: openapi/ordway-refunds-api-openapi.yml
+  - type: Documentation
+    url: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
+- aid: ordway:ordway-revenue-rules-api
+  name: Ordway Revenue Rules API
+  description: Manage revenue recognition rules
+  humanURL: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
+  baseURL: https://api.ordwaylabs.com/api/v1
+  tags:
+  - Revenue Rules
+  properties:
+  - type: OpenAPI
+    url: openapi/ordway-revenue-rules-api-openapi.yml
+  - type: Documentation
+    url: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
+- aid: ordway:ordway-revenue-schedules-api
+  name: Ordway Revenue Schedules API
+  description: Manage ASC 606 revenue recognition schedules
+  humanURL: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
+  baseURL: https://api.ordwaylabs.com/api/v1
+  tags:
+  - Revenue Schedules
+  properties:
+  - type: OpenAPI
+    url: openapi/ordway-revenue-schedules-api-openapi.yml
+  - type: Documentation
+    url: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
+- aid: ordway:ordway-statements-api
+  name: Ordway Statements API
+  description: Customer account statements
+  humanURL: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
+  baseURL: https://api.ordwaylabs.com/api/v1
+  tags:
+  - Statements
+  properties:
+  - type: OpenAPI
+    url: openapi/ordway-statements-api-openapi.yml
+  - type: Documentation
+    url: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
+- aid: ordway:ordway-subscriptions-api
+  name: Ordway Subscriptions API
+  description: Manage subscription lifecycle and charges
+  humanURL: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
+  baseURL: https://api.ordwaylabs.com/api/v1
+  tags:
+  - Subscriptions
+  properties:
+  - type: OpenAPI
+    url: openapi/ordway-subscriptions-api-openapi.yml
+  - type: Documentation
+    url: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
+- aid: ordway:ordway-usages-api
+  name: Ordway Usages API
+  description: Manage usage-based billing records
+  humanURL: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
+  baseURL: https://api.ordwaylabs.com/api/v1
+  tags:
+  - Usages
+  properties:
+  - type: OpenAPI
+    url: openapi/ordway-usages-api-openapi.yml
+  - type: Documentation
+    url: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
+- aid: ordway:ordway-webhooks-api
+  name: Ordway Webhooks API
+  description: Manage webhook configurations
+  humanURL: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
+  baseURL: https://api.ordwaylabs.com/api/v1
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/ordway-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
 common:
   - type: AgenticAccess
     url: agentic-access/ordway-agentic-access.yml
