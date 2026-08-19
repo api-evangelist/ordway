@@ -1,0 +1,82 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Ordway REST Billing Runs Revenue Schedules API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-KEY",
+      "value": "{{X-API-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Revenue Schedules",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List revenue schedules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ordwaylabs.com/api/v1/revenue_schedules",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination (1-based)"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of records per page"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to sort by (prefix with - for descending)"
+              },
+              {
+                "name": "updated_date>",
+                "value": "",
+                "type": "query",
+                "description": "Filter revenue schedules updated after this date-time (ISO 8601)"
+              }
+            ]
+          },
+          "docs": "List revenue schedules"
+        },
+        {
+          "info": {
+            "name": "Retrieve a revenue schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ordwaylabs.com/api/v1/revenue_schedules/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Resource identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve a revenue schedule"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

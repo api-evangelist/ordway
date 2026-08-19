@@ -1,0 +1,343 @@
+{
+  "item": [
+    {
+      "id": "a48cc4b8-053e-4613-a7b0-26d0b70703cc",
+      "name": "Chart of Accounts",
+      "description": {
+        "content": "Manage general ledger chart of accounts",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e50fc80b-da60-4a43-bf67-9aa1d77bd589",
+          "name": "List chart of accounts",
+          "request": {
+            "name": "List chart of accounts",
+            "description": {},
+            "url": {
+              "path": [
+                "chart_of_accounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for pagination (1-based)"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "50",
+                  "description": "Number of records per page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "da50b520-ec82-464f-a5f6-749af9fac077",
+              "name": "List of chart of account entries",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "chart_of_accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"company_id\": \"string\",\n    \"code\": \"string\",\n    \"name\": \"string\",\n    \"account_type\": \"string\",\n    \"sub_type\": \"string\",\n    \"parent_account\": \"string\",\n    \"status\": \"string\",\n    \"description\": \"string\",\n    \"integration_status\": \"string\",\n    \"custom_fields\": {\n      \"key_0\": 8509,\n      \"key_1\": \"string\"\n    },\n    \"created_by\": \"string\",\n    \"updated_by\": \"string\",\n    \"created_date\": \"1995-09-12T02:15:23.080Z\",\n    \"updated_date\": \"1953-10-29T16:41:57.662Z\"\n  },\n  {\n    \"company_id\": \"string\",\n    \"code\": \"string\",\n    \"name\": \"string\",\n    \"account_type\": \"string\",\n    \"sub_type\": \"string\",\n    \"parent_account\": \"string\",\n    \"status\": \"string\",\n    \"description\": \"string\",\n    \"integration_status\": \"string\",\n    \"custom_fields\": {\n      \"key_0\": 3613.7877926667115,\n      \"key_1\": 1609\n    },\n    \"created_by\": \"string\",\n    \"updated_by\": \"string\",\n    \"created_date\": \"2025-02-04T01:57:28.470Z\",\n    \"updated_date\": \"2020-06-08T21:31:16.197Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ae258034-fbf5-450d-ad04-65b8e5775031",
+              "name": "Authentication credentials missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "chart_of_accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"errors\": {\n    \"key_0\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ea3fb4fb-bf0d-4bf7-a42c-24aae69cd9c0",
+          "name": "Retrieve a chart of account entry",
+          "request": {
+            "name": "Retrieve a chart of account entry",
+            "description": {},
+            "url": {
+              "path": [
+                "chart_of_accounts",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Resource identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "df9f54fa-cd84-474f-bd66-de9cd1ca199a",
+              "name": "Chart of account entry details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "chart_of_accounts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"company_id\": \"string\",\n  \"code\": \"string\",\n  \"name\": \"string\",\n  \"account_type\": \"string\",\n  \"sub_type\": \"string\",\n  \"parent_account\": \"string\",\n  \"status\": \"string\",\n  \"description\": \"string\",\n  \"integration_status\": \"string\",\n  \"custom_fields\": {\n    \"key_0\": 349,\n    \"key_1\": \"string\",\n    \"key_2\": true,\n    \"key_3\": 3615,\n    \"key_4\": 7691\n  },\n  \"created_by\": \"string\",\n  \"updated_by\": \"string\",\n  \"created_date\": \"2022-12-24T17:54:18.295Z\",\n  \"updated_date\": \"2015-01-04T07:01:41.658Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c48ae986-0905-440e-a100-1c38ce38e883",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "chart_of_accounts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"errors\": {\n    \"key_0\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ordwaylabs.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-KEY"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "898220f0-5756-4336-9393-216aa09b64ae",
+    "name": "Ordway REST Billing Runs Chart of Accounts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "RESTful API for bidirectional integration with the Ordway billing and revenue automation platform. Enables managing customers, subscriptions, invoices, payments, usage data, and revenue recognition schedules. Supports usage-based billing, ASC 606 compliant revenue recognition, accounts receivable automation, and SaaS metrics reporting.\n\nContact Support:\n Name: Ordway Support",
+      "type": "text/plain"
+    }
+  }
+}

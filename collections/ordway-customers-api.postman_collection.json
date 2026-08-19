@@ -1,0 +1,1166 @@
+{
+  "item": [
+    {
+      "id": "df3af545-c018-414e-ae12-f5b0bbc18934",
+      "name": "Customers",
+      "description": {
+        "content": "Manage billing customers and their contacts, notes, and payment methods",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "aece904b-311f-49ab-bc68-045a3aac3ee6",
+          "name": "List customers",
+          "request": {
+            "name": "List customers",
+            "description": {},
+            "url": {
+              "path": [
+                "customers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for pagination (1-based)"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "50",
+                  "description": "Number of records per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to sort by (prefix with - for descending)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "652cc22a-775a-4cf5-a6f9-9a2450edbb79",
+              "name": "List of customers",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "50"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"company_id\": \"string\",\n    \"customer_id\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"parent_customer\": \"string\",\n    \"website\": \"string\",\n    \"payment_terms\": \"string\",\n    \"billing_cycle_day\": \"string\",\n    \"billing_contact_id\": \"string\",\n    \"shipping_contact_id\": \"string\",\n    \"status\": \"string\",\n    \"billing_batch\": \"string\",\n    \"tax_exempt\": true,\n    \"balance\": 4466.886220615776,\n    \"auto_pay\": false,\n    \"currency\": \"string\",\n    \"price_book_id\": \"string\",\n    \"cmrr\": 9508.157099367741,\n    \"discounted_cmrr\": 8126.684158668531,\n    \"carr\": 5175.458222159524,\n    \"discounted_carr\": 1606.9822123268873,\n    \"delivery_preferences\": {\n      \"print\": true,\n      \"email\": true\n    },\n    \"payment_gateway_id\": \"string\",\n    \"gateway_name\": \"string\",\n    \"last_invoiced_at\": \"1959-07-22T17:13:31.699Z\",\n    \"billing_contact_email\": \"string\",\n    \"shipping_contact_email\": \"string\",\n    \"account_number\": \"string\",\n    \"portal_status\": \"string\",\n    \"integration_status\": \"string\",\n    \"custom_fields\": {\n      \"key_0\": 6304,\n      \"key_1\": 2578.28611550049\n    },\n    \"created_by\": \"string\",\n    \"updated_by\": \"string\",\n    \"created_date\": \"1957-12-22T19:19:34.398Z\",\n    \"updated_date\": \"1951-10-22T13:31:52.234Z\"\n  },\n  {\n    \"company_id\": \"string\",\n    \"customer_id\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"parent_customer\": \"string\",\n    \"website\": \"string\",\n    \"payment_terms\": \"string\",\n    \"billing_cycle_day\": \"string\",\n    \"billing_contact_id\": \"string\",\n    \"shipping_contact_id\": \"string\",\n    \"status\": \"string\",\n    \"billing_batch\": \"string\",\n    \"tax_exempt\": false,\n    \"balance\": 5869.307241459146,\n    \"auto_pay\": false,\n    \"currency\": \"string\",\n    \"price_book_id\": \"string\",\n    \"cmrr\": 3516.9750700820878,\n    \"discounted_cmrr\": 17.30615908717148,\n    \"carr\": 7616.717099879459,\n    \"discounted_carr\": 8715.437383463808,\n    \"delivery_preferences\": {\n      \"print\": false,\n      \"email\": false\n    },\n    \"payment_gateway_id\": \"string\",\n    \"gateway_name\": \"string\",\n    \"last_invoiced_at\": \"1963-08-30T05:56:18.364Z\",\n    \"billing_contact_email\": \"string\",\n    \"shipping_contact_email\": \"string\",\n    \"account_number\": \"string\",\n    \"portal_status\": \"string\",\n    \"integration_status\": \"string\",\n    \"custom_fields\": {\n      \"key_0\": 1184.6323103024547,\n      \"key_1\": false\n    },\n    \"created_by\": \"string\",\n    \"updated_by\": \"string\",\n    \"created_date\": \"2018-08-17T19:44:58.835Z\",\n    \"updated_date\": \"1979-02-04T07:32:53.081Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5dcb6f87-1ee9-4151-b1b0-5c022878a73f",
+              "name": "Authentication credentials missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "50"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"errors\": {\n    \"key_0\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2e112fbd-db47-434b-96f2-bbf9332ade95",
+          "name": "Create a customer",
+          "request": {
+            "name": "Create a customer",
+            "description": {},
+            "url": {
+              "path": [
+                "customers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"parent_customer\": \"<string>\",\n  \"website\": \"<string>\",\n  \"payment_terms\": \"<string>\",\n  \"billing_cycle_day\": \"<string>\",\n  \"billing_contact_id\": \"<string>\",\n  \"shipping_contact_id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"tax_exempt\": \"<boolean>\",\n  \"auto_pay\": \"<boolean>\",\n  \"currency\": \"<string>\",\n  \"custom_fields\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "35582936-9c3f-41b4-9bcb-bf2af10663ba",
+              "name": "Customer created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"parent_customer\": \"<string>\",\n  \"website\": \"<string>\",\n  \"payment_terms\": \"<string>\",\n  \"billing_cycle_day\": \"<string>\",\n  \"billing_contact_id\": \"<string>\",\n  \"shipping_contact_id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"tax_exempt\": \"<boolean>\",\n  \"auto_pay\": \"<boolean>\",\n  \"currency\": \"<string>\",\n  \"custom_fields\": {\n    \"key_0\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"company_id\": \"string\",\n  \"customer_id\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"parent_customer\": \"string\",\n  \"website\": \"string\",\n  \"payment_terms\": \"string\",\n  \"billing_cycle_day\": \"string\",\n  \"billing_contact_id\": \"string\",\n  \"shipping_contact_id\": \"string\",\n  \"status\": \"string\",\n  \"billing_batch\": \"string\",\n  \"tax_exempt\": false,\n  \"balance\": 4916.727465984445,\n  \"auto_pay\": false,\n  \"currency\": \"string\",\n  \"price_book_id\": \"string\",\n  \"cmrr\": 965.8076629787404,\n  \"discounted_cmrr\": 4317.601645586159,\n  \"carr\": 5638.650206441819,\n  \"discounted_carr\": 2945.2545500157044,\n  \"delivery_preferences\": {\n    \"print\": false,\n    \"email\": true\n  },\n  \"payment_gateway_id\": \"string\",\n  \"gateway_name\": \"string\",\n  \"last_invoiced_at\": \"1952-03-04T17:00:15.476Z\",\n  \"billing_contact_email\": \"string\",\n  \"shipping_contact_email\": \"string\",\n  \"account_number\": \"string\",\n  \"portal_status\": \"string\",\n  \"integration_status\": \"string\",\n  \"custom_fields\": {\n    \"key_0\": 9018,\n    \"key_1\": false\n  },\n  \"created_by\": \"string\",\n  \"updated_by\": \"string\",\n  \"created_date\": \"1975-08-18T15:40:58.541Z\",\n  \"updated_date\": \"1998-01-06T13:31:06.354Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "79468453-8e88-4a1c-857f-01204d929c63",
+              "name": "Authentication credentials missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"parent_customer\": \"<string>\",\n  \"website\": \"<string>\",\n  \"payment_terms\": \"<string>\",\n  \"billing_cycle_day\": \"<string>\",\n  \"billing_contact_id\": \"<string>\",\n  \"shipping_contact_id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"tax_exempt\": \"<boolean>\",\n  \"auto_pay\": \"<boolean>\",\n  \"currency\": \"<string>\",\n  \"custom_fields\": {\n    \"key_0\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"errors\": {\n    \"key_0\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f0746509-5a48-4daa-9ad6-c3f8af3ce296",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"parent_customer\": \"<string>\",\n  \"website\": \"<string>\",\n  \"payment_terms\": \"<string>\",\n  \"billing_cycle_day\": \"<string>\",\n  \"billing_contact_id\": \"<string>\",\n  \"shipping_contact_id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"tax_exempt\": \"<boolean>\",\n  \"auto_pay\": \"<boolean>\",\n  \"currency\": \"<string>\",\n  \"custom_fields\": {\n    \"key_0\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"errors\": {\n    \"key_0\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a7425184-0c57-4d6d-a21c-eacf9336e05b",
+          "name": "Retrieve a customer",
+          "request": {
+            "name": "Retrieve a customer",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Resource identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "60fbaf83-4591-4482-b8c1-4939222a15ec",
+              "name": "Customer details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"company_id\": \"string\",\n  \"customer_id\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"parent_customer\": \"string\",\n  \"website\": \"string\",\n  \"payment_terms\": \"string\",\n  \"billing_cycle_day\": \"string\",\n  \"billing_contact_id\": \"string\",\n  \"shipping_contact_id\": \"string\",\n  \"status\": \"string\",\n  \"billing_batch\": \"string\",\n  \"tax_exempt\": false,\n  \"balance\": 4916.727465984445,\n  \"auto_pay\": false,\n  \"currency\": \"string\",\n  \"price_book_id\": \"string\",\n  \"cmrr\": 965.8076629787404,\n  \"discounted_cmrr\": 4317.601645586159,\n  \"carr\": 5638.650206441819,\n  \"discounted_carr\": 2945.2545500157044,\n  \"delivery_preferences\": {\n    \"print\": false,\n    \"email\": true\n  },\n  \"payment_gateway_id\": \"string\",\n  \"gateway_name\": \"string\",\n  \"last_invoiced_at\": \"1952-03-04T17:00:15.476Z\",\n  \"billing_contact_email\": \"string\",\n  \"shipping_contact_email\": \"string\",\n  \"account_number\": \"string\",\n  \"portal_status\": \"string\",\n  \"integration_status\": \"string\",\n  \"custom_fields\": {\n    \"key_0\": 9018,\n    \"key_1\": false\n  },\n  \"created_by\": \"string\",\n  \"updated_by\": \"string\",\n  \"created_date\": \"1975-08-18T15:40:58.541Z\",\n  \"updated_date\": \"1998-01-06T13:31:06.354Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "574a1234-9d7e-4479-a43a-71e22b61095d",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"errors\": {\n    \"key_0\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c515e04d-9cb6-4c31-99f9-6b7953843c6f",
+          "name": "Update a customer",
+          "request": {
+            "name": "Update a customer",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Resource identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"parent_customer\": \"<string>\",\n  \"website\": \"<string>\",\n  \"payment_terms\": \"<string>\",\n  \"billing_cycle_day\": \"<string>\",\n  \"billing_contact_id\": \"<string>\",\n  \"shipping_contact_id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"tax_exempt\": \"<boolean>\",\n  \"auto_pay\": \"<boolean>\",\n  \"currency\": \"<string>\",\n  \"custom_fields\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f2beec06-9c93-489d-a203-972591211615",
+              "name": "Customer updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"parent_customer\": \"<string>\",\n  \"website\": \"<string>\",\n  \"payment_terms\": \"<string>\",\n  \"billing_cycle_day\": \"<string>\",\n  \"billing_contact_id\": \"<string>\",\n  \"shipping_contact_id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"tax_exempt\": \"<boolean>\",\n  \"auto_pay\": \"<boolean>\",\n  \"currency\": \"<string>\",\n  \"custom_fields\": {\n    \"key_0\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"company_id\": \"string\",\n  \"customer_id\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"parent_customer\": \"string\",\n  \"website\": \"string\",\n  \"payment_terms\": \"string\",\n  \"billing_cycle_day\": \"string\",\n  \"billing_contact_id\": \"string\",\n  \"shipping_contact_id\": \"string\",\n  \"status\": \"string\",\n  \"billing_batch\": \"string\",\n  \"tax_exempt\": false,\n  \"balance\": 4916.727465984445,\n  \"auto_pay\": false,\n  \"currency\": \"string\",\n  \"price_book_id\": \"string\",\n  \"cmrr\": 965.8076629787404,\n  \"discounted_cmrr\": 4317.601645586159,\n  \"carr\": 5638.650206441819,\n  \"discounted_carr\": 2945.2545500157044,\n  \"delivery_preferences\": {\n    \"print\": false,\n    \"email\": true\n  },\n  \"payment_gateway_id\": \"string\",\n  \"gateway_name\": \"string\",\n  \"last_invoiced_at\": \"1952-03-04T17:00:15.476Z\",\n  \"billing_contact_email\": \"string\",\n  \"shipping_contact_email\": \"string\",\n  \"account_number\": \"string\",\n  \"portal_status\": \"string\",\n  \"integration_status\": \"string\",\n  \"custom_fields\": {\n    \"key_0\": 9018,\n    \"key_1\": false\n  },\n  \"created_by\": \"string\",\n  \"updated_by\": \"string\",\n  \"created_date\": \"1975-08-18T15:40:58.541Z\",\n  \"updated_date\": \"1998-01-06T13:31:06.354Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "43e4bb53-1da7-4ce1-a7f7-f475f2855879",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"parent_customer\": \"<string>\",\n  \"website\": \"<string>\",\n  \"payment_terms\": \"<string>\",\n  \"billing_cycle_day\": \"<string>\",\n  \"billing_contact_id\": \"<string>\",\n  \"shipping_contact_id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"tax_exempt\": \"<boolean>\",\n  \"auto_pay\": \"<boolean>\",\n  \"currency\": \"<string>\",\n  \"custom_fields\": {\n    \"key_0\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"errors\": {\n    \"key_0\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "83de50d1-f422-4012-880b-01606c345391",
+          "name": "Delete a customer",
+          "request": {
+            "name": "Delete a customer",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Resource identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "82ca33c3-c1f0-4dc4-8e8c-cfc8c1192820",
+              "name": "Customer deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d531b210-64ad-4ce6-9028-a7d0b5250a6b",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"errors\": {\n    \"key_0\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "390da8a8-d44f-4d11-a946-08503ece6d49",
+          "name": "List contacts for a customer",
+          "request": {
+            "name": "List contacts for a customer",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                ":id",
+                "contacts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Resource identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "414375a9-bc15-4c27-8c15-44aa00f87d56",
+              "name": "List of contacts",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":id",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"company_id\": \"string\",\n    \"contact_id\": \"string\",\n    \"customer_id\": \"string\",\n    \"display_name\": \"string\",\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"email\": \"string\",\n    \"phone\": \"string\",\n    \"mobile\": \"string\",\n    \"job_title\": \"string\",\n    \"department\": \"string\",\n    \"notes\": \"string\",\n    \"address1\": \"string\",\n    \"address2\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"zip\": \"string\",\n    \"country\": \"string\",\n    \"custom_fields\": {\n      \"key_0\": \"string\"\n    },\n    \"created_by\": \"string\",\n    \"updated_by\": \"string\",\n    \"created_date\": \"1995-11-21T11:54:55.485Z\",\n    \"updated_date\": \"1960-07-28T07:01:48.953Z\"\n  },\n  {\n    \"company_id\": \"string\",\n    \"contact_id\": \"string\",\n    \"customer_id\": \"string\",\n    \"display_name\": \"string\",\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"email\": \"string\",\n    \"phone\": \"string\",\n    \"mobile\": \"string\",\n    \"job_title\": \"string\",\n    \"department\": \"string\",\n    \"notes\": \"string\",\n    \"address1\": \"string\",\n    \"address2\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"zip\": \"string\",\n    \"country\": \"string\",\n    \"custom_fields\": {\n      \"key_0\": 4899.948456889805,\n      \"key_1\": true,\n      \"key_2\": 6877.607442833065\n    },\n    \"created_by\": \"string\",\n    \"updated_by\": \"string\",\n    \"created_date\": \"1973-10-04T18:07:51.555Z\",\n    \"updated_date\": \"1990-10-06T15:05:43.959Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6628f506-ad55-44c5-b398-f44276dc948a",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":id",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"errors\": {\n    \"key_0\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "528d6baf-750c-45f9-b250-0349a10649c5",
+          "name": "List notes for a customer",
+          "request": {
+            "name": "List notes for a customer",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                ":id",
+                "customer_notes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Resource identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0e562923-1220-40eb-ba47-f6c54cf9dcc8",
+              "name": "List of customer notes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":id",
+                    "customer_notes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"company_id\": \"string\",\n    \"customer_note_id\": \"string\",\n    \"title\": \"string\",\n    \"description\": \"string\",\n    \"file_upload_file_name\": \"string\",\n    \"file_upload_content_type\": \"string\",\n    \"file_upload_file_size\": 554,\n    \"created_at\": \"1954-04-27T11:57:48.722Z\",\n    \"updated_at\": \"1995-03-04T09:06:20.210Z\"\n  },\n  {\n    \"company_id\": \"string\",\n    \"customer_note_id\": \"string\",\n    \"title\": \"string\",\n    \"description\": \"string\",\n    \"file_upload_file_name\": \"string\",\n    \"file_upload_content_type\": \"string\",\n    \"file_upload_file_size\": 1299,\n    \"created_at\": \"1985-05-28T11:04:50.120Z\",\n    \"updated_at\": \"2000-04-06T18:34:23.365Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "91a7eb03-78d1-47de-b8d4-44aea6fd9477",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":id",
+                    "customer_notes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"errors\": {\n    \"key_0\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ordwaylabs.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-KEY"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "bbf82635-7a9c-4ec6-84c5-ae78cf9146d4",
+    "name": "Ordway REST Billing Runs Customers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "RESTful API for bidirectional integration with the Ordway billing and revenue automation platform. Enables managing customers, subscriptions, invoices, payments, usage data, and revenue recognition schedules. Supports usage-based billing, ASC 606 compliant revenue recognition, accounts receivable automation, and SaaS metrics reporting.\n\nContact Support:\n Name: Ordway Support",
+      "type": "text/plain"
+    }
+  }
+}

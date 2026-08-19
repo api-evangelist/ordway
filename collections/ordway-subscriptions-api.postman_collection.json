@@ -1,0 +1,692 @@
+{
+  "item": [
+    {
+      "id": "01976638-1078-4e03-b379-5df8e9d66b1e",
+      "name": "Subscriptions",
+      "description": {
+        "content": "Manage subscription lifecycle and charges",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9bf82510-e4c0-40e8-9962-765ba88fd197",
+          "name": "List subscriptions",
+          "request": {
+            "name": "List subscriptions",
+            "description": {},
+            "url": {
+              "path": [
+                "subscriptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for pagination (1-based)"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "50",
+                  "description": "Number of records per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to sort by (prefix with - for descending)"
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_date>",
+                  "value": "<dateTime>",
+                  "description": "Filter subscriptions updated after this date-time (ISO 8601)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dae8acdf-20a4-4b46-8c53-403514f6b241",
+              "name": "List of subscriptions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "50"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updated_date>",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"company_id\": \"string\",\n    \"subscription_id\": \"string\",\n    \"subscription_line_id\": \"string\",\n    \"customer_id\": \"string\",\n    \"status\": \"string\",\n    \"billing_start_date\": \"1979-08-29\",\n    \"service_start_date\": \"1994-01-21\",\n    \"contract_effective_date\": \"1989-09-15\",\n    \"cancellation_date\": \"2019-12-28\",\n    \"auto_renew\": true,\n    \"currency\": \"string\",\n    \"payment_terms\": \"string\",\n    \"cmrr\": 4423.249871669514,\n    \"discounted_cmrr\": 7252.235329119489,\n    \"product_id\": \"string\",\n    \"product_name\": \"string\",\n    \"plan_name\": \"string\",\n    \"charge_id\": \"string\",\n    \"charge_name\": \"string\",\n    \"pricing_model\": \"string\",\n    \"list_price\": 3359.725922000656,\n    \"quantity\": 7265.04556752111,\n    \"discount\": 9805.743612364544,\n    \"effective_price\": 6973.251730131098,\n    \"charge_type\": \"string\",\n    \"billing_period\": \"string\",\n    \"current_period_start_date\": \"2015-12-27\",\n    \"current_period_end_date\": \"1969-04-25\",\n    \"contract_term\": \"string\",\n    \"renewal_term\": \"string\",\n    \"version\": 9078,\n    \"custom_fields\": {\n      \"key_0\": \"string\",\n      \"key_1\": false,\n      \"key_2\": false\n    },\n    \"created_by\": \"string\",\n    \"updated_by\": \"string\",\n    \"created_date\": \"1973-10-24T16:43:13.734Z\",\n    \"updated_date\": \"2013-03-21T03:38:41.460Z\"\n  },\n  {\n    \"company_id\": \"string\",\n    \"subscription_id\": \"string\",\n    \"subscription_line_id\": \"string\",\n    \"customer_id\": \"string\",\n    \"status\": \"string\",\n    \"billing_start_date\": \"1955-09-11\",\n    \"service_start_date\": \"1966-03-24\",\n    \"contract_effective_date\": \"2004-04-28\",\n    \"cancellation_date\": \"1949-09-09\",\n    \"auto_renew\": false,\n    \"currency\": \"string\",\n    \"payment_terms\": \"string\",\n    \"cmrr\": 6297.130258273963,\n    \"discounted_cmrr\": 3673.282376494418,\n    \"product_id\": \"string\",\n    \"product_name\": \"string\",\n    \"plan_name\": \"string\",\n    \"charge_id\": \"string\",\n    \"charge_name\": \"string\",\n    \"pricing_model\": \"string\",\n    \"list_price\": 7734.640538969193,\n    \"quantity\": 1554.2105690706233,\n    \"discount\": 3602.4414703090292,\n    \"effective_price\": 1947.3312283471123,\n    \"charge_type\": \"string\",\n    \"billing_period\": \"string\",\n    \"current_period_start_date\": \"1977-04-20\",\n    \"current_period_end_date\": \"2007-01-17\",\n    \"contract_term\": \"string\",\n    \"renewal_term\": \"string\",\n    \"version\": 6610,\n    \"custom_fields\": {\n      \"key_0\": 2941.156781160584,\n      \"key_1\": false\n    },\n    \"created_by\": \"string\",\n    \"updated_by\": \"string\",\n    \"created_date\": \"1980-01-04T10:59:06.614Z\",\n    \"updated_date\": \"2012-01-15T05:16:10.731Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "77fb0885-9f04-4e6d-b0d7-f65f708010a8",
+              "name": "Authentication credentials missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "50"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updated_date>",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"errors\": {\n    \"key_0\": \"string\",\n    \"key_1\": 9112\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "625913cf-2be6-4717-80c5-3e23a800245e",
+          "name": "Create a subscription",
+          "request": {
+            "name": "Create a subscription",
+            "description": {},
+            "url": {
+              "path": [
+                "subscriptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customer_id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"billing_start_date\": \"<date>\",\n  \"service_start_date\": \"<date>\",\n  \"auto_renew\": \"<boolean>\",\n  \"currency\": \"<string>\",\n  \"payment_terms\": \"<string>\",\n  \"custom_fields\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\",\n    \"key_2\": 3078,\n    \"key_3\": false\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "35261ea5-732a-40ff-aa99-bd2c84905908",
+              "name": "Subscription created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customer_id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"billing_start_date\": \"<date>\",\n  \"service_start_date\": \"<date>\",\n  \"auto_renew\": \"<boolean>\",\n  \"currency\": \"<string>\",\n  \"payment_terms\": \"<string>\",\n  \"custom_fields\": {\n    \"key_0\": 8951.956385791811,\n    \"key_1\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"company_id\": \"string\",\n  \"subscription_id\": \"string\",\n  \"subscription_line_id\": \"string\",\n  \"customer_id\": \"string\",\n  \"status\": \"string\",\n  \"billing_start_date\": \"1967-08-07\",\n  \"service_start_date\": \"1975-09-26\",\n  \"contract_effective_date\": \"2003-01-03\",\n  \"cancellation_date\": \"1974-08-14\",\n  \"auto_renew\": false,\n  \"currency\": \"string\",\n  \"payment_terms\": \"string\",\n  \"cmrr\": 3113.250866117594,\n  \"discounted_cmrr\": 2135.033388579658,\n  \"product_id\": \"string\",\n  \"product_name\": \"string\",\n  \"plan_name\": \"string\",\n  \"charge_id\": \"string\",\n  \"charge_name\": \"string\",\n  \"pricing_model\": \"string\",\n  \"list_price\": 8966.607639365564,\n  \"quantity\": 449.24662458394994,\n  \"discount\": 3614.020299836924,\n  \"effective_price\": 4188.26521349652,\n  \"charge_type\": \"string\",\n  \"billing_period\": \"string\",\n  \"current_period_start_date\": \"2015-10-01\",\n  \"current_period_end_date\": \"2016-01-11\",\n  \"contract_term\": \"string\",\n  \"renewal_term\": \"string\",\n  \"version\": 8233,\n  \"custom_fields\": {\n    \"key_0\": 6555.183788788985,\n    \"key_1\": true,\n    \"key_2\": \"string\"\n  },\n  \"created_by\": \"string\",\n  \"updated_by\": \"string\",\n  \"created_date\": \"2023-10-30T04:59:11.911Z\",\n  \"updated_date\": \"1962-11-03T17:22:48.414Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "34fa886f-ccf8-43fe-b175-e4d9246b5151",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customer_id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"billing_start_date\": \"<date>\",\n  \"service_start_date\": \"<date>\",\n  \"auto_renew\": \"<boolean>\",\n  \"currency\": \"<string>\",\n  \"payment_terms\": \"<string>\",\n  \"custom_fields\": {\n    \"key_0\": 8951.956385791811,\n    \"key_1\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"errors\": {\n    \"key_0\": \"string\",\n    \"key_1\": 9112\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7b5a48cb-af67-434f-9a65-b9262cd0a752",
+          "name": "Retrieve a subscription",
+          "request": {
+            "name": "Retrieve a subscription",
+            "description": {},
+            "url": {
+              "path": [
+                "subscriptions",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Resource identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d44cfa61-31d7-48d8-9fd4-a441334313f3",
+              "name": "Subscription details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"company_id\": \"string\",\n  \"subscription_id\": \"string\",\n  \"subscription_line_id\": \"string\",\n  \"customer_id\": \"string\",\n  \"status\": \"string\",\n  \"billing_start_date\": \"1967-08-07\",\n  \"service_start_date\": \"1975-09-26\",\n  \"contract_effective_date\": \"2003-01-03\",\n  \"cancellation_date\": \"1974-08-14\",\n  \"auto_renew\": false,\n  \"currency\": \"string\",\n  \"payment_terms\": \"string\",\n  \"cmrr\": 3113.250866117594,\n  \"discounted_cmrr\": 2135.033388579658,\n  \"product_id\": \"string\",\n  \"product_name\": \"string\",\n  \"plan_name\": \"string\",\n  \"charge_id\": \"string\",\n  \"charge_name\": \"string\",\n  \"pricing_model\": \"string\",\n  \"list_price\": 8966.607639365564,\n  \"quantity\": 449.24662458394994,\n  \"discount\": 3614.020299836924,\n  \"effective_price\": 4188.26521349652,\n  \"charge_type\": \"string\",\n  \"billing_period\": \"string\",\n  \"current_period_start_date\": \"2015-10-01\",\n  \"current_period_end_date\": \"2016-01-11\",\n  \"contract_term\": \"string\",\n  \"renewal_term\": \"string\",\n  \"version\": 8233,\n  \"custom_fields\": {\n    \"key_0\": 6555.183788788985,\n    \"key_1\": true,\n    \"key_2\": \"string\"\n  },\n  \"created_by\": \"string\",\n  \"updated_by\": \"string\",\n  \"created_date\": \"2023-10-30T04:59:11.911Z\",\n  \"updated_date\": \"1962-11-03T17:22:48.414Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "76aab1b5-5d69-4dae-84e0-ecd855dc260b",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"errors\": {\n    \"key_0\": \"string\",\n    \"key_1\": 9112\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9d9d0410-5927-4802-a79b-06e8ae21a83d",
+          "name": "Update a subscription",
+          "request": {
+            "name": "Update a subscription",
+            "description": {},
+            "url": {
+              "path": [
+                "subscriptions",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Resource identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customer_id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"billing_start_date\": \"<date>\",\n  \"service_start_date\": \"<date>\",\n  \"auto_renew\": \"<boolean>\",\n  \"currency\": \"<string>\",\n  \"payment_terms\": \"<string>\",\n  \"custom_fields\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\",\n    \"key_2\": 3078,\n    \"key_3\": false\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c8087a00-1aff-4477-a4c4-5866f09e9c4b",
+              "name": "Subscription updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customer_id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"billing_start_date\": \"<date>\",\n  \"service_start_date\": \"<date>\",\n  \"auto_renew\": \"<boolean>\",\n  \"currency\": \"<string>\",\n  \"payment_terms\": \"<string>\",\n  \"custom_fields\": {\n    \"key_0\": 8951.956385791811,\n    \"key_1\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"company_id\": \"string\",\n  \"subscription_id\": \"string\",\n  \"subscription_line_id\": \"string\",\n  \"customer_id\": \"string\",\n  \"status\": \"string\",\n  \"billing_start_date\": \"1967-08-07\",\n  \"service_start_date\": \"1975-09-26\",\n  \"contract_effective_date\": \"2003-01-03\",\n  \"cancellation_date\": \"1974-08-14\",\n  \"auto_renew\": false,\n  \"currency\": \"string\",\n  \"payment_terms\": \"string\",\n  \"cmrr\": 3113.250866117594,\n  \"discounted_cmrr\": 2135.033388579658,\n  \"product_id\": \"string\",\n  \"product_name\": \"string\",\n  \"plan_name\": \"string\",\n  \"charge_id\": \"string\",\n  \"charge_name\": \"string\",\n  \"pricing_model\": \"string\",\n  \"list_price\": 8966.607639365564,\n  \"quantity\": 449.24662458394994,\n  \"discount\": 3614.020299836924,\n  \"effective_price\": 4188.26521349652,\n  \"charge_type\": \"string\",\n  \"billing_period\": \"string\",\n  \"current_period_start_date\": \"2015-10-01\",\n  \"current_period_end_date\": \"2016-01-11\",\n  \"contract_term\": \"string\",\n  \"renewal_term\": \"string\",\n  \"version\": 8233,\n  \"custom_fields\": {\n    \"key_0\": 6555.183788788985,\n    \"key_1\": true,\n    \"key_2\": \"string\"\n  },\n  \"created_by\": \"string\",\n  \"updated_by\": \"string\",\n  \"created_date\": \"2023-10-30T04:59:11.911Z\",\n  \"updated_date\": \"1962-11-03T17:22:48.414Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "74e13667-ddfc-47a1-a79f-3575de986f0f",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customer_id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"billing_start_date\": \"<date>\",\n  \"service_start_date\": \"<date>\",\n  \"auto_renew\": \"<boolean>\",\n  \"currency\": \"<string>\",\n  \"payment_terms\": \"<string>\",\n  \"custom_fields\": {\n    \"key_0\": 8951.956385791811,\n    \"key_1\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"errors\": {\n    \"key_0\": \"string\",\n    \"key_1\": 9112\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ordwaylabs.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-KEY"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "664aaff3-37a5-407f-b60e-f78849dd17da",
+    "name": "Ordway REST Billing Runs Subscriptions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "RESTful API for bidirectional integration with the Ordway billing and revenue automation platform. Enables managing customers, subscriptions, invoices, payments, usage data, and revenue recognition schedules. Supports usage-based billing, ASC 606 compliant revenue recognition, accounts receivable automation, and SaaS metrics reporting.\n\nContact Support:\n Name: Ordway Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Ordway REST Billing Runs Payment Runs API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-KEY",
+      "value": "{{X-API-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payment Runs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List payment runs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ordwaylabs.com/api/v1/payment_runs",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination (1-based)"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of records per page"
+              }
+            ]
+          },
+          "docs": "List payment runs"
+        },
+        {
+          "info": {
+            "name": "Create a payment run",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ordwaylabs.com/api/v1/payment_runs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a payment run"
+        },
+        {
+          "info": {
+            "name": "Retrieve a payment run",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ordwaylabs.com/api/v1/payment_runs/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Resource identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve a payment run"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

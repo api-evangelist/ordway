@@ -1,0 +1,371 @@
+{
+  "item": [
+    {
+      "id": "09b433ee-0615-47af-ab79-88e6c87ac624",
+      "name": "Revenue Schedules",
+      "description": {
+        "content": "Manage ASC 606 revenue recognition schedules",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c89fe3ac-aab0-47e7-8997-a73440dc2b34",
+          "name": "List revenue schedules",
+          "request": {
+            "name": "List revenue schedules",
+            "description": {},
+            "url": {
+              "path": [
+                "revenue_schedules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for pagination (1-based)"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "50",
+                  "description": "Number of records per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to sort by (prefix with - for descending)"
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_date>",
+                  "value": "<dateTime>",
+                  "description": "Filter revenue schedules updated after this date-time (ISO 8601)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d450dfa3-5dc0-4ca0-9ef1-df67c022ddfc",
+              "name": "List of revenue schedules",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "revenue_schedules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "50"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updated_date>",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"company_id\": \"string\",\n    \"revenue_schedule_id\": \"string\",\n    \"customer_id\": \"string\",\n    \"source_transaction\": \"string\",\n    \"product_id\": \"string\",\n    \"product_name\": \"string\",\n    \"plan_id\": \"string\",\n    \"charge_id\": \"string\",\n    \"charge_name\": \"string\",\n    \"charge_type\": \"string\",\n    \"total_revenue\": 7353.991445194249,\n    \"recognized_revenue\": 2002.1410717853628,\n    \"unrecognized_revenue\": 2958.961951483875,\n    \"start_date\": \"1966-10-09\",\n    \"end_date\": \"2008-10-10\",\n    \"schedule_lines\": [\n      {\n        \"key_0\": 4986.841143215527\n      },\n      {\n        \"key_0\": \"string\"\n      }\n    ],\n    \"created_by\": \"string\",\n    \"updated_by\": \"string\",\n    \"created_date\": \"1949-07-18T04:22:56.518Z\",\n    \"updated_date\": \"1955-07-30T14:13:11.488Z\"\n  },\n  {\n    \"company_id\": \"string\",\n    \"revenue_schedule_id\": \"string\",\n    \"customer_id\": \"string\",\n    \"source_transaction\": \"string\",\n    \"product_id\": \"string\",\n    \"product_name\": \"string\",\n    \"plan_id\": \"string\",\n    \"charge_id\": \"string\",\n    \"charge_name\": \"string\",\n    \"charge_type\": \"string\",\n    \"total_revenue\": 8356.9339321247,\n    \"recognized_revenue\": 6312.041752199269,\n    \"unrecognized_revenue\": 2937.6035404744703,\n    \"start_date\": \"1979-03-27\",\n    \"end_date\": \"1950-10-18\",\n    \"schedule_lines\": [\n      {\n        \"key_0\": \"string\"\n      },\n      {\n        \"key_0\": \"string\"\n      }\n    ],\n    \"created_by\": \"string\",\n    \"updated_by\": \"string\",\n    \"created_date\": \"2021-11-14T04:48:58.370Z\",\n    \"updated_date\": \"1968-05-31T23:26:22.599Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d29e0912-7b02-4381-b438-10e45e55c298",
+              "name": "Authentication credentials missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "revenue_schedules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "50"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updated_date>",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"errors\": {\n    \"key_0\": \"string\",\n    \"key_1\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4b2b48a5-ff27-4b8d-8e3a-2815d9eb2002",
+          "name": "Retrieve a revenue schedule",
+          "request": {
+            "name": "Retrieve a revenue schedule",
+            "description": {},
+            "url": {
+              "path": [
+                "revenue_schedules",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Resource identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4db59c2a-f6e8-4877-bef0-8703d25b3a10",
+              "name": "Revenue schedule details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "revenue_schedules",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"company_id\": \"string\",\n  \"revenue_schedule_id\": \"string\",\n  \"customer_id\": \"string\",\n  \"source_transaction\": \"string\",\n  \"product_id\": \"string\",\n  \"product_name\": \"string\",\n  \"plan_id\": \"string\",\n  \"charge_id\": \"string\",\n  \"charge_name\": \"string\",\n  \"charge_type\": \"string\",\n  \"total_revenue\": 4033.2101833240417,\n  \"recognized_revenue\": 1471.7312941898297,\n  \"unrecognized_revenue\": 8087.338626510698,\n  \"start_date\": \"2007-08-20\",\n  \"end_date\": \"1998-08-08\",\n  \"schedule_lines\": [\n    {\n      \"key_0\": \"string\",\n      \"key_1\": true\n    },\n    {\n      \"key_0\": \"string\"\n    }\n  ],\n  \"created_by\": \"string\",\n  \"updated_by\": \"string\",\n  \"created_date\": \"2006-08-18T19:58:04.288Z\",\n  \"updated_date\": \"1981-10-21T10:14:36.757Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "327a3bae-ea64-4a4d-872b-fbbe3c23d53a",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "revenue_schedules",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"errors\": {\n    \"key_0\": \"string\",\n    \"key_1\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ordwaylabs.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-KEY"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "641562ab-b31d-47a8-8966-9a385443eaaf",
+    "name": "Ordway REST Billing Runs Revenue Schedules API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "RESTful API for bidirectional integration with the Ordway billing and revenue automation platform. Enables managing customers, subscriptions, invoices, payments, usage data, and revenue recognition schedules. Supports usage-based billing, ASC 606 compliant revenue recognition, accounts receivable automation, and SaaS metrics reporting.\n\nContact Support:\n Name: Ordway Support",
+      "type": "text/plain"
+    }
+  }
+}

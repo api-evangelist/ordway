@@ -1,0 +1,357 @@
+{
+  "item": [
+    {
+      "id": "11716340-a86f-47e1-9710-34c7fa601d3e",
+      "name": "Debit Memos",
+      "description": {
+        "content": "Manage debit memos",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ee2d40bf-967c-4ae8-a409-38a2460d6045",
+          "name": "List debit memos",
+          "request": {
+            "name": "List debit memos",
+            "description": {},
+            "url": {
+              "path": [
+                "debit_memos"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for pagination (1-based)"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "50",
+                  "description": "Number of records per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to sort by (prefix with - for descending)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a515be42-2fad-4483-97e9-dcaf0b385d74",
+              "name": "List of debit memos",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "debit_memos"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "50"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"company_id\": \"string\",\n    \"debit_memo_id\": \"string\",\n    \"customer_id\": \"string\",\n    \"status\": \"string\",\n    \"debit_date\": \"2025-12-14\",\n    \"debit_amount\": 956.3463053939237,\n    \"balance\": 9453.078650824293,\n    \"paid_amount\": 9586.075531574927,\n    \"notes\": \"string\",\n    \"currency\": \"string\",\n    \"debit_tax\": 4042.756685857902,\n    \"subtotal\": 2232.871601183325,\n    \"debit_pdf_url\": \"https://MrDSaKwuojTmlUwVsMPATdqo.vmmpI+vmUVzlMytucso4OgptPmo41uSpiyJygenqzfOB9-bzlvgmZO,UfMd96EtcdK\",\n    \"custom_fields\": {\n      \"key_0\": 6580.597027000646,\n      \"key_1\": \"string\"\n    },\n    \"created_by\": \"string\",\n    \"updated_by\": \"string\",\n    \"created_date\": \"1968-06-14T20:46:12.911Z\",\n    \"updated_date\": \"1999-10-08T08:43:06.185Z\"\n  },\n  {\n    \"company_id\": \"string\",\n    \"debit_memo_id\": \"string\",\n    \"customer_id\": \"string\",\n    \"status\": \"string\",\n    \"debit_date\": \"2014-05-18\",\n    \"debit_amount\": 6047.487925788013,\n    \"balance\": 2580.6329708515564,\n    \"paid_amount\": 6489.629841507252,\n    \"notes\": \"string\",\n    \"currency\": \"string\",\n    \"debit_tax\": 9556.076798492664,\n    \"subtotal\": 2354.6403628116273,\n    \"debit_pdf_url\": \"https://wBAgbIGhHaYkCuGycQXRmdtCWTUfkLl.edns6zAc9F0\",\n    \"custom_fields\": {\n      \"key_0\": 6219,\n      \"key_1\": \"string\"\n    },\n    \"created_by\": \"string\",\n    \"updated_by\": \"string\",\n    \"created_date\": \"1978-11-11T23:43:44.495Z\",\n    \"updated_date\": \"1973-02-04T04:52:48.589Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "91c01504-4846-4059-b563-0bada1f37f75",
+              "name": "Authentication credentials missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "debit_memos"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "50"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"errors\": {\n    \"key_0\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2d90721a-0f7f-4e65-a439-48e62278c2b9",
+          "name": "Retrieve a debit memo",
+          "request": {
+            "name": "Retrieve a debit memo",
+            "description": {},
+            "url": {
+              "path": [
+                "debit_memos",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Resource identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "802c31e0-0bad-4369-b4ea-1fa72a0e3583",
+              "name": "Debit memo details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "debit_memos",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"company_id\": \"string\",\n  \"debit_memo_id\": \"string\",\n  \"customer_id\": \"string\",\n  \"status\": \"string\",\n  \"debit_date\": \"2003-06-11\",\n  \"debit_amount\": 9039.53737751701,\n  \"balance\": 7639.482317782635,\n  \"paid_amount\": 1166.2773074971888,\n  \"notes\": \"string\",\n  \"currency\": \"string\",\n  \"debit_tax\": 7585.299922637303,\n  \"subtotal\": 7501.31211824641,\n  \"debit_pdf_url\": \"http://cROlRrNxyfsYQieccTyfTnyKUV.msni9susp,CAd\",\n  \"custom_fields\": {\n    \"key_0\": \"string\"\n  },\n  \"created_by\": \"string\",\n  \"updated_by\": \"string\",\n  \"created_date\": \"2001-11-13T14:24:47.993Z\",\n  \"updated_date\": \"2021-07-15T14:53:47.248Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e257f3e0-60a9-42d1-8878-3c7288296538",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "debit_memos",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"errors\": {\n    \"key_0\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ordwaylabs.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-KEY"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "fc27a405-6860-498d-bc75-c7c932667bf1",
+    "name": "Ordway REST Billing Runs Debit Memos API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "RESTful API for bidirectional integration with the Ordway billing and revenue automation platform. Enables managing customers, subscriptions, invoices, payments, usage data, and revenue recognition schedules. Supports usage-based billing, ASC 606 compliant revenue recognition, accounts receivable automation, and SaaS metrics reporting.\n\nContact Support:\n Name: Ordway Support",
+      "type": "text/plain"
+    }
+  }
+}

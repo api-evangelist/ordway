@@ -1,0 +1,343 @@
+{
+  "item": [
+    {
+      "id": "3e7d8a7e-4694-49a7-8c3d-ea1c8c68b887",
+      "name": "Billing Schedules",
+      "description": {
+        "content": "Manage billing schedules",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "00108670-ae68-42c4-843a-72c0bbf87581",
+          "name": "List billing schedules",
+          "request": {
+            "name": "List billing schedules",
+            "description": {},
+            "url": {
+              "path": [
+                "billing_schedules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for pagination (1-based)"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "50",
+                  "description": "Number of records per page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "63de795a-eeba-49d3-b022-17d17ce6b9a8",
+              "name": "List of billing schedules",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing_schedules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"company_id\": \"string\",\n    \"billing_schedule_id\": \"string\",\n    \"customer_id\": \"string\",\n    \"customer_name\": \"string\",\n    \"subscription_id\": \"string\",\n    \"product_id\": \"string\",\n    \"product_name\": \"string\",\n    \"charge_id\": \"string\",\n    \"charge_name\": \"string\",\n    \"charge_type\": \"string\",\n    \"start_date\": \"1991-09-30\",\n    \"end_date\": \"string\",\n    \"monthly_recurring_revenue\": 7136.379227548578,\n    \"annual_contract_revenue\": 9493.710186127426,\n    \"total_contract_revenue\": 8624.080236903854,\n    \"amount_invoiced\": 8129.306922350107,\n    \"currency\": \"string\",\n    \"schedule_lines\": [\n      {\n        \"key_0\": 3347,\n        \"key_1\": \"string\"\n      },\n      {\n        \"key_0\": 9901.690258647362,\n        \"key_1\": 580.7562902827823\n      }\n    ],\n    \"custom_fields\": {\n      \"key_0\": false,\n      \"key_1\": \"string\",\n      \"key_2\": 9086\n    },\n    \"created_by\": \"string\",\n    \"updated_by\": \"string\",\n    \"created_date\": \"2002-04-11T14:09:28.062Z\",\n    \"updated_date\": \"1954-02-18T19:32:54.592Z\"\n  },\n  {\n    \"company_id\": \"string\",\n    \"billing_schedule_id\": \"string\",\n    \"customer_id\": \"string\",\n    \"customer_name\": \"string\",\n    \"subscription_id\": \"string\",\n    \"product_id\": \"string\",\n    \"product_name\": \"string\",\n    \"charge_id\": \"string\",\n    \"charge_name\": \"string\",\n    \"charge_type\": \"string\",\n    \"start_date\": \"1999-12-06\",\n    \"end_date\": \"string\",\n    \"monthly_recurring_revenue\": 5405.872033362797,\n    \"annual_contract_revenue\": 9856.748546353356,\n    \"total_contract_revenue\": 141.35550765268957,\n    \"amount_invoiced\": 9257.150757398713,\n    \"currency\": \"string\",\n    \"schedule_lines\": [\n      {\n        \"key_0\": 8365\n      },\n      {\n        \"key_0\": 1080,\n        \"key_1\": \"string\",\n        \"key_2\": true,\n        \"key_3\": \"string\",\n        \"key_4\": false\n      }\n    ],\n    \"custom_fields\": {\n      \"key_0\": true,\n      \"key_1\": true\n    },\n    \"created_by\": \"string\",\n    \"updated_by\": \"string\",\n    \"created_date\": \"1988-04-20T08:31:33.495Z\",\n    \"updated_date\": \"1952-02-06T08:01:29.531Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3efadd38-a66f-40b2-b9bf-4757ded2fd5a",
+              "name": "Authentication credentials missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing_schedules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"errors\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bfbb81f0-d36b-4d1d-92cd-0a48f27801ac",
+          "name": "Retrieve a billing schedule",
+          "request": {
+            "name": "Retrieve a billing schedule",
+            "description": {},
+            "url": {
+              "path": [
+                "billing_schedules",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Resource identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "832a27bc-0496-4db8-b8ba-c5fcf5b14f61",
+              "name": "Billing schedule details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing_schedules",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"company_id\": \"string\",\n  \"billing_schedule_id\": \"string\",\n  \"customer_id\": \"string\",\n  \"customer_name\": \"string\",\n  \"subscription_id\": \"string\",\n  \"product_id\": \"string\",\n  \"product_name\": \"string\",\n  \"charge_id\": \"string\",\n  \"charge_name\": \"string\",\n  \"charge_type\": \"string\",\n  \"start_date\": \"2024-11-23\",\n  \"end_date\": \"string\",\n  \"monthly_recurring_revenue\": 6111.4067168031215,\n  \"annual_contract_revenue\": 3850.144542199354,\n  \"total_contract_revenue\": 9197.249651593615,\n  \"amount_invoiced\": 9718.150301978563,\n  \"currency\": \"string\",\n  \"schedule_lines\": [\n    {\n      \"key_0\": 6602.8934611164605,\n      \"key_1\": 9263\n    },\n    {\n      \"key_0\": 1851,\n      \"key_1\": \"string\"\n    }\n  ],\n  \"custom_fields\": {\n    \"key_0\": false,\n    \"key_1\": \"string\"\n  },\n  \"created_by\": \"string\",\n  \"updated_by\": \"string\",\n  \"created_date\": \"1957-06-26T01:12:09.128Z\",\n  \"updated_date\": \"2020-01-07T08:16:44.530Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "94cd690d-e613-4161-b261-3d65dbcd09fd",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing_schedules",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"errors\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ordwaylabs.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-KEY"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0495a384-e81e-48c1-b871-99bec229d898",
+    "name": "Ordway REST Billing Runs Billing Schedules API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "RESTful API for bidirectional integration with the Ordway billing and revenue automation platform. Enables managing customers, subscriptions, invoices, payments, usage data, and revenue recognition schedules. Supports usage-based billing, ASC 606 compliant revenue recognition, accounts receivable automation, and SaaS metrics reporting.\n\nContact Support:\n Name: Ordway Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,692 @@
+{
+  "item": [
+    {
+      "id": "3100cc67-1d2f-4eea-8ad2-fffe9a3f0e3f",
+      "name": "Invoices",
+      "description": {
+        "content": "Manage invoices and billing",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "075d3826-6c20-4ac3-b787-09067392f62b",
+          "name": "List invoices",
+          "request": {
+            "name": "List invoices",
+            "description": {},
+            "url": {
+              "path": [
+                "invoices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for pagination (1-based)"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "50",
+                  "description": "Number of records per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to sort by (prefix with - for descending)"
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_date>",
+                  "value": "<dateTime>",
+                  "description": "Filter invoices updated after this date-time (ISO 8601)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f2ae9a88-023a-4eeb-a997-0d5152e64abe",
+              "name": "List of invoices",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "50"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updated_date>",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"company_id\": \"string\",\n    \"invoice_id\": \"string\",\n    \"invoice_line_no\": \"string\",\n    \"customer_id\": \"string\",\n    \"customer_name\": \"string\",\n    \"invoice_date\": \"1952-07-20\",\n    \"due_date\": \"2008-01-27\",\n    \"subtotal\": 8116.700121657416,\n    \"invoice_tax\": 6090.105969584983,\n    \"invoice_amount\": 1703.4555367174132,\n    \"paid_amount\": 8541.971725107205,\n    \"balance\": 3296.4521072218076,\n    \"status\": \"string\",\n    \"notes\": \"string\",\n    \"currency\": \"string\",\n    \"payment_terms\": \"string\",\n    \"subscription_id\": \"string\",\n    \"product_id\": \"string\",\n    \"product_name\": \"string\",\n    \"plan_id\": \"string\",\n    \"plan_name\": \"string\",\n    \"charge_id\": \"string\",\n    \"charge_name\": \"string\",\n    \"charge_type\": \"string\",\n    \"description\": \"string\",\n    \"start_date\": \"1953-04-22\",\n    \"end_date\": \"1984-01-01\",\n    \"quantity\": 7111.386660348904,\n    \"discount\": 3271.0803372822274,\n    \"effective_price\": 6822.520937129924,\n    \"invoice_pdf_url\": \"http://hCoAbeKkU.qbwETF.9WAnqdBPp+DlHGyjqF8p9mquM-fd4z2+Cuv-J-XAzJ,LpDuv\",\n    \"custom_fields\": {\n      \"key_0\": 5495.132821881691,\n      \"key_1\": 1468,\n      \"key_2\": true\n    },\n    \"created_by\": \"string\",\n    \"updated_by\": \"string\",\n    \"created_date\": \"2024-09-28T12:47:29.492Z\",\n    \"updated_date\": \"1998-08-10T19:06:29.660Z\"\n  },\n  {\n    \"company_id\": \"string\",\n    \"invoice_id\": \"string\",\n    \"invoice_line_no\": \"string\",\n    \"customer_id\": \"string\",\n    \"customer_name\": \"string\",\n    \"invoice_date\": \"2005-12-21\",\n    \"due_date\": \"1958-10-05\",\n    \"subtotal\": 6627.9933888692385,\n    \"invoice_tax\": 7105.851972831979,\n    \"invoice_amount\": 2511.451371829244,\n    \"paid_amount\": 2527.8338094451824,\n    \"balance\": 8047.067751633826,\n    \"status\": \"string\",\n    \"notes\": \"string\",\n    \"currency\": \"string\",\n    \"payment_terms\": \"string\",\n    \"subscription_id\": \"string\",\n    \"product_id\": \"string\",\n    \"product_name\": \"string\",\n    \"plan_id\": \"string\",\n    \"plan_name\": \"string\",\n    \"charge_id\": \"string\",\n    \"charge_name\": \"string\",\n    \"charge_type\": \"string\",\n    \"description\": \"string\",\n    \"start_date\": \"1993-06-27\",\n    \"end_date\": \"1947-05-11\",\n    \"quantity\": 8667.80013403405,\n    \"discount\": 5978.241520617654,\n    \"effective_price\": 2090.527617698087,\n    \"invoice_pdf_url\": \"https://JNZhMdlHnbBoklZpJUR.euoenF5wwABoMUqE-xqMIhpBTmhr7f05sFZECEKm-w,pwmLg1vsmUgByMYvI0VD\",\n    \"custom_fields\": {\n      \"key_0\": 3612.1358759106183,\n      \"key_1\": \"string\"\n    },\n    \"created_by\": \"string\",\n    \"updated_by\": \"string\",\n    \"created_date\": \"1974-07-04T20:10:30.555Z\",\n    \"updated_date\": \"1991-09-07T10:08:36.688Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d7047974-bd21-4d25-8296-43f799b2fb84",
+              "name": "Authentication credentials missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "50"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updated_date>",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"errors\": {\n    \"key_0\": \"string\",\n    \"key_1\": 1811.0622640398199\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "849fb75f-8e1d-46f7-b16e-a8827e12ee81",
+          "name": "Create an invoice",
+          "request": {
+            "name": "Create an invoice",
+            "description": {},
+            "url": {
+              "path": [
+                "invoices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customer_id\": \"<string>\",\n  \"invoice_date\": \"<date>\",\n  \"due_date\": \"<date>\",\n  \"currency\": \"<string>\",\n  \"payment_terms\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"custom_fields\": {\n    \"key_0\": false,\n    \"key_1\": 5383\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "910d43c9-62d8-476d-bca3-f62bc287bb42",
+              "name": "Invoice created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customer_id\": \"<string>\",\n  \"invoice_date\": \"<date>\",\n  \"due_date\": \"<date>\",\n  \"currency\": \"<string>\",\n  \"payment_terms\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"custom_fields\": {\n    \"key_0\": 2560.8009309486347,\n    \"key_1\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"company_id\": \"string\",\n  \"invoice_id\": \"string\",\n  \"invoice_line_no\": \"string\",\n  \"customer_id\": \"string\",\n  \"customer_name\": \"string\",\n  \"invoice_date\": \"1977-11-05\",\n  \"due_date\": \"2016-08-24\",\n  \"subtotal\": 3361.702820090452,\n  \"invoice_tax\": 2323.6152401257427,\n  \"invoice_amount\": 9888.114872226648,\n  \"paid_amount\": 9984.346168962273,\n  \"balance\": 6481.837029586761,\n  \"status\": \"string\",\n  \"notes\": \"string\",\n  \"currency\": \"string\",\n  \"payment_terms\": \"string\",\n  \"subscription_id\": \"string\",\n  \"product_id\": \"string\",\n  \"product_name\": \"string\",\n  \"plan_id\": \"string\",\n  \"plan_name\": \"string\",\n  \"charge_id\": \"string\",\n  \"charge_name\": \"string\",\n  \"charge_type\": \"string\",\n  \"description\": \"string\",\n  \"start_date\": \"1993-07-12\",\n  \"end_date\": \"1950-08-30\",\n  \"quantity\": 6908.488776696257,\n  \"discount\": 3675.9093846558876,\n  \"effective_price\": 6677.095964335124,\n  \"invoice_pdf_url\": \"https://ySxvwmkJdvswqnkOMgDblrAXvKG.tbaF8jLOtCE+gtQg,\",\n  \"custom_fields\": {\n    \"key_0\": 8514,\n    \"key_1\": \"string\"\n  },\n  \"created_by\": \"string\",\n  \"updated_by\": \"string\",\n  \"created_date\": \"1983-08-13T21:24:50.821Z\",\n  \"updated_date\": \"2023-03-23T17:45:13.152Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b8b41de6-7cb6-407a-9dfa-d217925c369d",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customer_id\": \"<string>\",\n  \"invoice_date\": \"<date>\",\n  \"due_date\": \"<date>\",\n  \"currency\": \"<string>\",\n  \"payment_terms\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"custom_fields\": {\n    \"key_0\": 2560.8009309486347,\n    \"key_1\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"errors\": {\n    \"key_0\": \"string\",\n    \"key_1\": 1811.0622640398199\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7f8ed651-2b7f-4355-a616-43197680fb6a",
+          "name": "Retrieve an invoice",
+          "request": {
+            "name": "Retrieve an invoice",
+            "description": {},
+            "url": {
+              "path": [
+                "invoices",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Resource identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "372f8384-d58a-45bd-bcf4-72a33a8e2cdb",
+              "name": "Invoice details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"company_id\": \"string\",\n  \"invoice_id\": \"string\",\n  \"invoice_line_no\": \"string\",\n  \"customer_id\": \"string\",\n  \"customer_name\": \"string\",\n  \"invoice_date\": \"1977-11-05\",\n  \"due_date\": \"2016-08-24\",\n  \"subtotal\": 3361.702820090452,\n  \"invoice_tax\": 2323.6152401257427,\n  \"invoice_amount\": 9888.114872226648,\n  \"paid_amount\": 9984.346168962273,\n  \"balance\": 6481.837029586761,\n  \"status\": \"string\",\n  \"notes\": \"string\",\n  \"currency\": \"string\",\n  \"payment_terms\": \"string\",\n  \"subscription_id\": \"string\",\n  \"product_id\": \"string\",\n  \"product_name\": \"string\",\n  \"plan_id\": \"string\",\n  \"plan_name\": \"string\",\n  \"charge_id\": \"string\",\n  \"charge_name\": \"string\",\n  \"charge_type\": \"string\",\n  \"description\": \"string\",\n  \"start_date\": \"1993-07-12\",\n  \"end_date\": \"1950-08-30\",\n  \"quantity\": 6908.488776696257,\n  \"discount\": 3675.9093846558876,\n  \"effective_price\": 6677.095964335124,\n  \"invoice_pdf_url\": \"https://ySxvwmkJdvswqnkOMgDblrAXvKG.tbaF8jLOtCE+gtQg,\",\n  \"custom_fields\": {\n    \"key_0\": 8514,\n    \"key_1\": \"string\"\n  },\n  \"created_by\": \"string\",\n  \"updated_by\": \"string\",\n  \"created_date\": \"1983-08-13T21:24:50.821Z\",\n  \"updated_date\": \"2023-03-23T17:45:13.152Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "62f02e68-dced-4eaf-8560-b0b156b3bef0",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"errors\": {\n    \"key_0\": \"string\",\n    \"key_1\": 1811.0622640398199\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6759381b-96ce-44c0-9799-235a14bcb91b",
+          "name": "Update an invoice",
+          "request": {
+            "name": "Update an invoice",
+            "description": {},
+            "url": {
+              "path": [
+                "invoices",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Resource identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customer_id\": \"<string>\",\n  \"invoice_date\": \"<date>\",\n  \"due_date\": \"<date>\",\n  \"currency\": \"<string>\",\n  \"payment_terms\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"custom_fields\": {\n    \"key_0\": false,\n    \"key_1\": 5383\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b5240973-b345-4945-b05e-9cc3617f3203",
+              "name": "Invoice updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customer_id\": \"<string>\",\n  \"invoice_date\": \"<date>\",\n  \"due_date\": \"<date>\",\n  \"currency\": \"<string>\",\n  \"payment_terms\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"custom_fields\": {\n    \"key_0\": 2560.8009309486347,\n    \"key_1\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"company_id\": \"string\",\n  \"invoice_id\": \"string\",\n  \"invoice_line_no\": \"string\",\n  \"customer_id\": \"string\",\n  \"customer_name\": \"string\",\n  \"invoice_date\": \"1977-11-05\",\n  \"due_date\": \"2016-08-24\",\n  \"subtotal\": 3361.702820090452,\n  \"invoice_tax\": 2323.6152401257427,\n  \"invoice_amount\": 9888.114872226648,\n  \"paid_amount\": 9984.346168962273,\n  \"balance\": 6481.837029586761,\n  \"status\": \"string\",\n  \"notes\": \"string\",\n  \"currency\": \"string\",\n  \"payment_terms\": \"string\",\n  \"subscription_id\": \"string\",\n  \"product_id\": \"string\",\n  \"product_name\": \"string\",\n  \"plan_id\": \"string\",\n  \"plan_name\": \"string\",\n  \"charge_id\": \"string\",\n  \"charge_name\": \"string\",\n  \"charge_type\": \"string\",\n  \"description\": \"string\",\n  \"start_date\": \"1993-07-12\",\n  \"end_date\": \"1950-08-30\",\n  \"quantity\": 6908.488776696257,\n  \"discount\": 3675.9093846558876,\n  \"effective_price\": 6677.095964335124,\n  \"invoice_pdf_url\": \"https://ySxvwmkJdvswqnkOMgDblrAXvKG.tbaF8jLOtCE+gtQg,\",\n  \"custom_fields\": {\n    \"key_0\": 8514,\n    \"key_1\": \"string\"\n  },\n  \"created_by\": \"string\",\n  \"updated_by\": \"string\",\n  \"created_date\": \"1983-08-13T21:24:50.821Z\",\n  \"updated_date\": \"2023-03-23T17:45:13.152Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6bb9db9a-8088-4a00-a796-829ccf30715d",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customer_id\": \"<string>\",\n  \"invoice_date\": \"<date>\",\n  \"due_date\": \"<date>\",\n  \"currency\": \"<string>\",\n  \"payment_terms\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"custom_fields\": {\n    \"key_0\": 2560.8009309486347,\n    \"key_1\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"errors\": {\n    \"key_0\": \"string\",\n    \"key_1\": 1811.0622640398199\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ordwaylabs.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-KEY"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "93447884-1108-4b88-9377-740b7df2969d",
+    "name": "Ordway REST Billing Runs Invoices API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "RESTful API for bidirectional integration with the Ordway billing and revenue automation platform. Enables managing customers, subscriptions, invoices, payments, usage data, and revenue recognition schedules. Supports usage-based billing, ASC 606 compliant revenue recognition, accounts receivable automation, and SaaS metrics reporting.\n\nContact Support:\n Name: Ordway Support",
+      "type": "text/plain"
+    }
+  }
+}

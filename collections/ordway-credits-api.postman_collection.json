@@ -1,0 +1,504 @@
+{
+  "item": [
+    {
+      "id": "f41f6c4c-b83d-4113-b603-80550694145a",
+      "name": "Credits",
+      "description": {
+        "content": "Manage customer credits",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "18426cc8-12f8-4ba8-965d-d8bdbd2d4146",
+          "name": "List credits",
+          "request": {
+            "name": "List credits",
+            "description": {},
+            "url": {
+              "path": [
+                "credits"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for pagination (1-based)"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "50",
+                  "description": "Number of records per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to sort by (prefix with - for descending)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ba77039c-6bb8-4e78-8a77-b76213a4ca00",
+              "name": "List of credits",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "credits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "50"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"company_id\": \"string\",\n    \"credit_id\": \"string\",\n    \"customer_id\": \"string\",\n    \"credit_date\": \"1993-07-27\",\n    \"notes\": \"string\",\n    \"status\": \"string\",\n    \"credit_amount\": 2631.078493185911,\n    \"applied_amount\": 3994.6087604827717,\n    \"unapplied_amount\": 7216.156503269388,\n    \"currency\": \"string\",\n    \"reference_number\": \"string\",\n    \"auto_apply\": false,\n    \"gl_account\": \"string\",\n    \"credit_pdf_url\": \"http://UnZyJKVxaUMQavetMUa.hrkuOsEgd0.npL3EqoSPE6dG9ADJSMczZQ6KiVd,HOJ36lvtXTpTW90onBh2\",\n    \"credit_number\": \"string\",\n    \"custom_fields\": {\n      \"key_0\": true\n    },\n    \"created_by\": \"string\",\n    \"updated_by\": \"string\",\n    \"created_date\": \"2024-10-17T10:38:50.888Z\",\n    \"updated_date\": \"1956-07-16T13:23:57.333Z\"\n  },\n  {\n    \"company_id\": \"string\",\n    \"credit_id\": \"string\",\n    \"customer_id\": \"string\",\n    \"credit_date\": \"1993-01-01\",\n    \"notes\": \"string\",\n    \"status\": \"string\",\n    \"credit_amount\": 6970.009548863743,\n    \"applied_amount\": 2185.797862931291,\n    \"unapplied_amount\": 4550.441722778963,\n    \"currency\": \"string\",\n    \"reference_number\": \"string\",\n    \"auto_apply\": false,\n    \"gl_account\": \"string\",\n    \"credit_pdf_url\": \"http://YdkBfdmDjyLAYdQn.smKOuGsWLcOgmciy,Bwm3kmDnOc4gJCfldKzlEU8nfj\",\n    \"credit_number\": \"string\",\n    \"custom_fields\": {\n      \"key_0\": 5883.8126665696855,\n      \"key_1\": true\n    },\n    \"created_by\": \"string\",\n    \"updated_by\": \"string\",\n    \"created_date\": \"1968-03-05T14:37:45.563Z\",\n    \"updated_date\": \"1988-07-11T03:44:19.225Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b944c8ff-8597-419f-aeb7-b6c46aed63c2",
+              "name": "Authentication credentials missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "credits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "50"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"errors\": {\n    \"key_0\": 1295,\n    \"key_1\": \"string\",\n    \"key_2\": 3513,\n    \"key_3\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4df0338b-5bc8-4a6d-8495-58c79f9c12e1",
+          "name": "Create a credit",
+          "request": {
+            "name": "Create a credit",
+            "description": {},
+            "url": {
+              "path": [
+                "credits"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customer_id\": \"<string>\",\n  \"credit_date\": \"<date>\",\n  \"credit_amount\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"auto_apply\": \"<boolean>\",\n  \"gl_account\": \"<string>\",\n  \"custom_fields\": {\n    \"key_0\": 7572.343030939613,\n    \"key_1\": 2519\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "31d0a72a-cb0b-49ed-8866-e3233d3490b7",
+              "name": "Credit created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "credits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customer_id\": \"<string>\",\n  \"credit_date\": \"<date>\",\n  \"credit_amount\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"auto_apply\": \"<boolean>\",\n  \"gl_account\": \"<string>\",\n  \"custom_fields\": {\n    \"key_0\": 3992.496545091606,\n    \"key_1\": false,\n    \"key_2\": \"string\",\n    \"key_3\": true,\n    \"key_4\": 1794\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"company_id\": \"string\",\n  \"credit_id\": \"string\",\n  \"customer_id\": \"string\",\n  \"credit_date\": \"1982-07-31\",\n  \"notes\": \"string\",\n  \"status\": \"string\",\n  \"credit_amount\": 1113.9688126857206,\n  \"applied_amount\": 636.3834805995539,\n  \"unapplied_amount\": 4876.114212958984,\n  \"currency\": \"string\",\n  \"reference_number\": \"string\",\n  \"auto_apply\": false,\n  \"gl_account\": \"string\",\n  \"credit_pdf_url\": \"https://hYQMcaMUBTdiwVsH.edbqgEuhf-XRm1eUxnfdpT-haXtzziLjXyu9Tr-rdLEGh,Aq\",\n  \"credit_number\": \"string\",\n  \"custom_fields\": {\n    \"key_0\": 9180.874860962973,\n    \"key_1\": 3733\n  },\n  \"created_by\": \"string\",\n  \"updated_by\": \"string\",\n  \"created_date\": \"1977-04-12T01:26:02.628Z\",\n  \"updated_date\": \"1973-10-25T03:38:54.793Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1d290ce6-d58a-4bb4-80f9-96db96020261",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "credits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customer_id\": \"<string>\",\n  \"credit_date\": \"<date>\",\n  \"credit_amount\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"auto_apply\": \"<boolean>\",\n  \"gl_account\": \"<string>\",\n  \"custom_fields\": {\n    \"key_0\": 3992.496545091606,\n    \"key_1\": false,\n    \"key_2\": \"string\",\n    \"key_3\": true,\n    \"key_4\": 1794\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"errors\": {\n    \"key_0\": 1295,\n    \"key_1\": \"string\",\n    \"key_2\": 3513,\n    \"key_3\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c49fcae7-867f-4373-acf4-f2e6765f5d7a",
+          "name": "Retrieve a credit",
+          "request": {
+            "name": "Retrieve a credit",
+            "description": {},
+            "url": {
+              "path": [
+                "credits",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Resource identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "203150c0-1785-4a3d-b621-c0447c66ecda",
+              "name": "Credit details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "credits",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"company_id\": \"string\",\n  \"credit_id\": \"string\",\n  \"customer_id\": \"string\",\n  \"credit_date\": \"1982-07-31\",\n  \"notes\": \"string\",\n  \"status\": \"string\",\n  \"credit_amount\": 1113.9688126857206,\n  \"applied_amount\": 636.3834805995539,\n  \"unapplied_amount\": 4876.114212958984,\n  \"currency\": \"string\",\n  \"reference_number\": \"string\",\n  \"auto_apply\": false,\n  \"gl_account\": \"string\",\n  \"credit_pdf_url\": \"https://hYQMcaMUBTdiwVsH.edbqgEuhf-XRm1eUxnfdpT-haXtzziLjXyu9Tr-rdLEGh,Aq\",\n  \"credit_number\": \"string\",\n  \"custom_fields\": {\n    \"key_0\": 9180.874860962973,\n    \"key_1\": 3733\n  },\n  \"created_by\": \"string\",\n  \"updated_by\": \"string\",\n  \"created_date\": \"1977-04-12T01:26:02.628Z\",\n  \"updated_date\": \"1973-10-25T03:38:54.793Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "36a7207a-55b7-41aa-8336-e699b53c9b14",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "credits",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"errors\": {\n    \"key_0\": 1295,\n    \"key_1\": \"string\",\n    \"key_2\": 3513,\n    \"key_3\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ordwaylabs.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-KEY"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d7f0d533-db29-4bf9-a600-572ee925d81d",
+    "name": "Ordway REST Billing Runs Credits API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "RESTful API for bidirectional integration with the Ordway billing and revenue automation platform. Enables managing customers, subscriptions, invoices, payments, usage data, and revenue recognition schedules. Supports usage-based billing, ASC 606 compliant revenue recognition, accounts receivable automation, and SaaS metrics reporting.\n\nContact Support:\n Name: Ordway Support",
+      "type": "text/plain"
+    }
+  }
+}

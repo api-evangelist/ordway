@@ -1,0 +1,518 @@
+{
+  "item": [
+    {
+      "id": "e209b234-d328-49a1-9759-d1a7b9510742",
+      "name": "Usages",
+      "description": {
+        "content": "Manage usage-based billing records",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "abb53a8b-3327-4503-8ba9-b801369058dc",
+          "name": "List usage records",
+          "request": {
+            "name": "List usage records",
+            "description": {},
+            "url": {
+              "path": [
+                "usages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for pagination (1-based)"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "50",
+                  "description": "Number of records per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to sort by (prefix with - for descending)"
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_date>",
+                  "value": "<dateTime>",
+                  "description": "Filter usage records updated after this date-time (ISO 8601)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e656989d-94d7-4891-b887-b73b358c307e",
+              "name": "List of usage records",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "usages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "50"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updated_date>",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"company_id\": \"string\",\n    \"usage_id\": \"string\",\n    \"subscription_line_id\": \"string\",\n    \"customer_id\": \"string\",\n    \"subscription_id\": \"string\",\n    \"charge_id\": \"string\",\n    \"quantity\": 5009.608185918514,\n    \"date\": \"1968-04-16T13:00:18.202Z\",\n    \"unit_of_measure\": \"string\",\n    \"description\": \"string\",\n    \"invoiced\": true,\n    \"currency\": \"string\",\n    \"custom_fields\": {\n      \"key_0\": false,\n      \"key_1\": 9530.827940457892\n    },\n    \"created_by\": \"string\",\n    \"updated_by\": \"string\",\n    \"created_date\": \"1947-07-15T01:47:12.095Z\",\n    \"updated_date\": \"1984-07-02T06:03:38.132Z\"\n  },\n  {\n    \"company_id\": \"string\",\n    \"usage_id\": \"string\",\n    \"subscription_line_id\": \"string\",\n    \"customer_id\": \"string\",\n    \"subscription_id\": \"string\",\n    \"charge_id\": \"string\",\n    \"quantity\": 3814.522644497591,\n    \"date\": \"1992-08-19T14:23:58.994Z\",\n    \"unit_of_measure\": \"string\",\n    \"description\": \"string\",\n    \"invoiced\": true,\n    \"currency\": \"string\",\n    \"custom_fields\": {\n      \"key_0\": false,\n      \"key_1\": \"string\"\n    },\n    \"created_by\": \"string\",\n    \"updated_by\": \"string\",\n    \"created_date\": \"1991-03-24T18:30:29.928Z\",\n    \"updated_date\": \"2023-11-06T00:18:40.396Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "221abac0-cee4-43d8-add8-53d10de5e731",
+              "name": "Authentication credentials missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "usages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "50"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updated_date>",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"errors\": {\n    \"key_0\": 8987\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ecaf6dfd-8c6e-460f-aef1-8bdcdec2dccb",
+          "name": "Create a usage record",
+          "request": {
+            "name": "Create a usage record",
+            "description": {},
+            "url": {
+              "path": [
+                "usages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customer_id\": \"<string>\",\n  \"subscription_id\": \"<string>\",\n  \"subscription_line_id\": \"<string>\",\n  \"charge_id\": \"<string>\",\n  \"quantity\": \"<number>\",\n  \"date\": \"<dateTime>\",\n  \"unit_of_measure\": \"<string>\",\n  \"description\": \"<string>\",\n  \"custom_fields\": {\n    \"key_0\": false,\n    \"key_1\": true,\n    \"key_2\": \"string\",\n    \"key_3\": false\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "77c63d79-366e-4966-8205-86429d8f08b3",
+              "name": "Usage record created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "usages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customer_id\": \"<string>\",\n  \"subscription_id\": \"<string>\",\n  \"subscription_line_id\": \"<string>\",\n  \"charge_id\": \"<string>\",\n  \"quantity\": \"<number>\",\n  \"date\": \"<dateTime>\",\n  \"unit_of_measure\": \"<string>\",\n  \"description\": \"<string>\",\n  \"custom_fields\": {\n    \"key_0\": \"string\",\n    \"key_1\": 3732.7167352824777\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"company_id\": \"string\",\n  \"usage_id\": \"string\",\n  \"subscription_line_id\": \"string\",\n  \"customer_id\": \"string\",\n  \"subscription_id\": \"string\",\n  \"charge_id\": \"string\",\n  \"quantity\": 2940.3283825158956,\n  \"date\": \"1961-07-09T15:33:37.139Z\",\n  \"unit_of_measure\": \"string\",\n  \"description\": \"string\",\n  \"invoiced\": true,\n  \"currency\": \"string\",\n  \"custom_fields\": {\n    \"key_0\": 268.0564787469175,\n    \"key_1\": true,\n    \"key_2\": \"string\"\n  },\n  \"created_by\": \"string\",\n  \"updated_by\": \"string\",\n  \"created_date\": \"1989-06-06T22:27:32.758Z\",\n  \"updated_date\": \"1948-06-15T12:04:56.209Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5e431cf8-9364-47d7-b6ea-e235cfa1b3fa",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "usages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customer_id\": \"<string>\",\n  \"subscription_id\": \"<string>\",\n  \"subscription_line_id\": \"<string>\",\n  \"charge_id\": \"<string>\",\n  \"quantity\": \"<number>\",\n  \"date\": \"<dateTime>\",\n  \"unit_of_measure\": \"<string>\",\n  \"description\": \"<string>\",\n  \"custom_fields\": {\n    \"key_0\": \"string\",\n    \"key_1\": 3732.7167352824777\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"errors\": {\n    \"key_0\": 8987\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e6bc0124-b927-4f70-9b9a-96edf4969986",
+          "name": "Retrieve a usage record",
+          "request": {
+            "name": "Retrieve a usage record",
+            "description": {},
+            "url": {
+              "path": [
+                "usages",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Resource identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c9494473-6b9a-4f86-bdfd-04b614658bc0",
+              "name": "Usage record details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "usages",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"company_id\": \"string\",\n  \"usage_id\": \"string\",\n  \"subscription_line_id\": \"string\",\n  \"customer_id\": \"string\",\n  \"subscription_id\": \"string\",\n  \"charge_id\": \"string\",\n  \"quantity\": 2940.3283825158956,\n  \"date\": \"1961-07-09T15:33:37.139Z\",\n  \"unit_of_measure\": \"string\",\n  \"description\": \"string\",\n  \"invoiced\": true,\n  \"currency\": \"string\",\n  \"custom_fields\": {\n    \"key_0\": 268.0564787469175,\n    \"key_1\": true,\n    \"key_2\": \"string\"\n  },\n  \"created_by\": \"string\",\n  \"updated_by\": \"string\",\n  \"created_date\": \"1989-06-06T22:27:32.758Z\",\n  \"updated_date\": \"1948-06-15T12:04:56.209Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6db28393-c1f8-46cf-a72d-36259e34814a",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "usages",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"errors\": {\n    \"key_0\": 8987\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ordwaylabs.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-KEY"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4929d50f-b20b-42c1-9b50-2c6e0d4cc87f",
+    "name": "Ordway REST Billing Runs Usages API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "RESTful API for bidirectional integration with the Ordway billing and revenue automation platform. Enables managing customers, subscriptions, invoices, payments, usage data, and revenue recognition schedules. Supports usage-based billing, ASC 606 compliant revenue recognition, accounts receivable automation, and SaaS metrics reporting.\n\nContact Support:\n Name: Ordway Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,357 @@
+{
+  "item": [
+    {
+      "id": "723c2a81-c22a-4c4c-86b2-73c584ead89c",
+      "name": "Statements",
+      "description": {
+        "content": "Customer account statements",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5a714cdf-7e28-4803-a33d-c3ad25e743bf",
+          "name": "List statements",
+          "request": {
+            "name": "List statements",
+            "description": {},
+            "url": {
+              "path": [
+                "statements"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for pagination (1-based)"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "50",
+                  "description": "Number of records per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to sort by (prefix with - for descending)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7ec784a3-f6f6-4769-a7f7-b88428f3b39e",
+              "name": "List of statements",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "statements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "50"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"company_id\": \"string\",\n    \"statement_id\": \"string\",\n    \"customer_id\": \"string\",\n    \"statement_date\": \"1991-01-15T08:04:52.322Z\",\n    \"start_date\": \"2019-01-31T04:13:19.077Z\",\n    \"end_date\": \"2017-02-22T06:00:39.660Z\",\n    \"template_name\": \"string\",\n    \"url\": \"http://qKlOgZBstyqFv.mdkHmcr,a7m51eZgtwGhr.mowgAMiRTIdood1r8\",\n    \"created_by\": \"string\",\n    \"updated_by\": \"string\",\n    \"created_date\": \"1964-08-09T02:55:05.869Z\",\n    \"updated_date\": \"1967-11-27T16:49:34.041Z\"\n  },\n  {\n    \"company_id\": \"string\",\n    \"statement_id\": \"string\",\n    \"customer_id\": \"string\",\n    \"statement_date\": \"1996-07-28T10:17:41.664Z\",\n    \"start_date\": \"1959-03-27T20:19:42.204Z\",\n    \"end_date\": \"1978-06-04T12:40:43.269Z\",\n    \"template_name\": \"string\",\n    \"url\": \"https://mOvcAbN.zneQL763zcIv-N4Fn61AI\",\n    \"created_by\": \"string\",\n    \"updated_by\": \"string\",\n    \"created_date\": \"2006-12-02T11:53:17.596Z\",\n    \"updated_date\": \"2012-03-18T15:34:29.400Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ee43af76-1d8d-4789-9fca-eecafeb78007",
+              "name": "Authentication credentials missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "statements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "50"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"errors\": {\n    \"key_0\": 6130.952596954337,\n    \"key_1\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d313a186-2ee4-4a39-afa1-75af9d5f752f",
+          "name": "Retrieve a statement",
+          "request": {
+            "name": "Retrieve a statement",
+            "description": {},
+            "url": {
+              "path": [
+                "statements",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Resource identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9d5cd3bc-b9b1-4d7f-8f02-209b0a35b1c9",
+              "name": "Statement details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "statements",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"company_id\": \"string\",\n  \"statement_id\": \"string\",\n  \"customer_id\": \"string\",\n  \"statement_date\": \"2023-07-20T01:10:31.389Z\",\n  \"start_date\": \"1951-05-15T15:10:54.228Z\",\n  \"end_date\": \"2004-02-20T22:58:45.088Z\",\n  \"template_name\": \"string\",\n  \"url\": \"http://GIEknPifvgPZaiNjKIgBvfmIxKBfsDAC.ywnzNgvB---aOM234+nrR,TIsmfS4EcC8x1sObcCkRHSCS8fFv,qZkEMt5W\",\n  \"created_by\": \"string\",\n  \"updated_by\": \"string\",\n  \"created_date\": \"1967-05-14T12:04:12.327Z\",\n  \"updated_date\": \"2024-01-09T22:12:40.915Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b6d9bc2-2159-4e7a-ae0b-e2d564c75709",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "statements",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"errors\": {\n    \"key_0\": 6130.952596954337,\n    \"key_1\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ordwaylabs.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-KEY"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "efd0c347-60e0-45d4-a442-358fc83c9f59",
+    "name": "Ordway REST Billing Runs Statements API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "RESTful API for bidirectional integration with the Ordway billing and revenue automation platform. Enables managing customers, subscriptions, invoices, payments, usage data, and revenue recognition schedules. Supports usage-based billing, ASC 606 compliant revenue recognition, accounts receivable automation, and SaaS metrics reporting.\n\nContact Support:\n Name: Ordway Support",
+      "type": "text/plain"
+    }
+  }
+}

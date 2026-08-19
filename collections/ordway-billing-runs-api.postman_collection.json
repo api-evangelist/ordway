@@ -1,0 +1,490 @@
+{
+  "item": [
+    {
+      "id": "bf220ee0-4b85-4f3f-8a00-ebbd494bd3bf",
+      "name": "Billing Runs",
+      "description": {
+        "content": "Automated billing run management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ba107010-923d-4b9c-ac0b-d10042924b2f",
+          "name": "List billing runs",
+          "request": {
+            "name": "List billing runs",
+            "description": {},
+            "url": {
+              "path": [
+                "billing_runs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for pagination (1-based)"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "50",
+                  "description": "Number of records per page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0499b4d7-52b1-450d-bfef-767a1d8584c0",
+              "name": "List of billing runs",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing_runs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"company_id\": \"string\",\n    \"billing_run_id\": \"string\",\n    \"status\": \"string\",\n    \"target_date\": \"1986-11-10\",\n    \"invoice_date\": \"1989-11-16\",\n    \"invoices_total\": 9241.880554381645,\n    \"invoices_count\": 1157,\n    \"currency\": \"string\",\n    \"charge_type\": \"string\",\n    \"payment_term\": \"string\",\n    \"created_by\": \"string\",\n    \"updated_by\": \"string\",\n    \"created_date\": \"1965-08-15T23:14:52.581Z\",\n    \"updated_date\": \"1974-05-16T12:35:55.103Z\"\n  },\n  {\n    \"company_id\": \"string\",\n    \"billing_run_id\": \"string\",\n    \"status\": \"string\",\n    \"target_date\": \"2019-10-09\",\n    \"invoice_date\": \"1979-10-24\",\n    \"invoices_total\": 6243.625090215269,\n    \"invoices_count\": 9219,\n    \"currency\": \"string\",\n    \"charge_type\": \"string\",\n    \"payment_term\": \"string\",\n    \"created_by\": \"string\",\n    \"updated_by\": \"string\",\n    \"created_date\": \"1987-11-28T17:28:59.718Z\",\n    \"updated_date\": \"1983-05-25T04:35:22.651Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fc7b9131-349b-4474-be3c-2eeda2b6d675",
+              "name": "Authentication credentials missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing_runs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"errors\": {\n    \"key_0\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "20769061-1ad8-4515-812e-26cea5b2c8a0",
+          "name": "Create a billing run",
+          "request": {
+            "name": "Create a billing run",
+            "description": {},
+            "url": {
+              "path": [
+                "billing_runs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"target_date\": \"<date>\",\n  \"invoice_date\": \"<date>\",\n  \"currency\": \"<string>\",\n  \"charge_type\": \"<string>\",\n  \"payment_term\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c0c637a3-0131-4fc7-b9f5-d88927021fd1",
+              "name": "Billing run created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing_runs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"target_date\": \"<date>\",\n  \"invoice_date\": \"<date>\",\n  \"currency\": \"<string>\",\n  \"charge_type\": \"<string>\",\n  \"payment_term\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"company_id\": \"string\",\n  \"billing_run_id\": \"string\",\n  \"status\": \"string\",\n  \"target_date\": \"2023-03-01\",\n  \"invoice_date\": \"1959-11-11\",\n  \"invoices_total\": 5077.555292214858,\n  \"invoices_count\": 366,\n  \"currency\": \"string\",\n  \"charge_type\": \"string\",\n  \"payment_term\": \"string\",\n  \"created_by\": \"string\",\n  \"updated_by\": \"string\",\n  \"created_date\": \"1990-02-11T00:33:19.840Z\",\n  \"updated_date\": \"1987-01-26T16:24:54.680Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3eaa48d3-3323-4771-ae0e-9e389012a7ab",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing_runs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"target_date\": \"<date>\",\n  \"invoice_date\": \"<date>\",\n  \"currency\": \"<string>\",\n  \"charge_type\": \"<string>\",\n  \"payment_term\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"errors\": {\n    \"key_0\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b0c9dd1e-76bb-4857-ab61-bff835b20369",
+          "name": "Retrieve a billing run",
+          "request": {
+            "name": "Retrieve a billing run",
+            "description": {},
+            "url": {
+              "path": [
+                "billing_runs",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Resource identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6e2beff0-9240-429d-aa33-3bbdc4df8b00",
+              "name": "Billing run details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing_runs",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"company_id\": \"string\",\n  \"billing_run_id\": \"string\",\n  \"status\": \"string\",\n  \"target_date\": \"2023-03-01\",\n  \"invoice_date\": \"1959-11-11\",\n  \"invoices_total\": 5077.555292214858,\n  \"invoices_count\": 366,\n  \"currency\": \"string\",\n  \"charge_type\": \"string\",\n  \"payment_term\": \"string\",\n  \"created_by\": \"string\",\n  \"updated_by\": \"string\",\n  \"created_date\": \"1990-02-11T00:33:19.840Z\",\n  \"updated_date\": \"1987-01-26T16:24:54.680Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "173041d8-9190-4a2f-a78d-54c34efc8d97",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "billing_runs",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"errors\": {\n    \"key_0\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ordwaylabs.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-KEY"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "29cdf1fb-bbca-495c-bd05-974b5c0443c1",
+    "name": "Ordway REST Billing Runs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "RESTful API for bidirectional integration with the Ordway billing and revenue automation platform. Enables managing customers, subscriptions, invoices, payments, usage data, and revenue recognition schedules. Supports usage-based billing, ASC 606 compliant revenue recognition, accounts receivable automation, and SaaS metrics reporting.\n\nContact Support:\n Name: Ordway Support",
+      "type": "text/plain"
+    }
+  }
+}

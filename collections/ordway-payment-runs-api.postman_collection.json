@@ -1,0 +1,490 @@
+{
+  "item": [
+    {
+      "id": "139d02f3-c5ff-4c8a-8b16-50e07a8a0db7",
+      "name": "Payment Runs",
+      "description": {
+        "content": "Automated payment run management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e17902e4-509b-420f-9118-69ddfd9233ce",
+          "name": "List payment runs",
+          "request": {
+            "name": "List payment runs",
+            "description": {},
+            "url": {
+              "path": [
+                "payment_runs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for pagination (1-based)"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "50",
+                  "description": "Number of records per page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8410938e-fae4-48db-9fac-a30fcdbc89c1",
+              "name": "List of payment runs",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment_runs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"payment_run_id\": \"string\",\n    \"company_id\": \"string\",\n    \"status\": \"string\",\n    \"target_date\": \"1974-07-04T09:46:08.127Z\",\n    \"success_count\": 6646,\n    \"failure_count\": 4139,\n    \"currency\": \"string\",\n    \"payments_total_value\": 768.4761491334368,\n    \"payments_success_value\": 9468.031410995813,\n    \"payments_failed_value\": 7959.001211934774,\n    \"refunds_total_value\": 3660.8627578915043,\n    \"payment_per_customer\": true,\n    \"retry_failed_payments\": false,\n    \"created_by\": \"string\",\n    \"updated_by\": \"string\"\n  },\n  {\n    \"payment_run_id\": \"string\",\n    \"company_id\": \"string\",\n    \"status\": \"string\",\n    \"target_date\": \"2026-04-12T18:30:58.490Z\",\n    \"success_count\": 9387,\n    \"failure_count\": 8076,\n    \"currency\": \"string\",\n    \"payments_total_value\": 8961.779930291614,\n    \"payments_success_value\": 4346.503952445308,\n    \"payments_failed_value\": 7186.50959950304,\n    \"refunds_total_value\": 6560.218981643021,\n    \"payment_per_customer\": true,\n    \"retry_failed_payments\": true,\n    \"created_by\": \"string\",\n    \"updated_by\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3bd4aa19-babb-4634-9d57-46f4c545d15d",
+              "name": "Authentication credentials missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment_runs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"errors\": {\n    \"key_0\": 6226.723812818764\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "16b49cad-24ea-4981-b851-6efe8f239fdd",
+          "name": "Create a payment run",
+          "request": {
+            "name": "Create a payment run",
+            "description": {},
+            "url": {
+              "path": [
+                "payment_runs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"target_date\": \"<date>\",\n  \"currency\": \"<string>\",\n  \"payment_per_customer\": \"<boolean>\",\n  \"retry_failed_payments\": \"<boolean>\",\n  \"send_email_on_payments_success\": \"<boolean>\",\n  \"send_email_on_payment_fail\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e97f27e1-16c4-440e-8dfe-cedcd8aaa736",
+              "name": "Payment run created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment_runs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"target_date\": \"<date>\",\n  \"currency\": \"<string>\",\n  \"payment_per_customer\": \"<boolean>\",\n  \"retry_failed_payments\": \"<boolean>\",\n  \"send_email_on_payments_success\": \"<boolean>\",\n  \"send_email_on_payment_fail\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"payment_run_id\": \"string\",\n  \"company_id\": \"string\",\n  \"status\": \"string\",\n  \"target_date\": \"1990-05-18T16:17:02.565Z\",\n  \"success_count\": 6872,\n  \"failure_count\": 4905,\n  \"currency\": \"string\",\n  \"payments_total_value\": 4097.78561360004,\n  \"payments_success_value\": 9639.39641112946,\n  \"payments_failed_value\": 996.6381148692982,\n  \"refunds_total_value\": 338.43221840179183,\n  \"payment_per_customer\": false,\n  \"retry_failed_payments\": false,\n  \"created_by\": \"string\",\n  \"updated_by\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d0f2ceaa-0d71-4f8e-8d3b-8c7fe42f5e28",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment_runs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"target_date\": \"<date>\",\n  \"currency\": \"<string>\",\n  \"payment_per_customer\": \"<boolean>\",\n  \"retry_failed_payments\": \"<boolean>\",\n  \"send_email_on_payments_success\": \"<boolean>\",\n  \"send_email_on_payment_fail\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"errors\": {\n    \"key_0\": 6226.723812818764\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cea8e133-23f0-4fbe-9957-ac7b18a3855a",
+          "name": "Retrieve a payment run",
+          "request": {
+            "name": "Retrieve a payment run",
+            "description": {},
+            "url": {
+              "path": [
+                "payment_runs",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Resource identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "22a0a796-c5d0-4445-a282-119a2ca0df47",
+              "name": "Payment run details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment_runs",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"payment_run_id\": \"string\",\n  \"company_id\": \"string\",\n  \"status\": \"string\",\n  \"target_date\": \"1990-05-18T16:17:02.565Z\",\n  \"success_count\": 6872,\n  \"failure_count\": 4905,\n  \"currency\": \"string\",\n  \"payments_total_value\": 4097.78561360004,\n  \"payments_success_value\": 9639.39641112946,\n  \"payments_failed_value\": 996.6381148692982,\n  \"refunds_total_value\": 338.43221840179183,\n  \"payment_per_customer\": false,\n  \"retry_failed_payments\": false,\n  \"created_by\": \"string\",\n  \"updated_by\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "44009dcb-8707-40eb-b619-37f909027b6a",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment_runs",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"errors\": {\n    \"key_0\": 6226.723812818764\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ordwaylabs.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-KEY"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e72656bb-c269-47c4-bdb0-c70801164091",
+    "name": "Ordway REST Billing Runs Payment Runs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "RESTful API for bidirectional integration with the Ordway billing and revenue automation platform. Enables managing customers, subscriptions, invoices, payments, usage data, and revenue recognition schedules. Supports usage-based billing, ASC 606 compliant revenue recognition, accounts receivable automation, and SaaS metrics reporting.\n\nContact Support:\n Name: Ordway Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,666 @@
+{
+  "item": [
+    {
+      "id": "b11ec6b0-1743-4bc6-8621-3c82234fc515",
+      "name": "Payments",
+      "description": {
+        "content": "Manage payments and payment methods",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6ccd37fc-32f1-4ebe-aeca-8d14b065cafb",
+          "name": "List payment methods for a customer",
+          "request": {
+            "name": "List payment methods for a customer",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                ":id",
+                "payment_methods"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Resource identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "af1b03c7-53af-4db5-95a4-8d95a423a36a",
+              "name": "List of payment methods",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":id",
+                    "payment_methods"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"company_id\": \"string\",\n    \"payment_method_id\": \"string\",\n    \"customer_id\": \"string\",\n    \"payment_type\": \"string\",\n    \"account_number\": \"string\",\n    \"routing_number\": \"string\",\n    \"account_holder_name\": \"string\",\n    \"account_holder_type\": \"string\",\n    \"country\": \"string\",\n    \"expiry\": \"1958-08-21T03:53:42.351Z\",\n    \"status\": \"string\",\n    \"default\": false\n  },\n  {\n    \"company_id\": \"string\",\n    \"payment_method_id\": \"string\",\n    \"customer_id\": \"string\",\n    \"payment_type\": \"string\",\n    \"account_number\": \"string\",\n    \"routing_number\": \"string\",\n    \"account_holder_name\": \"string\",\n    \"account_holder_type\": \"string\",\n    \"country\": \"string\",\n    \"expiry\": \"1991-05-04T09:09:00.946Z\",\n    \"status\": \"string\",\n    \"default\": true\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "81f9c2cb-7a42-435d-ac81-3b6f0be4e636",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":id",
+                    "payment_methods"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"errors\": {\n    \"key_0\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c882bf99-41bb-4c85-80ca-c868438e9a46",
+          "name": "List payments",
+          "request": {
+            "name": "List payments",
+            "description": {},
+            "url": {
+              "path": [
+                "payments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for pagination (1-based)"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "50",
+                  "description": "Number of records per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to sort by (prefix with - for descending)"
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_date>",
+                  "value": "<dateTime>",
+                  "description": "Filter payments updated after this date-time (ISO 8601)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "585f6e64-8afe-4550-9cbe-50dd60eab30b",
+              "name": "List of payments",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "50"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updated_date>",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"company_id\": \"string\",\n    \"payment_id\": \"string\",\n    \"customer_id\": \"string\",\n    \"payment_date\": \"1970-09-15\",\n    \"notes\": \"string\",\n    \"status\": \"string\",\n    \"payment_amount\": 9359.085980889535,\n    \"fee_amount\": 7572.756697640869,\n    \"applied_amount\": 9499.03316258083,\n    \"unapplied_amount\": 3152.0829546727646,\n    \"refunded_amount\": 4989.764682614852,\n    \"payment_type\": \"string\",\n    \"payment_method\": \"string\",\n    \"currency\": \"string\",\n    \"reference_number\": \"string\",\n    \"auto_apply\": false,\n    \"gl_account\": \"string\",\n    \"custom_fields\": {\n      \"key_0\": 5392.730865013015,\n      \"key_1\": 3445\n    },\n    \"created_by\": \"string\",\n    \"updated_by\": \"string\",\n    \"created_date\": \"2009-08-04T09:56:20.420Z\",\n    \"updated_date\": \"2010-05-22T01:46:45.289Z\"\n  },\n  {\n    \"company_id\": \"string\",\n    \"payment_id\": \"string\",\n    \"customer_id\": \"string\",\n    \"payment_date\": \"1957-11-27\",\n    \"notes\": \"string\",\n    \"status\": \"string\",\n    \"payment_amount\": 5741.946034649764,\n    \"fee_amount\": 8055.669690538239,\n    \"applied_amount\": 7797.071161581639,\n    \"unapplied_amount\": 7913.469115309721,\n    \"refunded_amount\": 8862.737638201357,\n    \"payment_type\": \"string\",\n    \"payment_method\": \"string\",\n    \"currency\": \"string\",\n    \"reference_number\": \"string\",\n    \"auto_apply\": false,\n    \"gl_account\": \"string\",\n    \"custom_fields\": {\n      \"key_0\": \"string\",\n      \"key_1\": true\n    },\n    \"created_by\": \"string\",\n    \"updated_by\": \"string\",\n    \"created_date\": \"1975-05-22T15:34:31.012Z\",\n    \"updated_date\": \"1960-06-15T04:50:55.378Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "936d64e9-7611-40fe-b592-ec49b1537958",
+              "name": "Authentication credentials missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "50"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updated_date>",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"errors\": {\n    \"key_0\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "feedb2b6-0892-433a-9676-fc4e274a2624",
+          "name": "Create a payment",
+          "request": {
+            "name": "Create a payment",
+            "description": {},
+            "url": {
+              "path": [
+                "payments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customer_id\": \"<string>\",\n  \"payment_date\": \"<date>\",\n  \"payment_amount\": \"<number>\",\n  \"payment_type\": \"<string>\",\n  \"payment_method\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"reference_number\": \"<string>\",\n  \"auto_apply\": \"<boolean>\",\n  \"gl_account\": \"<string>\",\n  \"custom_fields\": {\n    \"key_0\": true,\n    \"key_1\": false,\n    \"key_2\": \"string\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3cda9107-25ee-43ea-b0fd-92413b37a06b",
+              "name": "Payment created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customer_id\": \"<string>\",\n  \"payment_date\": \"<date>\",\n  \"payment_amount\": \"<number>\",\n  \"payment_type\": \"<string>\",\n  \"payment_method\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"reference_number\": \"<string>\",\n  \"auto_apply\": \"<boolean>\",\n  \"gl_account\": \"<string>\",\n  \"custom_fields\": {\n    \"key_0\": 9908.212886500687,\n    \"key_1\": \"string\",\n    \"key_2\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"company_id\": \"string\",\n  \"payment_id\": \"string\",\n  \"customer_id\": \"string\",\n  \"payment_date\": \"1998-01-06\",\n  \"notes\": \"string\",\n  \"status\": \"string\",\n  \"payment_amount\": 5903.652768372171,\n  \"fee_amount\": 3639.8224201452836,\n  \"applied_amount\": 9246.532042218847,\n  \"unapplied_amount\": 5008.247897743492,\n  \"refunded_amount\": 5501.245067745286,\n  \"payment_type\": \"string\",\n  \"payment_method\": \"string\",\n  \"currency\": \"string\",\n  \"reference_number\": \"string\",\n  \"auto_apply\": true,\n  \"gl_account\": \"string\",\n  \"custom_fields\": {\n    \"key_0\": false\n  },\n  \"created_by\": \"string\",\n  \"updated_by\": \"string\",\n  \"created_date\": \"1981-05-31T00:49:12.503Z\",\n  \"updated_date\": \"1996-08-09T18:50:57.374Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b867aee6-aea9-4b9b-b6c4-cb0995cdaca2",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customer_id\": \"<string>\",\n  \"payment_date\": \"<date>\",\n  \"payment_amount\": \"<number>\",\n  \"payment_type\": \"<string>\",\n  \"payment_method\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"reference_number\": \"<string>\",\n  \"auto_apply\": \"<boolean>\",\n  \"gl_account\": \"<string>\",\n  \"custom_fields\": {\n    \"key_0\": 9908.212886500687,\n    \"key_1\": \"string\",\n    \"key_2\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"errors\": {\n    \"key_0\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ad425ee7-8a41-454a-bf8a-199213a4d77f",
+          "name": "Retrieve a payment",
+          "request": {
+            "name": "Retrieve a payment",
+            "description": {},
+            "url": {
+              "path": [
+                "payments",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Resource identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "540d6a10-a1aa-4016-99b6-145dcb2be741",
+              "name": "Payment details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"company_id\": \"string\",\n  \"payment_id\": \"string\",\n  \"customer_id\": \"string\",\n  \"payment_date\": \"1998-01-06\",\n  \"notes\": \"string\",\n  \"status\": \"string\",\n  \"payment_amount\": 5903.652768372171,\n  \"fee_amount\": 3639.8224201452836,\n  \"applied_amount\": 9246.532042218847,\n  \"unapplied_amount\": 5008.247897743492,\n  \"refunded_amount\": 5501.245067745286,\n  \"payment_type\": \"string\",\n  \"payment_method\": \"string\",\n  \"currency\": \"string\",\n  \"reference_number\": \"string\",\n  \"auto_apply\": true,\n  \"gl_account\": \"string\",\n  \"custom_fields\": {\n    \"key_0\": false\n  },\n  \"created_by\": \"string\",\n  \"updated_by\": \"string\",\n  \"created_date\": \"1981-05-31T00:49:12.503Z\",\n  \"updated_date\": \"1996-08-09T18:50:57.374Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ace7b69c-50af-4d90-a970-1cad0ec64e8f",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-KEY",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"errors\": {\n    \"key_0\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ordwaylabs.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-KEY"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c654a67b-dd3d-4063-adfd-2596b542c5d6",
+    "name": "Ordway REST Billing Runs Payments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "RESTful API for bidirectional integration with the Ordway billing and revenue automation platform. Enables managing customers, subscriptions, invoices, payments, usage data, and revenue recognition schedules. Supports usage-based billing, ASC 606 compliant revenue recognition, accounts receivable automation, and SaaS metrics reporting.\n\nContact Support:\n Name: Ordway Support",
+      "type": "text/plain"
+    }
+  }
+}
