@@ -22,6 +22,17 @@ specificationVersion: '0.23'
 tags:
   - Billing
   - Revenue Automation
+  - Subscription
+  - Invoicing
+  - Payments
+  - Revenue Recognition
+  - SaaS Metrics
+  - Usage-Based Billing
+  - Financial Reporting
+  - Accounts Receivable
+tags_raw:
+  - Billing
+  - Revenue Automation
   - Subscriptions
   - Invoicing
   - Payments
@@ -145,6 +156,8 @@ apis:
   humanURL: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
   baseURL: https://api.ordwaylabs.com/api/v1
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
@@ -193,6 +206,8 @@ apis:
   humanURL: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
   baseURL: https://api.ordwaylabs.com/api/v1
   tags:
+  - Product
+  tags_raw:
   - Products
   properties:
   - type: OpenAPI
@@ -253,6 +268,8 @@ apis:
   humanURL: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
   baseURL: https://api.ordwaylabs.com/api/v1
   tags:
+  - Subscription
+  tags_raw:
   - Subscriptions
   properties:
   - type: OpenAPI
@@ -277,6 +294,8 @@ apis:
   humanURL: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
   baseURL: https://api.ordwaylabs.com/api/v1
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
