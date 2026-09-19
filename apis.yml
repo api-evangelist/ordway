@@ -108,6 +108,8 @@ apis:
   humanURL: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
   baseURL: https://api.ordwaylabs.com/api/v1
   tags:
+  - Credit
+  tags_raw:
   - Credits
   properties:
   - type: OpenAPI
