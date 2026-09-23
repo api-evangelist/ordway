@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Ordway REST Billing Runs Payment Runs API
+  title: Ordway REST Payment Runs API
   description: RESTful API for bidirectional integration with the Ordway billing and revenue automation platform. Enables managing customers, subscriptions, invoices, payments, usage data, and revenue recognition schedules. Supports usage-based billing, ASC 606 compliant revenue recognition, accounts receivable automation, and SaaS metrics reporting.
   version: v1
   contact:
@@ -79,48 +79,26 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    id:
-      name: id
-      in: path
-      required: true
-      description: Resource identifier
-      schema:
-        type: string
-    size:
-      name: size
-      in: query
-      description: Number of records per page
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 500
-        default: 50
-    page:
-      name: page
-      in: query
-      description: Page number for pagination (1-based)
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
+  responses:
+    Unauthorized:
+      description: Authentication credentials missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    UnprocessableEntity:
+      description: Validation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    PaymentRunInput:
-      type: object
-      properties:
-        target_date:
-          type: string
-          format: date
-        currency:
-          type: string
-        payment_per_customer:
-          type: boolean
-        retry_failed_payments:
-          type: boolean
-        send_email_on_payments_success:
-          type: boolean
-        send_email_on_payment_fail:
-          type: boolean
     Error:
       type: object
       properties:
@@ -140,64 +118,99 @@ components:
         payment_run_id:
           type: string
         status:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
+        target_date:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        success_count:
+          type:
+          - integer
+          - 'null'
+        failure_count:
+          type:
+          - integer
+          - 'null'
+        currency:
+          type:
+          - string
+          - 'null'
+        payments_total_value:
+          type:
+          - number
+          - 'null'
+        payments_success_value:
+          type:
+          - number
+          - 'null'
+        payments_failed_value:
+          type:
+          - number
+          - 'null'
+        refunds_total_value:
+          type:
+          - number
+          - 'null'
+        payment_per_customer:
+          type:
+          - boolean
+          - 'null'
+        retry_failed_payments:
+          type:
+          - boolean
+          - 'null'
+        created_by:
+          type:
+          - string
+          - 'null'
+        updated_by:
+          type:
+          - string
+          - 'null'
+    PaymentRunInput:
+      type: object
+      properties:
         target_date:
           type: string
-          format: date-time
-          nullable: true
-        success_count:
-          type: integer
-          nullable: true
-        failure_count:
-          type: integer
-          nullable: true
+          format: date
         currency:
           type: string
-          nullable: true
-        payments_total_value:
-          type: number
-          nullable: true
-        payments_success_value:
-          type: number
-          nullable: true
-        payments_failed_value:
-          type: number
-          nullable: true
-        refunds_total_value:
-          type: number
-          nullable: true
         payment_per_customer:
           type: boolean
-          nullable: true
         retry_failed_payments:
           type: boolean
-          nullable: true
-        created_by:
-          type: string
-          nullable: true
-        updated_by:
-          type: string
-          nullable: true
-  responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication credentials missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    UnprocessableEntity:
-      description: Validation error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+        send_email_on_payments_success:
+          type: boolean
+        send_email_on_payment_fail:
+          type: boolean
+  parameters:
+    page:
+      name: page
+      in: query
+      description: Page number for pagination (1-based)
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+    id:
+      name: id
+      in: path
+      required: true
+      description: Resource identifier
+      schema:
+        type: string
+    size:
+      name: size
+      in: query
+      description: Number of records per page
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 500
+        default: 50
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

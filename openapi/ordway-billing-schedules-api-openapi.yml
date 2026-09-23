@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Ordway REST Billing Runs Billing Schedules API
+  title: Ordway REST Billing Schedules API
   description: RESTful API for bidirectional integration with the Ordway billing and revenue automation platform. Enables managing customers, subscriptions, invoices, payments, usage data, and revenue recognition schedules. Supports usage-based billing, ASC 606 compliant revenue recognition, accounts receivable automation, and SaaS metrics reporting.
   version: v1
   contact:
@@ -59,7 +59,136 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    Unauthorized:
+      description: Authentication credentials missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        errors:
+          type: object
+          additionalProperties: true
+    BillingSchedule:
+      type: object
+      required:
+      - company_id
+      - billing_schedule_id
+      properties:
+        company_id:
+          type: string
+        billing_schedule_id:
+          type: string
+        customer_id:
+          type: string
+        customer_name:
+          type:
+          - string
+          - 'null'
+        subscription_id:
+          type:
+          - string
+          - 'null'
+        product_id:
+          type:
+          - string
+          - 'null'
+        product_name:
+          type:
+          - string
+          - 'null'
+        charge_id:
+          type:
+          - string
+          - 'null'
+        charge_name:
+          type:
+          - string
+          - 'null'
+        charge_type:
+          type:
+          - string
+          - 'null'
+        start_date:
+          type:
+          - string
+          - 'null'
+          format: date
+        end_date:
+          type:
+          - string
+          - 'null'
+        monthly_recurring_revenue:
+          type:
+          - number
+          - 'null'
+        annual_contract_revenue:
+          type:
+          - number
+          - 'null'
+        total_contract_revenue:
+          type:
+          - number
+          - 'null'
+        amount_invoiced:
+          type:
+          - number
+          - 'null'
+        currency:
+          type:
+          - string
+          - 'null'
+        schedule_lines:
+          type:
+          - array
+          - 'null'
+          items:
+            type: object
+            additionalProperties: true
+        custom_fields:
+          type:
+          - object
+          - 'null'
+          additionalProperties: true
+        created_by:
+          type:
+          - string
+          - 'null'
+        updated_by:
+          type:
+          - string
+          - 'null'
+        created_date:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        updated_date:
+          type:
+          - string
+          - 'null'
+          format: date-time
   parameters:
+    page:
+      name: page
+      in: query
+      description: Page number for pagination (1-based)
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
     id:
       name: id
       in: path
@@ -76,115 +205,6 @@ components:
         minimum: 1
         maximum: 500
         default: 50
-    page:
-      name: page
-      in: query
-      description: Page number for pagination (1-based)
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-  schemas:
-    BillingSchedule:
-      type: object
-      required:
-      - company_id
-      - billing_schedule_id
-      properties:
-        company_id:
-          type: string
-        billing_schedule_id:
-          type: string
-        customer_id:
-          type: string
-        customer_name:
-          type: string
-          nullable: true
-        subscription_id:
-          type: string
-          nullable: true
-        product_id:
-          type: string
-          nullable: true
-        product_name:
-          type: string
-          nullable: true
-        charge_id:
-          type: string
-          nullable: true
-        charge_name:
-          type: string
-          nullable: true
-        charge_type:
-          type: string
-          nullable: true
-        start_date:
-          type: string
-          format: date
-          nullable: true
-        end_date:
-          type: string
-          nullable: true
-        monthly_recurring_revenue:
-          type: number
-          nullable: true
-        annual_contract_revenue:
-          type: number
-          nullable: true
-        total_contract_revenue:
-          type: number
-          nullable: true
-        amount_invoiced:
-          type: number
-          nullable: true
-        currency:
-          type: string
-          nullable: true
-        schedule_lines:
-          type: array
-          nullable: true
-          items:
-            type: object
-            additionalProperties: true
-        custom_fields:
-          type: object
-          nullable: true
-          additionalProperties: true
-        created_by:
-          type: string
-          nullable: true
-        updated_by:
-          type: string
-          nullable: true
-        created_date:
-          type: string
-          format: date-time
-          nullable: true
-        updated_date:
-          type: string
-          format: date-time
-          nullable: true
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-        errors:
-          type: object
-          additionalProperties: true
-  responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication credentials missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

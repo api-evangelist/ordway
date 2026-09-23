@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Ordway REST Billing Runs API
   description: RESTful API for bidirectional integration with the Ordway billing and revenue automation platform. Enables managing customers, subscriptions, invoices, payments, usage data, and revenue recognition schedules. Supports usage-based billing, ASC 606 compliant revenue recognition, accounts receivable automation, and SaaS metrics reporting.
@@ -79,7 +79,101 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  schemas:
+    BillingRunInput:
+      type: object
+      properties:
+        target_date:
+          type: string
+          format: date
+        invoice_date:
+          type: string
+          format: date
+        currency:
+          type: string
+        charge_type:
+          type: string
+        payment_term:
+          type: string
+    BillingRun:
+      type: object
+      required:
+      - company_id
+      - billing_run_id
+      properties:
+        company_id:
+          type: string
+        billing_run_id:
+          type: string
+        status:
+          type:
+          - string
+          - 'null'
+        target_date:
+          type:
+          - string
+          - 'null'
+          format: date
+        invoice_date:
+          type:
+          - string
+          - 'null'
+          format: date
+        invoices_total:
+          type:
+          - number
+          - 'null'
+        invoices_count:
+          type:
+          - integer
+          - 'null'
+        currency:
+          type:
+          - string
+          - 'null'
+        charge_type:
+          type:
+          - string
+          - 'null'
+        payment_term:
+          type:
+          - string
+          - 'null'
+        created_by:
+          type:
+          - string
+          - 'null'
+        updated_by:
+          type:
+          - string
+          - 'null'
+        created_date:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        updated_date:
+          type:
+          - string
+          - 'null'
+          format: date-time
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        errors:
+          type: object
+          additionalProperties: true
   parameters:
+    page:
+      name: page
+      in: query
+      description: Page number for pagination (1-based)
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
     id:
       name: id
       in: path
@@ -96,95 +190,7 @@ components:
         minimum: 1
         maximum: 500
         default: 50
-    page:
-      name: page
-      in: query
-      description: Page number for pagination (1-based)
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-  schemas:
-    BillingRun:
-      type: object
-      required:
-      - company_id
-      - billing_run_id
-      properties:
-        company_id:
-          type: string
-        billing_run_id:
-          type: string
-        status:
-          type: string
-          nullable: true
-        target_date:
-          type: string
-          format: date
-          nullable: true
-        invoice_date:
-          type: string
-          format: date
-          nullable: true
-        invoices_total:
-          type: number
-          nullable: true
-        invoices_count:
-          type: integer
-          nullable: true
-        currency:
-          type: string
-          nullable: true
-        charge_type:
-          type: string
-          nullable: true
-        payment_term:
-          type: string
-          nullable: true
-        created_by:
-          type: string
-          nullable: true
-        updated_by:
-          type: string
-          nullable: true
-        created_date:
-          type: string
-          format: date-time
-          nullable: true
-        updated_date:
-          type: string
-          format: date-time
-          nullable: true
-    BillingRunInput:
-      type: object
-      properties:
-        target_date:
-          type: string
-          format: date
-        invoice_date:
-          type: string
-          format: date
-        currency:
-          type: string
-        charge_type:
-          type: string
-        payment_term:
-          type: string
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-        errors:
-          type: object
-          additionalProperties: true
   responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     Unauthorized:
       description: Authentication credentials missing or invalid
       content:
@@ -193,6 +199,12 @@ components:
             $ref: '#/components/schemas/Error'
     UnprocessableEntity:
       description: Validation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:

@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Ordway REST Billing Runs Invoices API
+  title: Ordway REST Invoices API
   description: RESTful API for bidirectional integration with the Ordway billing and revenue automation platform. Enables managing customers, subscriptions, invoices, payments, usage data, and revenue recognition schedules. Supports usage-based billing, ASC 606 compliant revenue recognition, accounts receivable automation, and SaaS metrics reporting.
   version: v1
   contact:
@@ -108,157 +108,26 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    id:
-      name: id
-      in: path
-      required: true
-      description: Resource identifier
-      schema:
-        type: string
-    size:
-      name: size
-      in: query
-      description: Number of records per page
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 500
-        default: 50
-    page:
-      name: page
-      in: query
-      description: Page number for pagination (1-based)
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-    sort:
-      name: sort
-      in: query
-      description: Comma-separated list of fields to sort by (prefix with - for descending)
-      schema:
-        type: string
+  responses:
+    Unauthorized:
+      description: Authentication credentials missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    UnprocessableEntity:
+      description: Validation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    Invoice:
-      type: object
-      required:
-      - company_id
-      - invoice_id
-      - invoice_line_no
-      properties:
-        company_id:
-          type: string
-        invoice_id:
-          type: string
-        invoice_line_no:
-          type: string
-        customer_id:
-          type: string
-        customer_name:
-          type: string
-          nullable: true
-        invoice_date:
-          type: string
-          format: date
-          nullable: true
-        due_date:
-          type: string
-          format: date
-          nullable: true
-        subtotal:
-          type: number
-          nullable: true
-        invoice_tax:
-          type: number
-          nullable: true
-        invoice_amount:
-          type: number
-          nullable: true
-        paid_amount:
-          type: number
-          nullable: true
-        balance:
-          type: number
-          nullable: true
-        status:
-          type: string
-          nullable: true
-        notes:
-          type: string
-          nullable: true
-        currency:
-          type: string
-          nullable: true
-        payment_terms:
-          type: string
-          nullable: true
-        subscription_id:
-          type: string
-          nullable: true
-        product_id:
-          type: string
-          nullable: true
-        product_name:
-          type: string
-          nullable: true
-        plan_id:
-          type: string
-          nullable: true
-        plan_name:
-          type: string
-          nullable: true
-        charge_id:
-          type: string
-          nullable: true
-        charge_name:
-          type: string
-          nullable: true
-        charge_type:
-          type: string
-          nullable: true
-        description:
-          type: string
-          nullable: true
-        start_date:
-          type: string
-          format: date
-          nullable: true
-        end_date:
-          type: string
-          format: date
-          nullable: true
-        quantity:
-          type: number
-          nullable: true
-        discount:
-          type: number
-          nullable: true
-        effective_price:
-          type: number
-          nullable: true
-        invoice_pdf_url:
-          type: string
-          format: uri
-          nullable: true
-        custom_fields:
-          type: object
-          nullable: true
-          additionalProperties: true
-        created_by:
-          type: string
-          nullable: true
-        updated_by:
-          type: string
-          nullable: true
-        created_date:
-          type: string
-          format: date-time
-          nullable: true
-        updated_date:
-          type: string
-          format: date-time
-          nullable: true
     Error:
       type: object
       properties:
@@ -287,25 +156,188 @@ components:
         custom_fields:
           type: object
           additionalProperties: true
-  responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication credentials missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    UnprocessableEntity:
-      description: Validation error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+    Invoice:
+      type: object
+      required:
+      - company_id
+      - invoice_id
+      - invoice_line_no
+      properties:
+        company_id:
+          type: string
+        invoice_id:
+          type: string
+        invoice_line_no:
+          type: string
+        customer_id:
+          type: string
+        customer_name:
+          type:
+          - string
+          - 'null'
+        invoice_date:
+          type:
+          - string
+          - 'null'
+          format: date
+        due_date:
+          type:
+          - string
+          - 'null'
+          format: date
+        subtotal:
+          type:
+          - number
+          - 'null'
+        invoice_tax:
+          type:
+          - number
+          - 'null'
+        invoice_amount:
+          type:
+          - number
+          - 'null'
+        paid_amount:
+          type:
+          - number
+          - 'null'
+        balance:
+          type:
+          - number
+          - 'null'
+        status:
+          type:
+          - string
+          - 'null'
+        notes:
+          type:
+          - string
+          - 'null'
+        currency:
+          type:
+          - string
+          - 'null'
+        payment_terms:
+          type:
+          - string
+          - 'null'
+        subscription_id:
+          type:
+          - string
+          - 'null'
+        product_id:
+          type:
+          - string
+          - 'null'
+        product_name:
+          type:
+          - string
+          - 'null'
+        plan_id:
+          type:
+          - string
+          - 'null'
+        plan_name:
+          type:
+          - string
+          - 'null'
+        charge_id:
+          type:
+          - string
+          - 'null'
+        charge_name:
+          type:
+          - string
+          - 'null'
+        charge_type:
+          type:
+          - string
+          - 'null'
+        description:
+          type:
+          - string
+          - 'null'
+        start_date:
+          type:
+          - string
+          - 'null'
+          format: date
+        end_date:
+          type:
+          - string
+          - 'null'
+          format: date
+        quantity:
+          type:
+          - number
+          - 'null'
+        discount:
+          type:
+          - number
+          - 'null'
+        effective_price:
+          type:
+          - number
+          - 'null'
+        invoice_pdf_url:
+          type:
+          - string
+          - 'null'
+          format: uri
+        custom_fields:
+          type:
+          - object
+          - 'null'
+          additionalProperties: true
+        created_by:
+          type:
+          - string
+          - 'null'
+        updated_by:
+          type:
+          - string
+          - 'null'
+        created_date:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        updated_date:
+          type:
+          - string
+          - 'null'
+          format: date-time
+  parameters:
+    page:
+      name: page
+      in: query
+      description: Page number for pagination (1-based)
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+    id:
+      name: id
+      in: path
+      required: true
+      description: Resource identifier
+      schema:
+        type: string
+    sort:
+      name: sort
+      in: query
+      description: Comma-separated list of fields to sort by (prefix with - for descending)
+      schema:
+        type: string
+    size:
+      name: size
+      in: query
+      description: Number of records per page
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 500
+        default: 50
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

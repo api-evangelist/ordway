@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Ordway REST Billing Runs Customers API
+  title: Ordway REST Customers API
   description: RESTful API for bidirectional integration with the Ordway billing and revenue automation platform. Enables managing customers, subscriptions, invoices, payments, usage data, and revenue recognition schedules. Supports usage-based billing, ASC 606 compliant revenue recognition, accounts receivable automation, and SaaS metrics reporting.
   version: v1
   contact:
@@ -154,38 +154,258 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    id:
-      name: id
-      in: path
-      required: true
-      description: Resource identifier
-      schema:
-        type: string
-    size:
-      name: size
-      in: query
-      description: Number of records per page
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 500
-        default: 50
-    page:
-      name: page
-      in: query
-      description: Page number for pagination (1-based)
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-    sort:
-      name: sort
-      in: query
-      description: Comma-separated list of fields to sort by (prefix with - for descending)
-      schema:
-        type: string
   schemas:
+    Contact:
+      type: object
+      required:
+      - company_id
+      - contact_id
+      - customer_id
+      properties:
+        contact_id:
+          type: string
+        company_id:
+          type: string
+        customer_id:
+          type: string
+        display_name:
+          type:
+          - string
+          - 'null'
+        first_name:
+          type:
+          - string
+          - 'null'
+        last_name:
+          type:
+          - string
+          - 'null'
+        email:
+          type:
+          - string
+          - 'null'
+        phone:
+          type:
+          - string
+          - 'null'
+        mobile:
+          type:
+          - string
+          - 'null'
+        job_title:
+          type:
+          - string
+          - 'null'
+        department:
+          type:
+          - string
+          - 'null'
+        notes:
+          type:
+          - string
+          - 'null'
+        address1:
+          type:
+          - string
+          - 'null'
+        address2:
+          type:
+          - string
+          - 'null'
+        city:
+          type:
+          - string
+          - 'null'
+        state:
+          type:
+          - string
+          - 'null'
+        zip:
+          type:
+          - string
+          - 'null'
+        country:
+          type:
+          - string
+          - 'null'
+        custom_fields:
+          type:
+          - object
+          - 'null'
+          additionalProperties: true
+        created_by:
+          type: string
+        updated_by:
+          type: string
+        created_date:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        updated_date:
+          type:
+          - string
+          - 'null'
+          format: date-time
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        errors:
+          type: object
+          additionalProperties: true
+    Customer:
+      type: object
+      required:
+      - company_id
+      - customer_id
+      properties:
+        company_id:
+          type: string
+        customer_id:
+          type: string
+        name:
+          type:
+          - string
+          - 'null'
+        description:
+          type:
+          - string
+          - 'null'
+        parent_customer:
+          type:
+          - string
+          - 'null'
+        website:
+          type:
+          - string
+          - 'null'
+        payment_terms:
+          type:
+          - string
+          - 'null'
+        billing_cycle_day:
+          type:
+          - string
+          - 'null'
+        billing_contact_id:
+          type:
+          - string
+          - 'null'
+        shipping_contact_id:
+          type:
+          - string
+          - 'null'
+        status:
+          type:
+          - string
+          - 'null'
+        billing_batch:
+          type:
+          - string
+          - 'null'
+        tax_exempt:
+          type:
+          - boolean
+          - 'null'
+        balance:
+          type:
+          - number
+          - 'null'
+        auto_pay:
+          type:
+          - boolean
+          - 'null'
+        currency:
+          type:
+          - string
+          - 'null'
+        price_book_id:
+          type:
+          - string
+          - 'null'
+        cmrr:
+          type:
+          - number
+          - 'null'
+        discounted_cmrr:
+          type:
+          - number
+          - 'null'
+        carr:
+          type:
+          - number
+          - 'null'
+        discounted_carr:
+          type:
+          - number
+          - 'null'
+        delivery_preferences:
+          type:
+          - object
+          - 'null'
+          properties:
+            print:
+              type: boolean
+            email:
+              type: boolean
+        payment_gateway_id:
+          type:
+          - string
+          - 'null'
+        gateway_name:
+          type:
+          - string
+          - 'null'
+        last_invoiced_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        billing_contact_email:
+          type:
+          - string
+          - 'null'
+        shipping_contact_email:
+          type:
+          - string
+          - 'null'
+        account_number:
+          type:
+          - string
+          - 'null'
+        portal_status:
+          type:
+          - string
+          - 'null'
+        integration_status:
+          type:
+          - string
+          - 'null'
+        custom_fields:
+          type:
+          - object
+          - 'null'
+          additionalProperties: true
+        created_by:
+          type:
+          - string
+          - 'null'
+        updated_by:
+          type:
+          - string
+          - 'null'
+        created_date:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        updated_date:
+          type:
+          - string
+          - 'null'
+          format: date-time
     CustomerNote:
       type: object
       required:
@@ -200,151 +420,31 @@ components:
         title:
           type: string
         description:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         file_upload_file_name:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         file_upload_content_type:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         file_upload_file_size:
-          type: integer
-          nullable: true
+          type:
+          - integer
+          - 'null'
         created_at:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
         updated_at:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
-    Customer:
-      type: object
-      required:
-      - company_id
-      - customer_id
-      properties:
-        company_id:
-          type: string
-        customer_id:
-          type: string
-        name:
-          type: string
-          nullable: true
-        description:
-          type: string
-          nullable: true
-        parent_customer:
-          type: string
-          nullable: true
-        website:
-          type: string
-          nullable: true
-        payment_terms:
-          type: string
-          nullable: true
-        billing_cycle_day:
-          type: string
-          nullable: true
-        billing_contact_id:
-          type: string
-          nullable: true
-        shipping_contact_id:
-          type: string
-          nullable: true
-        status:
-          type: string
-          nullable: true
-        billing_batch:
-          type: string
-          nullable: true
-        tax_exempt:
-          type: boolean
-          nullable: true
-        balance:
-          type: number
-          nullable: true
-        auto_pay:
-          type: boolean
-          nullable: true
-        currency:
-          type: string
-          nullable: true
-        price_book_id:
-          type: string
-          nullable: true
-        cmrr:
-          type: number
-          nullable: true
-        discounted_cmrr:
-          type: number
-          nullable: true
-        carr:
-          type: number
-          nullable: true
-        discounted_carr:
-          type: number
-          nullable: true
-        delivery_preferences:
-          type: object
-          nullable: true
-          properties:
-            print:
-              type: boolean
-            email:
-              type: boolean
-        payment_gateway_id:
-          type: string
-          nullable: true
-        gateway_name:
-          type: string
-          nullable: true
-        last_invoiced_at:
-          type: string
-          format: date-time
-          nullable: true
-        billing_contact_email:
-          type: string
-          nullable: true
-        shipping_contact_email:
-          type: string
-          nullable: true
-        account_number:
-          type: string
-          nullable: true
-        portal_status:
-          type: string
-          nullable: true
-        integration_status:
-          type: string
-          nullable: true
-        custom_fields:
-          type: object
-          nullable: true
-          additionalProperties: true
-        created_by:
-          type: string
-          nullable: true
-        updated_by:
-          type: string
-          nullable: true
-        created_date:
-          type: string
-          format: date-time
-          nullable: true
-        updated_date:
-          type: string
-          format: date-time
-          nullable: true
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-        errors:
-          type: object
-          additionalProperties: true
     CustomerInput:
       type: object
       properties:
@@ -375,87 +475,7 @@ components:
         custom_fields:
           type: object
           additionalProperties: true
-    Contact:
-      type: object
-      required:
-      - company_id
-      - contact_id
-      - customer_id
-      properties:
-        contact_id:
-          type: string
-        company_id:
-          type: string
-        customer_id:
-          type: string
-        display_name:
-          type: string
-          nullable: true
-        first_name:
-          type: string
-          nullable: true
-        last_name:
-          type: string
-          nullable: true
-        email:
-          type: string
-          nullable: true
-        phone:
-          type: string
-          nullable: true
-        mobile:
-          type: string
-          nullable: true
-        job_title:
-          type: string
-          nullable: true
-        department:
-          type: string
-          nullable: true
-        notes:
-          type: string
-          nullable: true
-        address1:
-          type: string
-          nullable: true
-        address2:
-          type: string
-          nullable: true
-        city:
-          type: string
-          nullable: true
-        state:
-          type: string
-          nullable: true
-        zip:
-          type: string
-          nullable: true
-        country:
-          type: string
-          nullable: true
-        custom_fields:
-          type: object
-          nullable: true
-          additionalProperties: true
-        created_by:
-          type: string
-        updated_by:
-          type: string
-        created_date:
-          type: string
-          format: date-time
-          nullable: true
-        updated_date:
-          type: string
-          format: date-time
-          nullable: true
   responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     Unauthorized:
       description: Authentication credentials missing or invalid
       content:
@@ -468,6 +488,43 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    page:
+      name: page
+      in: query
+      description: Page number for pagination (1-based)
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+    id:
+      name: id
+      in: path
+      required: true
+      description: Resource identifier
+      schema:
+        type: string
+    sort:
+      name: sort
+      in: query
+      description: Comma-separated list of fields to sort by (prefix with - for descending)
+      schema:
+        type: string
+    size:
+      name: size
+      in: query
+      description: Number of records per page
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 500
+        default: 50
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

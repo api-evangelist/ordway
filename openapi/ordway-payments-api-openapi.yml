@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Ordway REST Billing Runs Payments API
+  title: Ordway REST Payments API
   description: RESTful API for bidirectional integration with the Ordway billing and revenue automation platform. Enables managing customers, subscriptions, invoices, payments, usage data, and revenue recognition schedules. Supports usage-based billing, ASC 606 compliant revenue recognition, accounts receivable automation, and SaaS metrics reporting.
   version: v1
   contact:
@@ -105,7 +105,34 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    Unauthorized:
+      description: Authentication credentials missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    UnprocessableEntity:
+      description: Validation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        errors:
+          type: object
+          additionalProperties: true
     Payment:
       type: object
       required:
@@ -119,74 +146,85 @@ components:
         customer_id:
           type: string
         payment_date:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date
-          nullable: true
         notes:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         status:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         payment_amount:
-          type: number
-          nullable: true
+          type:
+          - number
+          - 'null'
         fee_amount:
-          type: number
-          nullable: true
+          type:
+          - number
+          - 'null'
         applied_amount:
-          type: number
-          nullable: true
+          type:
+          - number
+          - 'null'
         unapplied_amount:
-          type: number
-          nullable: true
+          type:
+          - number
+          - 'null'
         refunded_amount:
-          type: number
-          nullable: true
+          type:
+          - number
+          - 'null'
         payment_type:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         payment_method:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         currency:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         reference_number:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         auto_apply:
-          type: boolean
-          nullable: true
+          type:
+          - boolean
+          - 'null'
         gl_account:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         custom_fields:
-          type: object
-          nullable: true
+          type:
+          - object
+          - 'null'
           additionalProperties: true
         created_by:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         updated_by:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         created_date:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
         updated_date:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-        errors:
-          type: object
-          additionalProperties: true
     PaymentInput:
       type: object
       properties:
@@ -232,33 +270,54 @@ components:
         account_number:
           type: string
         routing_number:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         account_holder_name:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         account_holder_type:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         country:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         expiry:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
         status:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         default:
-          type: boolean
-          nullable: true
+          type:
+          - boolean
+          - 'null'
   parameters:
+    page:
+      name: page
+      in: query
+      description: Page number for pagination (1-based)
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
     id:
       name: id
       in: path
       required: true
       description: Resource identifier
+      schema:
+        type: string
+    sort:
+      name: sort
+      in: query
+      description: Comma-separated list of fields to sort by (prefix with - for descending)
       schema:
         type: string
     size:
@@ -270,39 +329,6 @@ components:
         minimum: 1
         maximum: 500
         default: 50
-    page:
-      name: page
-      in: query
-      description: Page number for pagination (1-based)
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-    sort:
-      name: sort
-      in: query
-      description: Comma-separated list of fields to sort by (prefix with - for descending)
-      schema:
-        type: string
-  responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication credentials missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    UnprocessableEntity:
-      description: Validation error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

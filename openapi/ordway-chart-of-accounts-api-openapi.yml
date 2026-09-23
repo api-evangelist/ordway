@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Ordway REST Billing Runs Chart of Accounts API
+  title: Ordway REST Chart of Accounts API
   description: RESTful API for bidirectional integration with the Ordway billing and revenue automation platform. Enables managing customers, subscriptions, invoices, payments, usage data, and revenue recognition schedules. Supports usage-based billing, ASC 606 compliant revenue recognition, accounts receivable automation, and SaaS metrics reporting.
   version: v1
   contact:
@@ -18,7 +18,7 @@ security:
   UserEmailAuth: []
   CompanyAuth: []
 tags:
-- name: Chart of Accounts
+- name: Chart Of Accounts
   description: Manage general ledger chart of accounts
 paths:
   /chart_of_accounts:
@@ -26,7 +26,7 @@ paths:
       summary: List chart of accounts
       operationId: listChartOfAccounts
       tags:
-      - Chart of Accounts
+      - Chart Of Accounts
       parameters:
       - $ref: '#/components/parameters/page'
       - $ref: '#/components/parameters/size'
@@ -46,7 +46,7 @@ paths:
       summary: Retrieve a chart of account entry
       operationId: getChartOfAccount
       tags:
-      - Chart of Accounts
+      - Chart Of Accounts
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
@@ -59,7 +59,92 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    Unauthorized:
+      description: Authentication credentials missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        errors:
+          type: object
+          additionalProperties: true
+    ChartOfAccount:
+      type: object
+      required:
+      - company_id
+      - code
+      properties:
+        company_id:
+          type: string
+        code:
+          type: string
+        name:
+          type:
+          - string
+          - 'null'
+        account_type:
+          type:
+          - string
+          - 'null'
+        sub_type:
+          type:
+          - string
+          - 'null'
+        parent_account:
+          type:
+          - string
+          - 'null'
+        status:
+          type: string
+        description:
+          type:
+          - string
+          - 'null'
+        integration_status:
+          type:
+          - string
+          - 'null'
+        custom_fields:
+          type:
+          - object
+          - 'null'
+          additionalProperties: true
+        created_by:
+          type: string
+        updated_by:
+          type: string
+        created_date:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        updated_date:
+          type:
+          - string
+          - 'null'
+          format: date-time
   parameters:
+    page:
+      name: page
+      in: query
+      description: Page number for pagination (1-based)
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
     id:
       name: id
       in: path
@@ -76,82 +161,6 @@ components:
         minimum: 1
         maximum: 500
         default: 50
-    page:
-      name: page
-      in: query
-      description: Page number for pagination (1-based)
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-  schemas:
-    ChartOfAccount:
-      type: object
-      required:
-      - company_id
-      - code
-      properties:
-        company_id:
-          type: string
-        code:
-          type: string
-        name:
-          type: string
-          nullable: true
-        account_type:
-          type: string
-          nullable: true
-        sub_type:
-          type: string
-          nullable: true
-        parent_account:
-          type: string
-          nullable: true
-        status:
-          type: string
-        description:
-          type: string
-          nullable: true
-        integration_status:
-          type: string
-          nullable: true
-        custom_fields:
-          type: object
-          nullable: true
-          additionalProperties: true
-        created_by:
-          type: string
-        updated_by:
-          type: string
-        created_date:
-          type: string
-          format: date-time
-          nullable: true
-        updated_date:
-          type: string
-          format: date-time
-          nullable: true
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-        errors:
-          type: object
-          additionalProperties: true
-  responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication credentials missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

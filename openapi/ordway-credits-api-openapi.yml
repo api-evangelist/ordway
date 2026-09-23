@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Ordway REST Billing Runs Credits API
+  title: Ordway REST Credits API
   description: RESTful API for bidirectional integration with the Ordway billing and revenue automation platform. Enables managing customers, subscriptions, invoices, payments, usage data, and revenue recognition schedules. Supports usage-based billing, ASC 606 compliant revenue recognition, accounts receivable automation, and SaaS metrics reporting.
   version: v1
   contact:
@@ -80,75 +80,26 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    Unauthorized:
+      description: Authentication credentials missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    UnprocessableEntity:
+      description: Validation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    Credit:
-      type: object
-      required:
-      - company_id
-      - credit_id
-      properties:
-        company_id:
-          type: string
-        credit_id:
-          type: string
-        customer_id:
-          type: string
-        credit_date:
-          type: string
-          format: date
-          nullable: true
-        notes:
-          type: string
-          nullable: true
-        status:
-          type: string
-          nullable: true
-        credit_amount:
-          type: number
-          nullable: true
-        applied_amount:
-          type: number
-          nullable: true
-        unapplied_amount:
-          type: number
-          nullable: true
-        currency:
-          type: string
-          nullable: true
-        reference_number:
-          type: string
-          nullable: true
-        auto_apply:
-          type: boolean
-          nullable: true
-        gl_account:
-          type: string
-          nullable: true
-        credit_pdf_url:
-          type: string
-          format: uri
-          nullable: true
-        credit_number:
-          type: string
-          nullable: true
-        custom_fields:
-          type: object
-          nullable: true
-          additionalProperties: true
-        created_by:
-          type: string
-          nullable: true
-        updated_by:
-          type: string
-          nullable: true
-        created_date:
-          type: string
-          format: date-time
-          nullable: true
-        updated_date:
-          type: string
-          format: date-time
-          nullable: true
     Error:
       type: object
       properties:
@@ -178,12 +129,111 @@ components:
         custom_fields:
           type: object
           additionalProperties: true
+    Credit:
+      type: object
+      required:
+      - company_id
+      - credit_id
+      properties:
+        company_id:
+          type: string
+        credit_id:
+          type: string
+        customer_id:
+          type: string
+        credit_date:
+          type:
+          - string
+          - 'null'
+          format: date
+        notes:
+          type:
+          - string
+          - 'null'
+        status:
+          type:
+          - string
+          - 'null'
+        credit_amount:
+          type:
+          - number
+          - 'null'
+        applied_amount:
+          type:
+          - number
+          - 'null'
+        unapplied_amount:
+          type:
+          - number
+          - 'null'
+        currency:
+          type:
+          - string
+          - 'null'
+        reference_number:
+          type:
+          - string
+          - 'null'
+        auto_apply:
+          type:
+          - boolean
+          - 'null'
+        gl_account:
+          type:
+          - string
+          - 'null'
+        credit_pdf_url:
+          type:
+          - string
+          - 'null'
+          format: uri
+        credit_number:
+          type:
+          - string
+          - 'null'
+        custom_fields:
+          type:
+          - object
+          - 'null'
+          additionalProperties: true
+        created_by:
+          type:
+          - string
+          - 'null'
+        updated_by:
+          type:
+          - string
+          - 'null'
+        created_date:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        updated_date:
+          type:
+          - string
+          - 'null'
+          format: date-time
   parameters:
+    page:
+      name: page
+      in: query
+      description: Page number for pagination (1-based)
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
     id:
       name: id
       in: path
       required: true
       description: Resource identifier
+      schema:
+        type: string
+    sort:
+      name: sort
+      in: query
+      description: Comma-separated list of fields to sort by (prefix with - for descending)
       schema:
         type: string
     size:
@@ -195,39 +245,6 @@ components:
         minimum: 1
         maximum: 500
         default: 50
-    page:
-      name: page
-      in: query
-      description: Page number for pagination (1-based)
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-    sort:
-      name: sort
-      in: query
-      description: Comma-separated list of fields to sort by (prefix with - for descending)
-      schema:
-        type: string
-  responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication credentials missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    UnprocessableEntity:
-      description: Validation error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

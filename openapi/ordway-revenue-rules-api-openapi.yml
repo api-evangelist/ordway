@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Ordway REST Billing Runs Revenue Rules API
+  title: Ordway REST Revenue Rules API
   description: RESTful API for bidirectional integration with the Ordway billing and revenue automation platform. Enables managing customers, subscriptions, invoices, payments, usage data, and revenue recognition schedules. Supports usage-based billing, ASC 606 compliant revenue recognition, accounts receivable automation, and SaaS metrics reporting.
   version: v1
   contact:
@@ -59,7 +59,106 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    Unauthorized:
+      description: Authentication credentials missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        errors:
+          type: object
+          additionalProperties: true
+    RevenueRule:
+      type: object
+      required:
+      - company_id
+      - revenue_rule_id
+      properties:
+        company_id:
+          type: string
+        revenue_rule_id:
+          type: string
+        name:
+          type:
+          - string
+          - 'null'
+        recognition_method:
+          type:
+          - string
+          - 'null'
+        recognition_schedule_period:
+          type:
+          - string
+          - 'null'
+        posting_day:
+          type:
+          - string
+          - 'null'
+        posting_method:
+          type:
+          - string
+          - 'null'
+        status:
+          type:
+          - string
+          - 'null'
+        recognition_term:
+          type:
+          - string
+          - 'null'
+        revenue_rule_entries:
+          type:
+          - object
+          - 'null'
+          properties:
+            period_offset:
+              type:
+              - string
+              - 'null'
+            percent_to_recognize:
+              type:
+              - string
+              - 'null'
+        created_by:
+          type:
+          - string
+          - 'null'
+        updated_by:
+          type:
+          - string
+          - 'null'
+        created_date:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        updated_date:
+          type:
+          - string
+          - 'null'
+          format: date-time
   parameters:
+    page:
+      name: page
+      in: query
+      description: Page number for pagination (1-based)
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
     id:
       name: id
       in: path
@@ -76,91 +175,6 @@ components:
         minimum: 1
         maximum: 500
         default: 50
-    page:
-      name: page
-      in: query
-      description: Page number for pagination (1-based)
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-  schemas:
-    RevenueRule:
-      type: object
-      required:
-      - company_id
-      - revenue_rule_id
-      properties:
-        company_id:
-          type: string
-        revenue_rule_id:
-          type: string
-        name:
-          type: string
-          nullable: true
-        recognition_method:
-          type: string
-          nullable: true
-        recognition_schedule_period:
-          type: string
-          nullable: true
-        posting_day:
-          type: string
-          nullable: true
-        posting_method:
-          type: string
-          nullable: true
-        status:
-          type: string
-          nullable: true
-        recognition_term:
-          type: string
-          nullable: true
-        revenue_rule_entries:
-          type: object
-          nullable: true
-          properties:
-            period_offset:
-              type: string
-              nullable: true
-            percent_to_recognize:
-              type: string
-              nullable: true
-        created_by:
-          type: string
-          nullable: true
-        updated_by:
-          type: string
-          nullable: true
-        created_date:
-          type: string
-          format: date-time
-          nullable: true
-        updated_date:
-          type: string
-          format: date-time
-          nullable: true
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-        errors:
-          type: object
-          additionalProperties: true
-  responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication credentials missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Ordway REST Billing Runs Debit Memos API
+  title: Ordway REST Debit Memos API
   description: RESTful API for bidirectional integration with the Ordway billing and revenue automation platform. Enables managing customers, subscriptions, invoices, payments, usage data, and revenue recognition schedules. Supports usage-based billing, ASC 606 compliant revenue recognition, accounts receivable automation, and SaaS metrics reporting.
   version: v1
   contact:
@@ -60,38 +60,28 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    id:
-      name: id
-      in: path
-      required: true
-      description: Resource identifier
-      schema:
-        type: string
-    size:
-      name: size
-      in: query
-      description: Number of records per page
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 500
-        default: 50
-    page:
-      name: page
-      in: query
-      description: Page number for pagination (1-based)
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-    sort:
-      name: sort
-      in: query
-      description: Comma-separated list of fields to sort by (prefix with - for descending)
-      schema:
-        type: string
+  responses:
+    Unauthorized:
+      description: Authentication credentials missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        errors:
+          type: object
+          additionalProperties: true
     DebitMemo:
       type: object
       required:
@@ -105,76 +95,101 @@ components:
         customer_id:
           type: string
         status:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         debit_date:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date
-          nullable: true
         debit_amount:
-          type: number
-          nullable: true
+          type:
+          - number
+          - 'null'
         balance:
-          type: number
-          nullable: true
+          type:
+          - number
+          - 'null'
         paid_amount:
-          type: number
-          nullable: true
+          type:
+          - number
+          - 'null'
         notes:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         currency:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         debit_tax:
-          type: number
-          nullable: true
+          type:
+          - number
+          - 'null'
         subtotal:
-          type: number
-          nullable: true
+          type:
+          - number
+          - 'null'
         debit_pdf_url:
-          type: string
+          type:
+          - string
+          - 'null'
           format: uri
-          nullable: true
         custom_fields:
-          type: object
-          nullable: true
+          type:
+          - object
+          - 'null'
           additionalProperties: true
         created_by:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         updated_by:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         created_date:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
         updated_date:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-        errors:
-          type: object
-          additionalProperties: true
-  responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication credentials missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+  parameters:
+    page:
+      name: page
+      in: query
+      description: Page number for pagination (1-based)
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+    id:
+      name: id
+      in: path
+      required: true
+      description: Resource identifier
+      schema:
+        type: string
+    sort:
+      name: sort
+      in: query
+      description: Comma-separated list of fields to sort by (prefix with - for descending)
+      schema:
+        type: string
+    size:
+      name: size
+      in: query
+      description: Number of records per page
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 500
+        default: 50
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

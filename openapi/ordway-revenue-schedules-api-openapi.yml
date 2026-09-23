@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Ordway REST Billing Runs Revenue Schedules API
+  title: Ordway REST Revenue Schedules API
   description: RESTful API for bidirectional integration with the Ordway billing and revenue automation platform. Enables managing customers, subscriptions, invoices, payments, usage data, and revenue recognition schedules. Supports usage-based billing, ASC 606 compliant revenue recognition, accounts receivable automation, and SaaS metrics reporting.
   version: v1
   contact:
@@ -66,38 +66,28 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    id:
-      name: id
-      in: path
-      required: true
-      description: Resource identifier
-      schema:
-        type: string
-    size:
-      name: size
-      in: query
-      description: Number of records per page
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 500
-        default: 50
-    page:
-      name: page
-      in: query
-      description: Page number for pagination (1-based)
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-    sort:
-      name: sort
-      in: query
-      description: Comma-separated list of fields to sort by (prefix with - for descending)
-      schema:
-        type: string
+  responses:
+    Unauthorized:
+      description: Authentication credentials missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        errors:
+          type: object
+          additionalProperties: true
     RevenueSchedule:
       type: object
       required:
@@ -111,84 +101,111 @@ components:
         customer_id:
           type: string
         source_transaction:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         product_id:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         product_name:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         plan_id:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         charge_id:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         charge_name:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         charge_type:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         total_revenue:
-          type: number
-          nullable: true
+          type:
+          - number
+          - 'null'
         recognized_revenue:
-          type: number
-          nullable: true
+          type:
+          - number
+          - 'null'
         unrecognized_revenue:
-          type: number
-          nullable: true
+          type:
+          - number
+          - 'null'
         start_date:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date
-          nullable: true
         end_date:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date
-          nullable: true
         schedule_lines:
-          type: array
-          nullable: true
+          type:
+          - array
+          - 'null'
           items:
             type: object
             additionalProperties: true
         created_by:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         updated_by:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         created_date:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
         updated_date:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-        errors:
-          type: object
-          additionalProperties: true
-  responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication credentials missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+  parameters:
+    page:
+      name: page
+      in: query
+      description: Page number for pagination (1-based)
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+    id:
+      name: id
+      in: path
+      required: true
+      description: Resource identifier
+      schema:
+        type: string
+    sort:
+      name: sort
+      in: query
+      description: Comma-separated list of fields to sort by (prefix with - for descending)
+      schema:
+        type: string
+    size:
+      name: size
+      in: query
+      description: Number of records per page
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 500
+        default: 50
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

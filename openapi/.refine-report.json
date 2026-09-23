@@ -1,27 +1,7 @@
 {
   "provider": "ordway",
   "sources": [
-    "ordway-billing-runs-api-openapi.yml",
-    "ordway-billing-schedules-api-openapi.yml",
-    "ordway-chart-of-accounts-api-openapi.yml",
-    "ordway-coupons-api-openapi.yml",
-    "ordway-credits-api-openapi.yml",
-    "ordway-customers-api-openapi.yml",
-    "ordway-debit-memos-api-openapi.yml",
-    "ordway-invoices-api-openapi.yml",
-    "ordway-journal-entries-api-openapi.yml",
-    "ordway-orders-api-openapi.yml",
-    "ordway-payment-runs-api-openapi.yml",
-    "ordway-payments-api-openapi.yml",
-    "ordway-plans-api-openapi.yml",
-    "ordway-products-api-openapi.yml",
-    "ordway-refunds-api-openapi.yml",
-    "ordway-revenue-rules-api-openapi.yml",
-    "ordway-revenue-schedules-api-openapi.yml",
-    "ordway-statements-api-openapi.yml",
-    "ordway-subscriptions-api-openapi.yml",
-    "ordway-usages-api-openapi.yml",
-    "ordway-webhooks-api-openapi.yml"
+    "_original/ordway-rest-api-openapi.yml"
   ],
   "outputs": [
     "ordway-billing-runs-api-openapi.yml",
@@ -49,6 +29,32 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "ordway-rest-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "ordway-billing-runs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ordway-billing-schedules-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ordway-chart-of-accounts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ordway-coupons-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ordway-credits-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ordway-customers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ordway-debit-memos-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ordway-invoices-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ordway-journal-entries-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ordway-orders-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ordway-payment-runs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ordway-payments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ordway-plans-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ordway-products-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ordway-refunds-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ordway-revenue-rules-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ordway-revenue-schedules-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ordway-statements-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ordway-subscriptions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ordway-usages-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ordway-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
