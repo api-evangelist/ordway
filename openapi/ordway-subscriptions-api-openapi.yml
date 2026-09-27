@@ -109,6 +109,12 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
     Unauthorized:
       description: Authentication credentials missing or invalid
       content:
@@ -121,13 +127,68 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+  parameters:
+    size:
+      name: size
+      in: query
+      description: Number of records per page
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 500
+        default: 50
+    id:
+      name: id
+      in: path
+      required: true
+      description: Resource identifier
+      schema:
+        type: string
+    page:
+      name: page
+      in: query
+      description: Page number for pagination (1-based)
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+    sort:
+      name: sort
+      in: query
+      description: Comma-separated list of fields to sort by (prefix with - for descending)
+      schema:
+        type: string
   schemas:
+    SubscriptionInput:
+      type: object
+      properties:
+        customer_id:
+          type: string
+        status:
+          type: string
+        billing_start_date:
+          type: string
+          format: date
+        service_start_date:
+          type: string
+          format: date
+        auto_renew:
+          type: boolean
+        currency:
+          type: string
+        payment_terms:
+          type: string
+        custom_fields:
+          type: object
+          additionalProperties: true
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        errors:
+          type: object
+          additionalProperties: true
     Subscription:
       type: object
       required:
@@ -280,67 +341,6 @@ components:
           - string
           - 'null'
           format: date-time
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-        errors:
-          type: object
-          additionalProperties: true
-    SubscriptionInput:
-      type: object
-      properties:
-        customer_id:
-          type: string
-        status:
-          type: string
-        billing_start_date:
-          type: string
-          format: date
-        service_start_date:
-          type: string
-          format: date
-        auto_renew:
-          type: boolean
-        currency:
-          type: string
-        payment_terms:
-          type: string
-        custom_fields:
-          type: object
-          additionalProperties: true
-  parameters:
-    page:
-      name: page
-      in: query
-      description: Page number for pagination (1-based)
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-    id:
-      name: id
-      in: path
-      required: true
-      description: Resource identifier
-      schema:
-        type: string
-    sort:
-      name: sort
-      in: query
-      description: Comma-separated list of fields to sort by (prefix with - for descending)
-      schema:
-        type: string
-    size:
-      name: size
-      in: query
-      description: Number of records per page
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 500
-        default: 50
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

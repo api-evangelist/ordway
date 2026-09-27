@@ -81,6 +81,12 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
     Unauthorized:
       description: Authentication credentials missing or invalid
       content:
@@ -93,19 +99,57 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+  parameters:
+    size:
+      name: size
+      in: query
+      description: Number of records per page
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 500
+        default: 50
+    id:
+      name: id
+      in: path
+      required: true
+      description: Resource identifier
+      schema:
+        type: string
+    page:
+      name: page
+      in: query
+      description: Page number for pagination (1-based)
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+    sort:
+      name: sort
+      in: query
+      description: Comma-separated list of fields to sort by (prefix with - for descending)
+      schema:
+        type: string
   schemas:
-    Error:
+    RefundInput:
       type: object
       properties:
-        error:
+        customer_id:
           type: string
-        errors:
+        refund_date:
+          type: string
+          format: date
+        refund_amount:
+          type: number
+        refund_type:
+          type: string
+        payment_id:
+          type: string
+        currency:
+          type: string
+        notes:
+          type: string
+        custom_fields:
           type: object
           additionalProperties: true
     Refund:
@@ -180,58 +224,14 @@ components:
           - string
           - 'null'
           format: date-time
-    RefundInput:
+    Error:
       type: object
       properties:
-        customer_id:
+        error:
           type: string
-        refund_date:
-          type: string
-          format: date
-        refund_amount:
-          type: number
-        refund_type:
-          type: string
-        payment_id:
-          type: string
-        currency:
-          type: string
-        notes:
-          type: string
-        custom_fields:
+        errors:
           type: object
           additionalProperties: true
-  parameters:
-    page:
-      name: page
-      in: query
-      description: Page number for pagination (1-based)
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-    id:
-      name: id
-      in: path
-      required: true
-      description: Resource identifier
-      schema:
-        type: string
-    sort:
-      name: sort
-      in: query
-      description: Comma-separated list of fields to sort by (prefix with - for descending)
-      schema:
-        type: string
-    size:
-      name: size
-      in: query
-      description: Number of records per page
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 500
-        default: 50
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
