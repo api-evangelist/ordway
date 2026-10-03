@@ -108,40 +108,11 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication credentials missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    UnprocessableEntity:
-      description: Validation error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   parameters:
-    size:
-      name: size
+    sort:
+      name: sort
       in: query
-      description: Number of records per page
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 500
-        default: 50
-    id:
-      name: id
-      in: path
-      required: true
-      description: Resource identifier
+      description: Comma-separated list of fields to sort by (prefix with - for descending)
       schema:
         type: string
     page:
@@ -152,12 +123,22 @@ components:
         type: integer
         minimum: 1
         default: 1
-    sort:
-      name: sort
-      in: query
-      description: Comma-separated list of fields to sort by (prefix with - for descending)
+    id:
+      name: id
+      in: path
+      required: true
+      description: Resource identifier
       schema:
         type: string
+    size:
+      name: size
+      in: query
+      description: Number of records per page
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 500
+        default: 50
   schemas:
     SubscriptionInput:
       type: object
@@ -179,14 +160,6 @@ components:
         payment_terms:
           type: string
         custom_fields:
-          type: object
-          additionalProperties: true
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-        errors:
           type: object
           additionalProperties: true
     Subscription:
@@ -341,6 +314,33 @@ components:
           - string
           - 'null'
           format: date-time
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        errors:
+          type: object
+          additionalProperties: true
+  responses:
+    Unauthorized:
+      description: Authentication credentials missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    UnprocessableEntity:
+      description: Validation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

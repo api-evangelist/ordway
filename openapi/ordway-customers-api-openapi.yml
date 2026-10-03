@@ -154,56 +154,6 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication credentials missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    UnprocessableEntity:
-      description: Validation error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-  parameters:
-    size:
-      name: size
-      in: query
-      description: Number of records per page
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 500
-        default: 50
-    id:
-      name: id
-      in: path
-      required: true
-      description: Resource identifier
-      schema:
-        type: string
-    page:
-      name: page
-      in: query
-      description: Page number for pagination (1-based)
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-    sort:
-      name: sort
-      in: query
-      description: Comma-separated list of fields to sort by (prefix with - for descending)
-      schema:
-        type: string
   schemas:
     Customer:
       type: object
@@ -356,6 +306,36 @@ components:
           - string
           - 'null'
           format: date-time
+    CustomerInput:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        parent_customer:
+          type: string
+        website:
+          type: string
+        payment_terms:
+          type: string
+        billing_cycle_day:
+          type: string
+        billing_contact_id:
+          type: string
+        shipping_contact_id:
+          type: string
+        status:
+          type: string
+        tax_exempt:
+          type: boolean
+        auto_pay:
+          type: boolean
+        currency:
+          type: string
+        custom_fields:
+          type: object
+          additionalProperties: true
     CustomerNote:
       type: object
       required:
@@ -395,36 +375,6 @@ components:
           - string
           - 'null'
           format: date-time
-    CustomerInput:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        parent_customer:
-          type: string
-        website:
-          type: string
-        payment_terms:
-          type: string
-        billing_cycle_day:
-          type: string
-        billing_contact_id:
-          type: string
-        shipping_contact_id:
-          type: string
-        status:
-          type: string
-        tax_exempt:
-          type: boolean
-        auto_pay:
-          type: boolean
-        currency:
-          type: string
-        custom_fields:
-          type: object
-          additionalProperties: true
     Error:
       type: object
       properties:
@@ -525,6 +475,56 @@ components:
           - string
           - 'null'
           format: date-time
+  parameters:
+    sort:
+      name: sort
+      in: query
+      description: Comma-separated list of fields to sort by (prefix with - for descending)
+      schema:
+        type: string
+    page:
+      name: page
+      in: query
+      description: Page number for pagination (1-based)
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+    id:
+      name: id
+      in: path
+      required: true
+      description: Resource identifier
+      schema:
+        type: string
+    size:
+      name: size
+      in: query
+      description: Number of records per page
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 500
+        default: 50
+  responses:
+    Unauthorized:
+      description: Authentication credentials missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    UnprocessableEntity:
+      description: Validation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

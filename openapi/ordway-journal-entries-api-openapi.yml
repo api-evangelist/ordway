@@ -60,29 +60,26 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication credentials missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+  schemas:
+    JournalEntry:
+      type: object
+      description: Accounting journal entry
+      additionalProperties: true
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        errors:
+          type: object
+          additionalProperties: true
   parameters:
-    size:
-      name: size
+    sort:
+      name: sort
       in: query
-      description: Number of records per page
+      description: Comma-separated list of fields to sort by (prefix with - for descending)
       schema:
-        type: integer
-        minimum: 1
-        maximum: 500
-        default: 50
+        type: string
     page:
       name: page
       in: query
@@ -98,25 +95,28 @@ components:
       description: Resource identifier
       schema:
         type: string
-    sort:
-      name: sort
+    size:
+      name: size
       in: query
-      description: Comma-separated list of fields to sort by (prefix with - for descending)
+      description: Number of records per page
       schema:
-        type: string
-  schemas:
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-        errors:
-          type: object
-          additionalProperties: true
-    JournalEntry:
-      type: object
-      description: Accounting journal entry
-      additionalProperties: true
+        type: integer
+        minimum: 1
+        maximum: 500
+        default: 50
+  responses:
+    Unauthorized:
+      description: Authentication credentials missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
