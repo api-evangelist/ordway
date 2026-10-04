@@ -317,6 +317,9 @@ apis:
   - type: Documentation
     url: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
 common:
+  - type: CapabilityMap
+    url: capabilities/ordway-capability-edges.yml
+    name: Ordway Business Capability Map
   - type: AgenticAccess
     url: agentic-access/ordway-agentic-access.yml
   - type: DomainSecurity
