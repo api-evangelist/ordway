@@ -61,10 +61,6 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    JournalEntry:
-      type: object
-      description: Accounting journal entry
-      additionalProperties: true
     Error:
       type: object
       properties:
@@ -73,21 +69,11 @@ components:
         errors:
           type: object
           additionalProperties: true
+    JournalEntry:
+      type: object
+      description: Accounting journal entry
+      additionalProperties: true
   parameters:
-    sort:
-      name: sort
-      in: query
-      description: Comma-separated list of fields to sort by (prefix with - for descending)
-      schema:
-        type: string
-    page:
-      name: page
-      in: query
-      description: Page number for pagination (1-based)
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
     id:
       name: id
       in: path
@@ -104,6 +90,20 @@ components:
         minimum: 1
         maximum: 500
         default: 50
+    sort:
+      name: sort
+      in: query
+      description: Comma-separated list of fields to sort by (prefix with - for descending)
+      schema:
+        type: string
+    page:
+      name: page
+      in: query
+      description: Page number for pagination (1-based)
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
   responses:
     Unauthorized:
       description: Authentication credentials missing or invalid

@@ -106,6 +106,62 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    PaymentMethod:
+      type: object
+      required:
+      - company_id
+      - payment_method_id
+      - customer_id
+      - payment_type
+      - account_number
+      properties:
+        payment_method_id:
+          type: string
+        company_id:
+          type: string
+        customer_id:
+          type: string
+        payment_type:
+          type: string
+        account_number:
+          type: string
+        routing_number:
+          type:
+          - string
+          - 'null'
+        account_holder_name:
+          type:
+          - string
+          - 'null'
+        account_holder_type:
+          type:
+          - string
+          - 'null'
+        country:
+          type:
+          - string
+          - 'null'
+        expiry:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        status:
+          type:
+          - string
+          - 'null'
+        default:
+          type:
+          - boolean
+          - 'null'
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        errors:
+          type: object
+          additionalProperties: true
     Payment:
       type: object
       required:
@@ -223,77 +279,7 @@ components:
         custom_fields:
           type: object
           additionalProperties: true
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-        errors:
-          type: object
-          additionalProperties: true
-    PaymentMethod:
-      type: object
-      required:
-      - company_id
-      - payment_method_id
-      - customer_id
-      - payment_type
-      - account_number
-      properties:
-        payment_method_id:
-          type: string
-        company_id:
-          type: string
-        customer_id:
-          type: string
-        payment_type:
-          type: string
-        account_number:
-          type: string
-        routing_number:
-          type:
-          - string
-          - 'null'
-        account_holder_name:
-          type:
-          - string
-          - 'null'
-        account_holder_type:
-          type:
-          - string
-          - 'null'
-        country:
-          type:
-          - string
-          - 'null'
-        expiry:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        status:
-          type:
-          - string
-          - 'null'
-        default:
-          type:
-          - boolean
-          - 'null'
   parameters:
-    sort:
-      name: sort
-      in: query
-      description: Comma-separated list of fields to sort by (prefix with - for descending)
-      schema:
-        type: string
-    page:
-      name: page
-      in: query
-      description: Page number for pagination (1-based)
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
     id:
       name: id
       in: path
@@ -310,7 +296,27 @@ components:
         minimum: 1
         maximum: 500
         default: 50
+    sort:
+      name: sort
+      in: query
+      description: Comma-separated list of fields to sort by (prefix with - for descending)
+      schema:
+        type: string
+    page:
+      name: page
+      in: query
+      description: Page number for pagination (1-based)
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
   responses:
+    UnprocessableEntity:
+      description: Validation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
     Unauthorized:
       description: Authentication credentials missing or invalid
       content:
@@ -319,12 +325,6 @@ components:
             $ref: '#/components/schemas/Error'
     NotFound:
       description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    UnprocessableEntity:
-      description: Validation error
       content:
         application/json:
           schema:

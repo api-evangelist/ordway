@@ -80,6 +80,30 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        errors:
+          type: object
+          additionalProperties: true
+    PaymentRunInput:
+      type: object
+      properties:
+        target_date:
+          type: string
+          format: date
+        currency:
+          type: string
+        payment_per_customer:
+          type: boolean
+        retry_failed_payments:
+          type: boolean
+        send_email_on_payments_success:
+          type: boolean
+        send_email_on_payment_fail:
+          type: boolean
     PaymentRun:
       type: object
       required:
@@ -143,39 +167,7 @@ components:
           type:
           - string
           - 'null'
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-        errors:
-          type: object
-          additionalProperties: true
-    PaymentRunInput:
-      type: object
-      properties:
-        target_date:
-          type: string
-          format: date
-        currency:
-          type: string
-        payment_per_customer:
-          type: boolean
-        retry_failed_payments:
-          type: boolean
-        send_email_on_payments_success:
-          type: boolean
-        send_email_on_payment_fail:
-          type: boolean
   parameters:
-    page:
-      name: page
-      in: query
-      description: Page number for pagination (1-based)
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
     id:
       name: id
       in: path
@@ -192,7 +184,21 @@ components:
         minimum: 1
         maximum: 500
         default: 50
+    page:
+      name: page
+      in: query
+      description: Page number for pagination (1-based)
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
   responses:
+    UnprocessableEntity:
+      description: Validation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
     Unauthorized:
       description: Authentication credentials missing or invalid
       content:
@@ -201,12 +207,6 @@ components:
             $ref: '#/components/schemas/Error'
     NotFound:
       description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    UnprocessableEntity:
-      description: Validation error
       content:
         application/json:
           schema:
