@@ -1,3 +1,7 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (undated — the file carries no date and git cannot supply one), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
 name: Ordway Plans and Pricing
 description: Ordway offers enterprise billing and revenue automation software for SaaS companies. Pricing is not publicly listed; prospective customers must contact the sales team for a custom quote based on their transaction volume, user count, and feature requirements.
 url: https://ordwaylabs.com/
@@ -30,3 +34,15 @@ notes: >
   based on business requirements. Contact Ordway sales at ordwaylabs.com for
   a demo and pricing quote. Ordway University training platform is available
   to customers at ordwayuniversity.litmos.com.
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models: []
+  units: []
+  plans:
+  - name: Enterprise
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []

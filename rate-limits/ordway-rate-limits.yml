@@ -1,3 +1,7 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (undated — the file carries no date and git cannot supply one), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
 name: Ordway API Rate Limits
 description: Ordway does not publicly document specific rate limits for its REST API. API access requires an API key obtained through Ordway support. The following reflects what is publicly known about API usage constraints.
 url: https://support.ordwaylabs.com/hc/en-us/articles/360050435911-Request-Validate-an-API-Key
