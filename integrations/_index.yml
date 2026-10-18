@@ -27,7 +27,7 @@
     - connectors/applications/ordway
     vendor_link: https://ordwaylabs.com/
     builder: Fivetran
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: ordway-meltano
   label: Meltano
@@ -59,5 +59,5 @@
     - silver
     - unknown
     builder: 'community (Meltano Hub variant maintainers: mozartdata, mubarakrocky, singer-io)'
-  status: pending-partner-spec
+  status: not-a-workflow
   arazzo: null
