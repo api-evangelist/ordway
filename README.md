@@ -66,21 +66,192 @@
 
 Ordway is a billing and revenue automation platform providing REST APIs for managing subscriptions, invoicing, payments, revenue recognition, and financial reporting for SaaS companies. The platform supports usage-based billing, ASC 606 compliant revenue recognition, accounts receivable automation, and SaaS metrics reporting.
 
-## Links
+**Areas:** Billing · Revenue Automation · Subscription · Invoicing · Payments · Revenue Recognition · SaaS Metrics · Usage-Based Billing · Financial Reporting · Accounts Receivable
 
-- **Website**: https://ordwaylabs.com/
-- **API Documentation**: https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview
-- **GitHub Org**: https://github.com/ordwaylabs
-- **Blog**: https://ordwaylabs.com/resources/blog/
-- **Status Page**: https://status.ordwaylabs.com/
-- **Integrations**: https://ordwaylabs.com/products/integrations/
-- **LinkedIn**: https://www.linkedin.com/company/ordway
-- **X**: https://x.com/ordwaylabs
+## Ordway on APIs.io
 
-## APIs
+Everything profiled for Ordway is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/ordway/](https://apis.io/providers/ordway/)** — or go straight to one of the APIs or properties below.
 
-- [Ordway REST API](https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview) — RESTful API with production base URL `https://api.ordwaylabs.com/api/v1` and sandbox at `https://api.sandbox.ordwaylabs.com/api/v1`
+### APIs (21)
 
-## Maintainers
+- [Ordway Billing Runs API](https://apis.io/apis/ordway/ordway-billing-runs-api/) — Automated billing run management
+- [Ordway Billing Schedules API](https://apis.io/apis/ordway/ordway-billing-schedules-api/) — Manage billing schedules
+- [Ordway Chart of Accounts API](https://apis.io/apis/ordway/ordway-chart-of-accounts-api/) — Manage general ledger chart of accounts
+- [Ordway Coupons API](https://apis.io/apis/ordway/ordway-coupons-api/) — Manage discount coupons
+- [Ordway Credits API](https://apis.io/apis/ordway/ordway-credits-api/) — Manage customer credits
+- [Ordway Customers API](https://apis.io/apis/ordway/ordway-customers-api/) — Manage billing customers and their contacts, notes, and payment methods
+- [Ordway Debit Memos API](https://apis.io/apis/ordway/ordway-debit-memos-api/) — Manage debit memos
+- [Ordway Invoices API](https://apis.io/apis/ordway/ordway-invoices-api/) — Manage invoices and billing
+- [Ordway Journal Entries API](https://apis.io/apis/ordway/ordway-journal-entries-api/) — Manage accounting journal entries
+- [Ordway Orders API](https://apis.io/apis/ordway/ordway-orders-api/) — Manage one-time orders
+- [Ordway Payment Runs API](https://apis.io/apis/ordway/ordway-payment-runs-api/) — Automated payment run management
+- [Ordway Payments API](https://apis.io/apis/ordway/ordway-payments-api/) — Manage payments and payment methods
+- [Ordway Plans API](https://apis.io/apis/ordway/ordway-plans-api/) — Manage billing plans and charges
+- [Ordway Products API](https://apis.io/apis/ordway/ordway-products-api/) — Manage products and plans
+- [Ordway Refunds API](https://apis.io/apis/ordway/ordway-refunds-api/) — Manage payment refunds
+- [Ordway Revenue Rules API](https://apis.io/apis/ordway/ordway-revenue-rules-api/) — Manage revenue recognition rules
+- [Ordway Revenue Schedules API](https://apis.io/apis/ordway/ordway-revenue-schedules-api/) — Manage ASC 606 revenue recognition schedules
+- [Ordway Statements API](https://apis.io/apis/ordway/ordway-statements-api/) — Customer account statements
+- [Ordway Subscriptions API](https://apis.io/apis/ordway/ordway-subscriptions-api/) — Manage subscription lifecycle and charges
+- [Ordway Usages API](https://apis.io/apis/ordway/ordway-usages-api/) — Manage usage-based billing records
+- [Ordway Webhooks API](https://apis.io/apis/ordway/ordway-webhooks-api/) — Manage webhook configurations
 
-**Kin Lane** — kin@apievangelist.com
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Ordway Agentic Access](https://apis.io/agentic-access/ordway/ordway-agentic-access/)
+
+#### JSON Schema (4)
+
+The data models the API reads and writes.
+
+- [Customer](https://apis.io/schemas/ordway/customer/)
+- [Invoice](https://apis.io/schemas/ordway/invoice/)
+- [Subscription](https://apis.io/schemas/ordway/subscription/)
+- [Usage](https://apis.io/schemas/ordway/usage/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Ordway Context](https://apis.io/jsonld/ordway/ordway-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Ordway Vocabulary](https://apis.io/vocabularies/ordway/ordway-vocabulary/)
+
+#### Examples (5)
+
+Example requests and responses.
+
+- [Customer Example](https://apis.io/examples/ordway/customer-example/)
+- [Invoice Example](https://apis.io/examples/ordway/invoice-example/)
+- [Payment Example](https://apis.io/examples/ordway/payment-example/)
+- [Subscription Example](https://apis.io/examples/ordway/subscription-example/)
+- [Usage Example](https://apis.io/examples/ordway/usage-example/)
+
+#### Collections (21)
+
+Postman and Open Collection request collections.
+
+- [Ordway REST Billing Runs API](https://apis.io/collections/ordway/open-ordway-billing-runs-api/)
+- [Ordway REST Billing Runs Billing Schedules API](https://apis.io/collections/ordway/open-ordway-billing-schedules-api/)
+- [Ordway REST Billing Runs Chart of Accounts API](https://apis.io/collections/ordway/open-ordway-chart-of-accounts-api/)
+- [Ordway REST Billing Runs Coupons API](https://apis.io/collections/ordway/open-ordway-coupons-api/)
+- [Ordway REST Billing Runs Credits API](https://apis.io/collections/ordway/open-ordway-credits-api/)
+- [Ordway REST Billing Runs Customers API](https://apis.io/collections/ordway/open-ordway-customers-api/)
+- [Ordway REST Billing Runs Debit Memos API](https://apis.io/collections/ordway/open-ordway-debit-memos-api/)
+- [Ordway REST Billing Runs Invoices API](https://apis.io/collections/ordway/open-ordway-invoices-api/)
+- [Ordway REST Billing Runs Journal Entries API](https://apis.io/collections/ordway/open-ordway-journal-entries-api/)
+- [Ordway REST Billing Runs Orders API](https://apis.io/collections/ordway/open-ordway-orders-api/)
+- [Ordway REST Billing Runs Payment Runs API](https://apis.io/collections/ordway/open-ordway-payment-runs-api/)
+- [Ordway REST Billing Runs Payments API](https://apis.io/collections/ordway/open-ordway-payments-api/)
+- [Ordway REST Billing Runs Plans API](https://apis.io/collections/ordway/open-ordway-plans-api/)
+- [Ordway REST Billing Runs Products API](https://apis.io/collections/ordway/open-ordway-products-api/)
+- [Ordway REST Billing Runs Refunds API](https://apis.io/collections/ordway/open-ordway-refunds-api/)
+- [Ordway REST Billing Runs Revenue Rules API](https://apis.io/collections/ordway/open-ordway-revenue-rules-api/)
+- [Ordway REST Billing Runs Revenue Schedules API](https://apis.io/collections/ordway/open-ordway-revenue-schedules-api/)
+- [Ordway REST Billing Runs Statements API](https://apis.io/collections/ordway/open-ordway-statements-api/)
+- [Ordway REST Billing Runs Subscriptions API](https://apis.io/collections/ordway/open-ordway-subscriptions-api/)
+- [Ordway REST Billing Runs Usages API](https://apis.io/collections/ordway/open-ordway-usages-api/)
+- [Ordway REST Billing Runs Webhooks API](https://apis.io/collections/ordway/open-ordway-webhooks-api/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Ordway — jsonschema rules](https://apis.io/rules/ordway/ordway-jsonschema-spectral-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Ordway Authentication](https://apis.io/security/ordway/ordway-authentication/)
+- [Ordway Domain Security](https://apis.io/security/ordway/ordway-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Ordway Plans Pricing](https://apis.io/plans/ordway/ordway-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Ordway Rate Limits](https://apis.io/rate-limits/ordway/ordway-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Ordway Finops](https://apis.io/finops/ordway/ordway-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://ordwaylabs.com/)
+- [Documentation](https://ordwaylabs.stoplight.io/docs/ordway/ZG9jOjQ4OTgxNg-overview)
+- [Blog](https://ordwaylabs.com/resources/blog/)
+- [Status](https://status.ordwaylabs.com/)
+
+## API Evangelist rating
+
+**Kin Score 28.4** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 53.6 |
+| Contract governance | 9.8 |
+| Operational transparency | 21.1 |
+| Developer ergonomics | 23.8 |
+| Access clarity | 5.3 |
+
+**Agent readiness 19.6** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 15.2** — Payments
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/ordway/](https://apis.io/providers/ordway/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Ordway: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/ordway/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
